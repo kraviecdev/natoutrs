@@ -15,6 +15,7 @@ exports.singup = catchAsync(async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
+    role: req.body.role,
   });
 
   const token = signToken(newUser._id);
@@ -71,7 +72,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   //checking if user still exist
-  const freshUser = await User.findById(decoded.id);
+  const freshUser = await User.findById(decoded.id).select("+role");
 
   if (!freshUser) {
     return next(new AppError("The user does not exist", 401));
@@ -88,3 +89,15 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = freshUser;
   next();
 });
+
+exports.restrictTo =
+  (...roles) =>
+  (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have permission to do this action", 403),
+      );
+    }
+
+    next();
+  };
