@@ -16,6 +16,8 @@ router.patch(
   authController.updatePass,
 );
 
+router.patch("/updateMyData", authController.protect, userController.updateMe);
+
 router
   .route("/")
   .get(userController.getAllUsers)
