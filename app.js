@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const hpp = require("hpp");
 
+const sanitizeInputData = require("./utils/sanitizeInputData");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const tourRouter = require("./routes/tourRoutes");
@@ -14,7 +15,17 @@ const app = express();
 
 ////////// MIDDLEWARE
 //Set security HTTP header
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+      },
+    },
+  }),
+);
 
 //Development logging
 if (process.env.NODE_ENV === "development") {
@@ -36,6 +47,7 @@ app.use(express.json({ limit: "10kb" }));
 app.use(mongoSanitize());
 
 //Data sanitization (XSS)
+app.use(sanitizeInputData);
 
 //Prevent Parameter Pollution
 app.use(
