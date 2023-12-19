@@ -31,10 +31,10 @@ const reviewSchema = new mongoose.Schema(
 );
 
 reviewSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: "tour",
-    select: "name ratingsAverage price summary",
-  });
+  // this.populate({
+  //   path: "tour",
+  //   select: "name ratingsAverage price summary",
+  // });
 
   this.populate({
     path: "user",
