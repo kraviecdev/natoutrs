@@ -24,10 +24,7 @@ router.delete(
 
 router.patch("/updateMyData", authController.protect, userController.updateMe);
 
-router
-  .route("/")
-  .get(userController.getAllUsers)
-  .post(userController.createUser);
+router.route("/").get(userController.getAllUsers);
 
 router
   .route("/:id")
