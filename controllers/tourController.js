@@ -1,6 +1,7 @@
 const factory = require("./handlerFactory");
 const Tour = require("../models/tourModel");
 const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = "5";
@@ -14,6 +15,44 @@ exports.getTour = factory.getOne(Tour, { path: "reviews" });
 exports.getAllTours = factory.getAll(Tour);
 exports.updateTour = factory.updateOne(Tour);
 exports.deleteTour = factory.deleteOne(Tour);
+
+exports.getToursWithin = catchAsync(async (req, res, next) => {
+  const { searchRadius, latlon } = req.params;
+
+  const [lat, lon] = latlon.split(",");
+  const radius = searchRadius * 1000; //radius in km
+  const referencePoint = {
+    type: "Point",
+    coordinates: [parseFloat(lon), parseFloat(lat)],
+  };
+
+  if (!lat || !lon) {
+    next(
+      new AppError(
+        "Please provide latitude and longitude in correct format (lat,lon)",
+        400,
+      ),
+    );
+  }
+
+  const tours = await Tour.find({
+    startLocation: {
+      $near: {
+        $geometry: referencePoint,
+        $maxDistance: parseFloat(radius),
+      },
+    },
+  });
+
+  res.status(200).json({
+    status: "success",
+    requestedAt: req.requestTime,
+    results: tours.length,
+    data: {
+      data: tours,
+    },
+  });
+});
 
 exports.getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
