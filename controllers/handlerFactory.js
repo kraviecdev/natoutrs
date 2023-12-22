@@ -27,7 +27,7 @@ exports.getOne = (Model, popOpt) =>
 
     res.status(200).json({
       status: "success",
-      data: { doc },
+      data: { data: doc },
     });
   });
 
@@ -47,7 +47,7 @@ exports.getAll = (Model) =>
       status: "success",
       requestedAt: req.requestTime,
       results: docs.length,
-      data: { docs },
+      data: { data: docs },
     });
   });
 
