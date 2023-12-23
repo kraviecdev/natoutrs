@@ -24,6 +24,8 @@ router
   .route("/tours-within/:searchRadius/center/:latlon")
   .get(tourController.getToursWithin);
 
+router.route("/distances/:latlon").get(tourController.getDistances);
+
 router
   .route("/")
   .get(tourController.getAllTours)
