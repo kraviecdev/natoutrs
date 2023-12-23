@@ -54,6 +54,48 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getDistances = catchAsync(async (req, res, next) => {
+  const { latlon } = req.params;
+  const [lat, lon] = latlon.split(",");
+  const referencePoint = {
+    type: "Point",
+    coordinates: [parseFloat(lon), parseFloat(lat)],
+  };
+
+  if (!lat || !lon) {
+    next(
+      new AppError(
+        "Please provide latitude and longitude in correct format (lat,lon)",
+        400,
+      ),
+    );
+  }
+
+  const distances = await Tour.aggregate([
+    {
+      $geoNear: {
+        near: referencePoint,
+        distanceField: "distance",
+        distanceMultiplier: 0.001,
+        spherical: true,
+      },
+    },
+    {
+      $project: {
+        distance: 1,
+        name: 1,
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: distances,
+    },
+  });
+});
+
 exports.getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
     {
