@@ -7,6 +7,7 @@ exports.getOverview = catchAsync(async (req, res) => {
   // Build template
   // Render that template using data
   res.status(200).render("overview", {
+    title: "All tours",
     tours,
   });
 });
@@ -22,6 +23,7 @@ exports.getTourView = catchAsync(async (req, res) => {
 
   // Render template using data
   res.status(200).render("tour", {
+    title: tour.name,
     tour,
   });
 });
