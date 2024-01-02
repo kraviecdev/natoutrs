@@ -14,12 +14,7 @@ const reviewRouter = require("./routes/reviewRoutes");
 const viewRouter = require("./routes/viewRoutes");
 
 const app = express();
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
-
-////////// MIDDLEWARE
-//Serving static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 //Set security HTTP header
 app.use(
@@ -49,6 +44,7 @@ app.use("/api", limiter);
 
 //Body parser, reads data from req.body
 app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true }));
 
 //Data sanitization (NoSQL query injection)
 app.use(mongoSanitize());
