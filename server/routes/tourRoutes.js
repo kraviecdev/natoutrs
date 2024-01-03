@@ -25,6 +25,7 @@ router
   .get(tourController.getToursWithin);
 
 router.route("/distances/:latlon").get(tourController.getDistances);
+router.route("/tour/:slug").get(tourController.getTourSlug);
 
 router
   .route("/")
