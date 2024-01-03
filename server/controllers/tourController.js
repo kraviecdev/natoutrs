@@ -16,6 +16,19 @@ exports.getAllTours = factory.getAll(Tour);
 exports.updateTour = factory.updateOne(Tour);
 exports.deleteTour = factory.deleteOne(Tour);
 
+exports.getTourSlug = catchAsync(async (req, res) => {
+  // Get data for the requested tour (including guides and reviews)
+  const tour = await Tour.findOne({ slug: req.params.slug }).populate({
+    path: "reviews",
+    fields: "user review rating photo",
+  });
+
+  res.status(200).json({
+    title: tour.name,
+    tour,
+  });
+});
+
 exports.getToursWithin = catchAsync(async (req, res, next) => {
   const { searchRadius, latlon } = req.params;
 
