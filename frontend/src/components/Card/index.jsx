@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Card = ({ tour }) => {
   const date = new Date(tour.startDates[0]);
   const tourDate = date.toLocaleString("en-us", {
@@ -59,9 +61,9 @@ const Card = ({ tour }) => {
           <span className="card__footer-value">{tour.ratingsAverage}</span>
           <span className="card__footer-text">{` rating (${tour.ratingsQuantity})`}</span>
         </p>
-        <a className="btn btn--green btn--small" href={`/tour/${tour.slug}`}>
+        <Link className="btn btn--green btn--small" to={`/tours/${tour.slug}`}>
           Details
-        </a>
+        </Link>
       </div>
     </div>
   );
