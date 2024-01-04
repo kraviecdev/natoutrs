@@ -10,6 +10,7 @@ const Map = ({ locations }) => {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/kraviecdev/clqqn5l9400w201pjc4measvn",
+      scrollZoom: false,
       accessToken: MAPBOX_ACCESS_TOKEN,
     });
 
