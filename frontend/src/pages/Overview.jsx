@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 const Overview = () => {
   const [tours, setTours] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchAllTours = async () => {
@@ -19,19 +18,19 @@ const Overview = () => {
           setTours(results);
         }
       } catch (error) {
-        setError(error.statusText);
+        console.error(error.statusText);
       }
     };
 
     fetchAllTours();
   }, []);
 
-  console.log(tours);
-
   return (
-    <div className="card-container">
-      {tours && tours.map((tour, index) => <Card key={index} tour={tour} />)}
-    </div>
+    <main className="main">
+      <div className="card-container">
+        {tours && tours.map((tour, index) => <Card key={index} tour={tour} />)}
+      </div>
+    </main>
   );
 };
 
