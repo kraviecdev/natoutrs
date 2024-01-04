@@ -1,9 +1,8 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme.jsx";
 import { GlobalStyle } from "./theme/GlobalStyle.jsx";
-import "../public/styled.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { HomeLayout, Overview } from "./pages/index.js";
+import { HomeLayout, Overview, TourDetails } from "./pages/index.js";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +12,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Overview />,
+      },
+      {
+        path: "tours/:slug",
+        element: <TourDetails />,
       },
     ],
   },
