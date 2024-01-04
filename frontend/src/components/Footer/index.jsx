@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__logo">
-        <img src="img/logo-green.png" alt="Natour logo" />
+        <img src="/img/logo-green.png" alt="Natour logo" />
       </div>
       <ul className="footer__nav">
         {list &&

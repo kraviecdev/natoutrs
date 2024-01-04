@@ -7,7 +7,7 @@ const Header = () => {
         </a>
       </nav>
       <div className="header__logo">
-        <img src="img/logo-white.png" alt="Natours logo" />
+        <img src="/img/logo-white.png" alt="Natours logo" />
       </div>
       <nav className="nav nav--user">
         <button className="nav__el">Log in</button>
