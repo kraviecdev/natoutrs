@@ -3,6 +3,7 @@ import customFetch from "../utils/customFetch.js";
 import { useParams } from "react-router-dom";
 import DetailBox from "../components/DetailBox/index.jsx";
 import ReviewCard from "../components/ReviewCard/index.jsx";
+import Map from "../components/Map/index.jsx";
 
 const TourDetails = () => {
   const { slug } = useParams();
@@ -131,7 +132,7 @@ const TourDetails = () => {
         </section>
 
         <section className="section-map">
-          <div id="map"></div>
+          <Map locations={tour.locations} />
         </section>
 
         <section className="section-reviews">
