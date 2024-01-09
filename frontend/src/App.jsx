@@ -2,12 +2,21 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme.jsx";
 import { GlobalStyle } from "./theme/GlobalStyle.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { HomeLayout, Overview, TourDetails } from "./pages/index.js";
+import {
+  HomeLayout,
+  LoginScreen,
+  Overview,
+  TourDetails,
+} from "./pages/index.js";
+
+import { action as loginAction } from "./pages/LoginScreen.jsx";
+import { loader as userLoader } from "./pages/HomeLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
+    loader: userLoader,
     children: [
       {
         index: true,
@@ -16,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: "tours/:slug",
         element: <TourDetails />,
+      },
+      {
+        path: "login",
+        element: <LoginScreen />,
+        action: loginAction,
       },
     ],
   },
