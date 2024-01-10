@@ -14,8 +14,6 @@ export const loader = async () => {
 const Overview = () => {
   const { data } = useLoaderData();
 
-  console.log(data);
-
   return (
     <main className="main">
       <div className="card-container">
