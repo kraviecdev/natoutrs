@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import customFetch from "../utils/customFetch.js";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import DetailBox from "../components/DetailBox/index.jsx";
 import ReviewCard from "../components/ReviewCard/index.jsx";
 import Map from "../components/Map/index.jsx";
@@ -13,7 +13,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const TourDetails = () => {
+const Tour = () => {
   const data = useLoaderData();
 
   useEffect(() => {
@@ -167,4 +167,4 @@ const TourDetails = () => {
   }
 };
 
-export default TourDetails;
+export default Tour;
