@@ -6,12 +6,14 @@ import { Home, Login, Overview, Tour } from "./pages/index.js";
 
 import { loader as allToursLoader } from "./pages/Overview.jsx";
 import { loader as tourLoader } from "./pages/Tour.jsx";
+import { loader as user } from "./pages/Home.jsx";
 import { action as loginAction } from "./pages/Login.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    loader: user,
     children: [
       {
         index: true,
