@@ -2,33 +2,30 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme.jsx";
 import { GlobalStyle } from "./theme/GlobalStyle.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {
-  HomeLayout,
-  LoginScreen,
-  Overview,
-  TourDetails,
-} from "./pages/index.js";
+import { Home, Login, Overview, Tour } from "./pages/index.js";
 
-import { action as loginAction } from "./pages/LoginScreen.jsx";
-import { loader as userLoader } from "./pages/HomeLayout.jsx";
+import { loader as allToursLoader } from "./pages/Overview.jsx";
+import { loader as tourLoader } from "./pages/Tour.jsx";
+import { action as loginAction } from "./pages/Login.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayout />,
-    loader: userLoader,
+    element: <Home />,
     children: [
       {
         index: true,
         element: <Overview />,
+        loader: allToursLoader,
       },
       {
         path: "tours/:slug",
-        element: <TourDetails />,
+        element: <Tour />,
+        loader: tourLoader,
       },
       {
         path: "login",
-        element: <LoginScreen />,
+        element: <Login />,
         action: loginAction,
       },
     ],

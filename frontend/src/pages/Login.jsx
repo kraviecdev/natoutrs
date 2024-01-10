@@ -13,7 +13,7 @@ export const action = async ({ request }) => {
     return error;
   }
 };
-const LoginScreen = () => {
+const Login = () => {
   return (
     <main className="main">
       <div className="login-form">
@@ -57,4 +57,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default Login;
