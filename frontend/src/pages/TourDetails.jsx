@@ -1,25 +1,20 @@
 import { useEffect, useState } from "react";
 import customFetch from "../utils/customFetch.js";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import DetailBox from "../components/DetailBox/index.jsx";
 import ReviewCard from "../components/ReviewCard/index.jsx";
 import Map from "../components/Map/index.jsx";
+export const loader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/tours/${params.slug}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
 
 const TourDetails = () => {
-  const { slug } = useParams();
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    const fetchTour = async () => {
-      const { data } = await customFetch.get(`/tours/${slug}`);
-
-      if (data) {
-        setData(data);
-      }
-    };
-
-    fetchTour();
-  }, []);
+  const data = useLoaderData();
 
   useEffect(() => {
     document.title = `Natours | ${data.title}`;
