@@ -1,34 +1,25 @@
 import Card from "../components/Card/index.jsx";
 import customFetch from "../utils/customFetch.js";
-import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+
+export const loader = async () => {
+  try {
+    const { data } = await customFetch.get("/tours");
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
 
 const Overview = () => {
-  const [tours, setTours] = useState([]);
+  const { data } = useLoaderData();
 
-  useEffect(() => {
-    const fetchAllTours = async () => {
-      try {
-        const {
-          data: {
-            data: { data: results },
-          },
-        } = await customFetch.get("/tours");
-
-        if (results) {
-          setTours(results);
-        }
-      } catch (error) {
-        console.error(error.statusText);
-      }
-    };
-
-    fetchAllTours();
-  }, []);
+  console.log(data);
 
   return (
     <main className="main">
       <div className="card-container">
-        {tours && tours.map((tour, index) => <Card key={index} tour={tour} />)}
+        {data && data.map((tour, index) => <Card key={index} tour={tour} />)}
       </div>
     </main>
   );
