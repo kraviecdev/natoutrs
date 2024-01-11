@@ -21,4 +21,9 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({ theme }) => theme.colors.indigo};
         min-height: 100vh;
     }
+    
+    header { 
+        width: 100%;
+        background: ${({ theme }) => theme.colors.dark};
+    }
 `;
