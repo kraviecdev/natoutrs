@@ -6,14 +6,13 @@ export const theme = {
     xl: 1200,
   },
   colors: {
-    indigo: "#34413A",
-    green: "#006732",
-    gray: "#5F766A",
-    dark: "#444444",
-    white: "#FFFFFF",
-    beige: "#E7F2ED",
+    main_font: "#34413A",
+    second_font: "#f1f1f1",
+    header: "#444444",
+    main: "#F2F7F2",
+    second: "#3EB666",
     shadow: "#00000040",
-    invalid: "#ab4949",
+    error: "#ab4949",
   },
   font: {
     size: {
