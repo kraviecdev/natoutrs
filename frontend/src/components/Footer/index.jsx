@@ -1,5 +1,10 @@
+import { StyledFooter } from "./styled.js";
+import { Img } from "../Img/styled.js";
+import Wrapper from "../Wrapper/styled.js";
+import { StyledLink } from "../Link/styled.js";
+
 const Footer = () => {
-  const list = [
+  const links = [
     { link: "/", name: "About us" },
     { link: "/", name: "Download app" },
     { link: "/", name: "Become a guide" },
@@ -8,22 +13,18 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer">
-      <div className="footer__logo">
-        <img src="/img/logo-green.png" alt="Natour logo" />
-      </div>
-      <ul className="footer__nav">
-        {list &&
-          list.map((li, index) => (
-            <li key={index}>
-              <a href={li.link}>{li.name}</a>
-            </li>
+    <StyledFooter>
+      <Img src="/img/logo-green.png" alt="Natour logo" />
+
+      <Wrapper>
+        {links &&
+          links.map((li, index) => (
+            <StyledLink key={index} to={li.link}>
+              {li.name}
+            </StyledLink>
           ))}
-      </ul>
-      <p className="footer__copyright">
-        &copy; by Jonas Schmedtmann. Created by Kraviecdev
-      </p>
-    </footer>
+      </Wrapper>
+    </StyledFooter>
   );
 };
 
