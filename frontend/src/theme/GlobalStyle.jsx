@@ -17,13 +17,13 @@ export const GlobalStyle = createGlobalStyle`
         font-size: ${({ theme }) => theme.font.size.regular}px;
         font-weight: ${({ theme }) => theme.font.weight.regular};
         line-height: normal;
-        background: ${({ theme }) => theme.colors.white};
-        color: ${({ theme }) => theme.colors.indigo};
+        background: ${({ theme }) => theme.colors.main};
+        color: ${({ theme }) => theme.colors.main_font};
         min-height: 100vh;
     }
     
     header { 
         width: 100%;
-        background: ${({ theme }) => theme.colors.dark};
+        background: ${({ theme }) => theme.colors.header};
     }
 `;
