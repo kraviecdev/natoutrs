@@ -10,12 +10,13 @@ const Header = ({ user }) => {
 
   useEffect(() => {
     if (user) {
-      setIsLogged(!isLogged);
+      setIsLogged(true);
     }
   }, [user]);
+
   const logout = async () => {
     await customFetch.get("/users/logout");
-    setIsLogged(!isLogged);
+    setIsLogged(false);
   };
 
   return (
@@ -23,7 +24,7 @@ const Header = ({ user }) => {
       <Nav>
         <StyledLink href="/">
           <Img src="/img/logo-white.png" alt="Natours logo" />
-          <span>All tours</span>
+          <span>Natours</span>
         </StyledLink>
 
         <Wrapper>
@@ -36,7 +37,7 @@ const Header = ({ user }) => {
                 <Img
                   user
                   round
-                  src={`/img/users/user-1.jpg`}
+                  src={`/img/users/${user.photo}`}
                   alt={`Photo of ${user.name}`}
                 />
                 <span>{user.name.split(" ")[0]}</span>
