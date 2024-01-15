@@ -1,9 +1,9 @@
 import { CardSection, CardWrapper } from "./styled.js";
-import { Img, ImgShadow } from "../Img/styled.js";
-import { Wrapper } from "../Wrapper/styled.js";
-import { ContextHeading, SecondaryHeading } from "../Title/styled.js";
-import { StyledLink } from "../Link/styled.js";
-import { Paragraph } from "../Paragraph/styled.js";
+import { Img, ImgShadow } from "../Img/index.js";
+import { Wrapper } from "../Wrapper/index.js";
+import { ContextHeading, SecondaryHeading } from "../Title/index.js";
+import { StyledLink } from "../Link/index.js";
+import { Paragraph } from "../Paragraph/index.js";
 import Icon from "../Icon/Icon.jsx";
 
 const Card = ({ tour }) => {

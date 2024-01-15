@@ -1,4 +1,4 @@
-import { Wrapper } from "../Wrapper/styled.js";
+import { Wrapper } from "../Wrapper/index.js";
 import { StyledIcon } from "./styled.js";
 
 const Icon = ({ name, text }) => {

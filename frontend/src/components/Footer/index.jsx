@@ -1,7 +1,7 @@
 import { StyledFooter } from "./styled.js";
-import { Img } from "../Img/styled.js";
-import { Wrapper } from "../Wrapper/styled.js";
-import { StyledLink } from "../Link/styled.js";
+import { Img } from "../Img/index.js";
+import { Wrapper } from "../Wrapper/index.js";
+import { StyledLink } from "../Link/index.js";
 
 const Footer = () => {
   const links = [

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import customFetch from "../../utils/customFetch.js";
-import { Nav } from "../Navigation/styled.js";
-import { Img } from "../Img/styled.js";
-import { StyledLink } from "../Link/styled.js";
-import { Wrapper } from "../Wrapper/styled.js";
+import { Nav } from "../Navigation/index.js";
+import { Img } from "../Img/index.js";
+import { StyledLink } from "../Link/index.js";
+import { Wrapper } from "../Wrapper/index.js";
 
 const Header = ({ user }) => {
   const [isLogged, setIsLogged] = useState(false);
