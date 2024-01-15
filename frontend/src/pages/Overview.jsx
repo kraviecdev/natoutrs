@@ -15,10 +15,8 @@ const Overview = () => {
   const { data } = useLoaderData();
 
   return (
-    <main className="main">
-      <div className="card-container">
-        {data && data.map((tour, index) => <Card key={index} tour={tour} />)}
-      </div>
+    <main>
+      {data && data.map((tour, index) => <Card key={index} tour={tour} />)}
     </main>
   );
 };
