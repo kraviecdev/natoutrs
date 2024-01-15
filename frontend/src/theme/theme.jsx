@@ -8,9 +8,9 @@ export const theme = {
   colors: {
     main_font: "#34413A",
     second_font: "#f1f1f1",
-    header: "#444444",
+    third_font: "#c9c9c9",
     main: "#F2F7F2",
-    second: "#f1f1f1",
+    second: "#545454",
     contrast: "#3EB666",
     shadow: "#00000040",
     error: "#ab4949",
@@ -21,7 +21,7 @@ export const theme = {
       regular: 16,
       medium: 24,
       extraMedium: 32,
-      large: 40,
+      large: 48,
       extraLarge: 64,
     },
     weight: {
