@@ -24,6 +24,6 @@ export const GlobalStyle = createGlobalStyle`
     
     header { 
         width: 100%;
-        background: ${({ theme }) => theme.colors.header};
+        background: ${({ theme }) => theme.colors.second};
     }
 `;
