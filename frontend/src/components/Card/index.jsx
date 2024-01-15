@@ -1,4 +1,10 @@
-import { Link } from "react-router-dom";
+import { CardSection, CardWrapper } from "./styled.js";
+import { Img, ImgShadow } from "../Img/styled.js";
+import { Icon } from "../Icon/styled.js";
+import { Wrapper } from "../Wrapper/styled.js";
+import { ContextHeading, SecondaryHeading } from "../Title/styled.js";
+import { StyledLink } from "../Link/styled.js";
+import { Paragraph } from "../Paragraph/styled.js";
 
 const Card = ({ tour }) => {
   const date = new Date(tour.startDates[0]);
@@ -8,64 +14,70 @@ const Card = ({ tour }) => {
   });
 
   return (
-    <div className="card">
-      <div className="card__header">
-        <div className="card__picture">
-          <div className="card__picture-overlay">&nbsp;</div>
-          <img
-            className="card__picture-img"
-            src={`img/tours/${tour.imageCover}`}
-            alt={tour.name}
-          />
-        </div>
-        <h3 className="heading-tertirary">
-          <span>{tour.name}</span>
-        </h3>
-      </div>
+    <CardWrapper>
+      <CardSection heading>
+        <Wrapper image>
+          <ImgShadow />
+          <Img card src={`img/tours/${tour.imageCover}`} alt={tour.name} />
+          <SecondaryHeading>{tour.name}</SecondaryHeading>
+        </Wrapper>
+      </CardSection>
 
-      <div className="card__details">
-        <h4 className="card__sub-heading">{`${tour.difficulty} ${tour.duration}-day tour`}</h4>
-        <p className="card__text">{tour.summary}</p>
-        <div className="card__data">
-          <svg className="card__icon">
-            <use href={`/img/icons.svg#icon-map-pin`} />
-          </svg>
-          <span>{tour.startLocation.description}</span>
-        </div>
-        <div className="card__data">
-          <svg className="card__icon">
-            <use href={`img/icons.svg#icon-calendar`} />
-          </svg>
-          <span>{tourDate}</span>
-        </div>
-        <div className="card__data">
-          <svg className="card__icon">
-            <use href={`img/icons.svg#icon-flag`} />
-          </svg>
-          <span>{`${tour.locations.length} stops`}</span>
-        </div>
-        <div className="card__data">
-          <svg className="card__icon">
-            <use href={`img/icons.svg#icon-user`} />
-          </svg>
-          <span>{`${tour.maxGroupSize} people`}</span>
-        </div>
-      </div>
+      <CardSection details>
+        <ContextHeading>{`${tour.difficulty} difficulty ${tour.duration}-day tour`}</ContextHeading>
+        <Paragraph>{tour.summary}</Paragraph>
+        <ul>
+          <li>
+            <Wrapper>
+              <Icon>
+                <use href={`/img/icons.svg#icon-map-pin`} />
+              </Icon>
+              {tour.startLocation.description}
+            </Wrapper>
+          </li>
+          <li>
+            <Wrapper>
+              <Icon>
+                <use href={`img/icons.svg#icon-calendar`} />
+              </Icon>
+              {tourDate}
+            </Wrapper>
+          </li>
+          <li>
+            <Wrapper>
+              <Icon>
+                <use href={`img/icons.svg#icon-flag`} />
+              </Icon>
+              {`${tour.locations.length} stops`}
+            </Wrapper>
+          </li>
+          <li>
+            <Wrapper>
+              <Icon>
+                <use href={`img/icons.svg#icon-user`} />
+              </Icon>
+              {`${tour.maxGroupSize} people`}
+            </Wrapper>
+          </li>
+        </ul>
+      </CardSection>
 
-      <div className="card__footer">
-        <p>
-          <span className="card__footer-value">{`$${tour.price}`}</span>
-          <span className="card__footer-text">{" per person"}</span>
-        </p>
-        <p className="card__ratings">
-          <span className="card__footer-value">{tour.ratingsAverage}</span>
-          <span className="card__footer-text">{` rating (${tour.ratingsQuantity})`}</span>
-        </p>
-        <Link className="btn btn--green btn--small" to={`/tours/${tour.slug}`}>
+      <CardSection footer>
+        <ul>
+          <li>
+            <span>{`$${tour.price}`}</span>
+            {" per person"}
+          </li>
+          <li>
+            <span>{tour.ratingsAverage}</span>
+            {` rating (${tour.ratingsQuantity})`}
+          </li>
+        </ul>
+        <StyledLink cta to={`/tours/${tour.slug}`}>
           Details
-        </Link>
-      </div>
-    </div>
+        </StyledLink>
+      </CardSection>
+    </CardWrapper>
   );
 };
 
