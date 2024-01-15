@@ -1,10 +1,10 @@
 import { CardSection, CardWrapper } from "./styled.js";
 import { Img, ImgShadow } from "../Img/styled.js";
-import { Icon } from "../Icon/styled.js";
 import { Wrapper } from "../Wrapper/styled.js";
 import { ContextHeading, SecondaryHeading } from "../Title/styled.js";
 import { StyledLink } from "../Link/styled.js";
 import { Paragraph } from "../Paragraph/styled.js";
+import Icon from "../Icon/Icon.jsx";
 
 const Card = ({ tour }) => {
   const date = new Date(tour.startDates[0]);
@@ -28,36 +28,16 @@ const Card = ({ tour }) => {
         <Paragraph>{tour.summary}</Paragraph>
         <ul>
           <li>
-            <Wrapper>
-              <Icon>
-                <use href={`/img/icons.svg#icon-map-pin`} />
-              </Icon>
-              {tour.startLocation.description}
-            </Wrapper>
+            <Icon name="map-pin" text={tour.startLocation.description} />
           </li>
           <li>
-            <Wrapper>
-              <Icon>
-                <use href={`img/icons.svg#icon-calendar`} />
-              </Icon>
-              {tourDate}
-            </Wrapper>
+            <Icon name="calendar" text={tourDate} />
           </li>
           <li>
-            <Wrapper>
-              <Icon>
-                <use href={`img/icons.svg#icon-flag`} />
-              </Icon>
-              {`${tour.locations.length} stops`}
-            </Wrapper>
+            <Icon name="flag" text={`${tour.locations.length} stops`} />
           </li>
           <li>
-            <Wrapper>
-              <Icon>
-                <use href={`img/icons.svg#icon-user`} />
-              </Icon>
-              {`${tour.maxGroupSize} people`}
-            </Wrapper>
+            <Icon name="user" text={`${tour.maxGroupSize} people`} />
           </li>
         </ul>
       </CardSection>
