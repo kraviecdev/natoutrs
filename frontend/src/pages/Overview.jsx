@@ -1,6 +1,7 @@
 import Card from "../components/Card/index.jsx";
 import customFetch from "../utils/customFetch.js";
 import { useLoaderData } from "react-router-dom";
+import { Main } from "../components/Main/index.js";
 
 export const loader = async () => {
   try {
@@ -15,9 +16,9 @@ const Overview = () => {
   const { data } = useLoaderData();
 
   return (
-    <main>
+    <Main>
       {data && data.map((tour, index) => <Card key={index} tour={tour} />)}
-    </main>
+    </Main>
   );
 };
 
