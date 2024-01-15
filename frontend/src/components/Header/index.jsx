@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import customFetch from "../../utils/customFetch.js";
 import { Nav } from "../Navigation/index.js";
 import { Img } from "../Img/index.js";
@@ -6,29 +5,22 @@ import { StyledLink } from "../Link/index.js";
 import { Wrapper } from "../Wrapper/index.js";
 
 const Header = ({ user }) => {
-  const [isLogged, setIsLogged] = useState(false);
-
-  useEffect(() => {
-    if (user) {
-      setIsLogged(true);
-    }
-  }, [user]);
-
   const logout = async () => {
     await customFetch.get("/users/logout");
-    setIsLogged(false);
+
+    window.location.reload();
   };
 
   return (
     <header>
       <Nav>
-        <StyledLink href="/">
+        <StyledLink to="/">
           <Img src="/img/logo-white.png" alt="Natours logo" />
           <span>Natours</span>
         </StyledLink>
 
         <Wrapper>
-          {isLogged ? (
+          {user ? (
             <>
               <StyledLink to="/" onClick={() => logout()}>
                 Log out
