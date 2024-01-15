@@ -3,7 +3,7 @@ import customFetch from "../../utils/customFetch.js";
 import { Nav } from "../Navigation/styled.js";
 import { Img } from "../Img/styled.js";
 import { StyledLink } from "../Link/styled.js";
-import Wrapper from "../Wrapper/styled.js";
+import { Wrapper } from "../Wrapper/styled.js";
 
 const Header = ({ user }) => {
   const [isLogged, setIsLogged] = useState(false);

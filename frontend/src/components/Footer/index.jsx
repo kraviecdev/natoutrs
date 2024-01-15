@@ -1,6 +1,6 @@
 import { StyledFooter } from "./styled.js";
 import { Img } from "../Img/styled.js";
-import Wrapper from "../Wrapper/styled.js";
+import { Wrapper } from "../Wrapper/styled.js";
 import { StyledLink } from "../Link/styled.js";
 
 const Footer = () => {
