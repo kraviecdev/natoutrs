@@ -1,5 +1,11 @@
-import { Form, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
+import useValidator from "../utils/useValidator.js";
+import { Main } from "../components/Main/index.js";
+import { SecondaryHeading } from "../components/Title/index.js";
+import { FormButton, StyledForm } from "../components/Form/styled.js";
+import FormRow from "../components/FormRow/index.jsx";
+import { toast } from "react-toastify";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -7,53 +13,69 @@ export const action = async ({ request }) => {
 
   try {
     await customFetch.post("/users/login", data);
+    toast.success("Login successful");
     return redirect("/");
   } catch (error) {
-    console.error(error.statusText);
+    toast.error(error?.response?.data?.message);
     return error;
   }
 };
 const Login = () => {
+  const initialState = [
+    {
+      name: "email",
+      type: "email",
+      label: "Email address",
+      placeholder: "you@example.com",
+      as: "input",
+      value: "",
+      validation: true,
+      regex:
+        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+    },
+    {
+      name: "password",
+      type: "password",
+      label: "Password",
+      placeholder: "••••••••",
+      as: "input",
+      value: "",
+      validation: true,
+      regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+    },
+  ];
+  const { data, handleChange } = useValidator(initialState);
+
   return (
-    <main className="main">
-      <div className="login-form">
-        <h2 className="heading-secondary ma-bt-lg">Log into your account</h2>
-        <Form method="post" className="form">
-          <div className="form__group">
-            <label htmlFor="email" className="form__label">
-              Email address
-            </label>
-            <input
-              className="form__input"
-              placeholder="you@example.com"
-              required
-              id="email"
-              name="email"
-              type="email"
-            />
-          </div>
+    <Main form>
+      <StyledForm method="post">
+        <SecondaryHeading>Log into your account</SecondaryHeading>
 
-          <div className="form__group ma-bt-md">
-            <label htmlFor="password" className="form__label">
-              Password
-            </label>
-            <input
-              className="form__input"
-              placeholder="••••••••"
-              required
-              minLength="8"
-              id="password"
-              name="password"
-              type="password"
+        {data &&
+          data.map((field, index) => (
+            <FormRow
+              key={index}
+              as={field.as}
+              placeholder={field.placeholder}
+              type={field.type}
+              label={field.label}
+              name={field.name}
+              value={field.value || ""}
+              onChange={(event) => handleChange(field.name, event)}
+              invalid={!field.validation}
             />
-          </div>
+          ))}
 
-          <div className="form__group">
-            <button className="btn btn--green">Login</button>
-          </div>
-        </Form>
-      </div>
-    </main>
+        <FormButton
+          disabled={data.some(
+            (field) => field.validation === false || field.value === "",
+          )}
+          type="submit"
+        >
+          Login
+        </FormButton>
+      </StyledForm>
+    </Main>
   );
 };
 
