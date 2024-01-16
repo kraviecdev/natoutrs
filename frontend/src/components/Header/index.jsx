@@ -1,16 +1,9 @@
-import customFetch from "../../utils/customFetch.js";
 import { Nav } from "../Navigation/index.js";
 import { Img } from "../Img/index.js";
 import { StyledLink } from "../Link/index.js";
 import { Wrapper } from "../Wrapper/index.js";
 
-const Header = ({ user }) => {
-  const logout = async () => {
-    await customFetch.get("/users/logout");
-
-    window.location.reload();
-  };
-
+const Header = ({ user, logout }) => {
   return (
     <header>
       <Nav>
