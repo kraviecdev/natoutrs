@@ -5,8 +5,8 @@ export const CardWrapper = styled.article`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  max-width: 100%;
   overflow: hidden;
+  max-width: 450px;
   box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
   border-radius: 24px;
   transition: 0.4s ease-in-out;
@@ -43,6 +43,7 @@ export const CardSection = styled.div`
     heading &&
     css`
       padding: 0;
+      position: relative;
 
       h3 {
         max-width: 50%;
@@ -57,6 +58,7 @@ export const CardSection = styled.div`
     details &&
     css`
       align-items: flex-start;
+      gap: 10px;
 
       ul {
         width: 100%;
