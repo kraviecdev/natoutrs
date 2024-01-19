@@ -16,11 +16,9 @@ const Card = ({ tour }) => {
   return (
     <CardWrapper>
       <CardSection heading>
-        <Wrapper image>
-          <ImgShadow />
-          <Img card src={`img/tours/${tour.imageCover}`} alt={tour.name} />
-          <SecondaryHeading>{tour.name}</SecondaryHeading>
-        </Wrapper>
+        <ImgShadow />
+        <Img card src={`img/tours/${tour.imageCover}`} alt={tour.name} />
+        <SecondaryHeading>{tour.name}</SecondaryHeading>
       </CardSection>
 
       <CardSection details>
