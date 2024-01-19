@@ -1,4 +1,5 @@
 import { Input, RowWrapper } from "./styled.js";
+import { Paragraph } from "../Paragraph/index.js";
 
 const FormRow = ({
   as,
@@ -11,6 +12,7 @@ const FormRow = ({
   name,
   invalid,
   checkbox,
+  message,
 }) => {
   return (
     <RowWrapper
@@ -29,6 +31,7 @@ const FormRow = ({
         type={type}
         required
       />
+      {message && <Paragraph invalid>{message}</Paragraph>}
     </RowWrapper>
   );
 };
