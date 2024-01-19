@@ -3,11 +3,14 @@ import styled, { css } from "styled-components";
 export const Img = styled.img`
   max-height: 30px;
   border-radius: ${({ round }) => (round ? 50 : 0)}%;
+  object-fit: cover;
 
   ${({ card }) =>
     card &&
     css`
-      max-height: 300px;
+      width: 100%;
+      min-height: 300px;
+      max-height: none;
     `}
 `;
 
