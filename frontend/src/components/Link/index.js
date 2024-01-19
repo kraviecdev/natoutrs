@@ -29,6 +29,13 @@ export const StyledLink = styled(NavLink)`
     }
   }
 
+  ${({ contrast }) =>
+    contrast &&
+    css`
+      color: ${({ theme }) => theme.colors.contrast};
+      font-weight: ${({ theme }) => theme.font.weight.medium};
+    `}
+
   ${({ cta }) =>
     cta &&
     css`
