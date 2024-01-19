@@ -10,6 +10,10 @@ export const RowWrapper = styled.div`
   font-weight: ${({ theme }) => theme.font.weight.medium};
   font-size: ${({ theme }) => theme.font.weight.small};
 
+  p {
+    display: none;
+  }
+
   &:focus-within {
     color: ${({ theme }) => theme.colors.main_font};
   }
@@ -18,6 +22,10 @@ export const RowWrapper = styled.div`
     invalid &&
     css`
       color: ${({ theme }) => theme.colors.error};
+
+      p {
+        display: inherit;
+      }
 
       input {
         border-bottom: 1px solid ${({ theme }) => theme.colors.error};
