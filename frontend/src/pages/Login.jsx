@@ -6,6 +6,9 @@ import { SecondaryHeading } from "../components/Title/index.js";
 import { FormButton, StyledForm } from "../components/Form/styled.js";
 import FormRow from "../components/FormRow/index.jsx";
 import { toast } from "react-toastify";
+import { Paragraph } from "../components/Paragraph/index.js";
+import { Wrapper } from "../components/Wrapper/index.js";
+import { StyledLink } from "../components/Link/index.js";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -74,6 +77,13 @@ const Login = () => {
         >
           Login
         </FormButton>
+
+        <Wrapper>
+          <Paragraph>Not a member yet?</Paragraph>
+          <StyledLink contrast to="/signup">
+            Sign up
+          </StyledLink>
+        </Wrapper>
       </StyledForm>
     </Main>
   );
