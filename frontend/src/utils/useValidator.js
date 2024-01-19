@@ -14,7 +14,16 @@ const useValidator = (initialState) => {
         field.validation = field.checked;
       } else {
         field.value = val;
-        field.validation = field.regex.test(val);
+
+        if (field.name === "passwordConfirm") {
+          const password = newData.find((field) => field.name === "password");
+
+          password.value === field.value
+            ? (field.validation = true)
+            : (field.validation = false);
+        } else {
+          field.validation = field.regex.test(val);
+        }
       }
     }
 
