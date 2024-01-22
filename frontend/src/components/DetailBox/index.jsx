@@ -1,16 +1,20 @@
-const DetailBox = ({ label, text, icon, src, alt }) => {
+import Icon from "../Icon/Icon.jsx";
+import { Img } from "../Img/index.js";
+import { Wrapper } from "../Wrapper/index.js";
+
+const DetailBox = ({ text, icon, src, alt, info }) => {
   return (
-    <div className="overview-box__detail">
+    <Wrapper>
       {icon ? (
-        <svg className="overview-box__icon">
-          <use href={`/img/icons.svg#icon-${icon}`} />
-        </svg>
+        <Icon name={icon} text={text} />
       ) : (
-        <img className="overview-box__img" src={src} alt={alt} />
+        <>
+          <Img user round src={src} alt={alt} />
+          <span>{text}</span>
+        </>
       )}
-      {label && <span className="overview-box__label">{label}</span>}
-      {text && <span className="overview-box__text">{text}</span>}
-    </div>
+      {info && <span>{info}</span>}
+    </Wrapper>
   );
 };
 
