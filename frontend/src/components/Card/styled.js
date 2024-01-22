@@ -43,7 +43,6 @@ export const CardSection = styled.div`
     heading &&
     css`
       padding: 0;
-      position: relative;
 
       h3 {
         max-width: 50%;
