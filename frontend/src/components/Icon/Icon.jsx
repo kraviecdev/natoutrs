@@ -5,9 +5,9 @@ const Icon = ({ name, text }) => {
   return (
     <Wrapper>
       <StyledIcon>
-        <use href={`img/icons.svg#icon-${name}`} />
+        <use href={`/img/icons.svg#icon-${name}`} />
       </StyledIcon>
-      {text}
+      <span>{text}</span>
     </Wrapper>
   );
 };
