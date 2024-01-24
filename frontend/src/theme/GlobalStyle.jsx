@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         align-items: center;
         font-family: Lato, sans-serif;
-        gap: 32px;
         font-size: ${({ theme }) => theme.font.size.regular}px;
         font-weight: ${({ theme }) => theme.font.weight.regular};
         line-height: normal;
