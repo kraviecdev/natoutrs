@@ -12,8 +12,7 @@ export const CardWrapper = styled.article`
   transition: 0.4s ease-in-out;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
+    box-shadow: 0 4px 10px 6px ${({ theme }) => theme.colors.shadow};
   }
 `;
 
@@ -25,12 +24,16 @@ export const CardSection = styled.div`
   width: 100%;
 
   ul {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 10px;
     padding: 0;
     list-style: none;
     font-size: ${({ theme }) => theme.font.size.small}px;
+
+    div {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
@@ -61,13 +64,7 @@ export const CardSection = styled.div`
 
       ul {
         width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        li {
-          width: max-content;
-        }
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
       }
     `}
 
