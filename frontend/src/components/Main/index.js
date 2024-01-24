@@ -7,14 +7,18 @@ export const Main = styled.main`
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 24px;
-  padding: 0 10px;
+  padding: 16px 10px;
 
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.xl}px) {
-    padding: 0;
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
+    padding: 32px 10px;
   }
 
-  ${({ form }) =>
-    form &&
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.xl}px) {
+    padding: 32px 0;
+  }
+
+  ${({ column }) =>
+    column &&
     css`
       flex-grow: 1;
       grid-template-columns: 1fr;
