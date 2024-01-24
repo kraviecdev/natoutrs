@@ -50,7 +50,7 @@ const Login = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main form>
+    <Main column>
       <StyledForm method="post">
         <SecondaryHeading>Log into your account</SecondaryHeading>
 
@@ -68,6 +68,9 @@ const Login = () => {
               invalid={!field.validation}
             />
           ))}
+        <StyledLink contrast to="/forgot-pass">
+          Forgot Password?
+        </StyledLink>
 
         <FormButton
           disabled={data.some(
@@ -78,7 +81,7 @@ const Login = () => {
           Login
         </FormButton>
 
-        <Wrapper>
+        <Wrapper center>
           <Paragraph>Not a member yet?</Paragraph>
           <StyledLink contrast to="/signup">
             Sign up
