@@ -6,13 +6,15 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  width: 100%;
   padding: 32px 12px;
   gap: 24px;
   border-radius: 6px;
   box-shadow: 0 2px 6px ${({ theme }) => theme.colors.shadow};
 
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.xs}px) {
     padding: 48px;
+    max-width: max-content;
   }
 `;
 
