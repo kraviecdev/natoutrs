@@ -69,7 +69,7 @@ const Signup = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main form>
+    <Main column>
       <StyledForm method="post">
         <SecondaryHeading>Sign up to Natours</SecondaryHeading>
 
