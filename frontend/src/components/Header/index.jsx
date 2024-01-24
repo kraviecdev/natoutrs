@@ -1,7 +1,7 @@
 import { Nav } from "../Navigation/index.js";
-import { Img } from "../Img/index.js";
 import { StyledLink } from "../Link/index.js";
 import { Wrapper } from "../Wrapper/index.js";
+import Img from "../Img/index.jsx";
 
 const Header = ({ user, logout }) => {
   return (

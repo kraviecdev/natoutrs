@@ -1,5 +1,5 @@
 import Icon from "../Icon/Icon.jsx";
-import { Img } from "../Img/index.js";
+import Img from "../Img/index.jsx";
 import { Wrapper } from "../Wrapper/index.js";
 
 const DetailBox = ({ text, icon, src, alt, info }) => {
@@ -9,7 +9,7 @@ const DetailBox = ({ text, icon, src, alt, info }) => {
         <Icon name={icon} text={text} />
       ) : (
         <>
-          <Img user round src={src} alt={alt} />
+          <Img round src={src} alt={alt} />
           <span>{text}</span>
         </>
       )}

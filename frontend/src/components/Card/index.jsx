@@ -1,10 +1,9 @@
 import { CardSection, CardWrapper } from "./styled.js";
-import { Img, ImgShadow } from "../Img/index.js";
-import { Wrapper } from "../Wrapper/index.js";
 import { ContextHeading, SecondaryHeading } from "../Title/index.js";
 import { StyledLink } from "../Link/index.js";
 import { Paragraph } from "../Paragraph/index.js";
 import Icon from "../Icon/Icon.jsx";
+import Img from "../Img/index.jsx";
 
 const Card = ({ tour }) => {
   const date = new Date(tour.startDates[0]);
@@ -16,9 +15,9 @@ const Card = ({ tour }) => {
   return (
     <CardWrapper>
       <CardSection heading>
-        <ImgShadow />
-        <Img card src={`img/tours/${tour.imageCover}`} alt={tour.name} />
-        <SecondaryHeading>{tour.name}</SecondaryHeading>
+        <Img card shadow src={`img/tours/${tour.imageCover}`} alt={tour.name}>
+          <SecondaryHeading>{tour.name}</SecondaryHeading>
+        </Img>
       </CardSection>
 
       <CardSection details>
