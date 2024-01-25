@@ -22,7 +22,7 @@ const Card = ({ tour }) => {
 
       <CardSection details>
         <ContextHeading>{`${tour.difficulty} difficulty ${tour.duration}-day tour`}</ContextHeading>
-        <Paragraph>{tour.summary}</Paragraph>
+        <Paragraph italic>{tour.summary}</Paragraph>
         <ul>
           <li>
             <Icon name="map-pin" text={tour.startLocation.description} />
