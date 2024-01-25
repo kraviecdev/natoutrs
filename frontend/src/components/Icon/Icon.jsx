@@ -1,13 +1,14 @@
 import { Wrapper } from "../Wrapper/index.js";
 import { StyledIcon } from "./styled.js";
+import { Paragraph } from "../Paragraph/index.js";
 
-const Icon = ({ name, text }) => {
+const Icon = ({ name, contrast, text }) => {
   return (
-    <Wrapper>
+    <Wrapper icon>
       <StyledIcon>
         <use href={`/img/icons.svg#icon-${name}`} />
       </StyledIcon>
-      <span>{text}</span>
+      <Paragraph contrast={contrast}>{text}</Paragraph>
     </Wrapper>
   );
 };
