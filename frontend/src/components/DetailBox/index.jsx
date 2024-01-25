@@ -1,19 +1,20 @@
 import Icon from "../Icon/Icon.jsx";
 import Img from "../Img/index.jsx";
 import { Wrapper } from "../Wrapper/index.js";
+import { Paragraph } from "../Paragraph/index.js";
 
 const DetailBox = ({ text, icon, src, alt, info }) => {
   return (
     <Wrapper>
       {icon ? (
-        <Icon name={icon} text={text} />
+        <Icon contrast name={icon} text={text} />
       ) : (
         <>
-          <Img round src={src} alt={alt} />
-          <span>{text}</span>
+          <Img user src={src} alt={alt} />
+          <Paragraph contrast>{text}</Paragraph>
         </>
       )}
-      {info && <span>{info}</span>}
+      {info && <Paragraph info>{info}</Paragraph>}
     </Wrapper>
   );
 };
