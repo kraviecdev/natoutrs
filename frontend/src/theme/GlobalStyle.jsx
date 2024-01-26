@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
     }
 
-    body {
+    #root {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -36,5 +36,9 @@ export const GlobalStyle = createGlobalStyle`
     header {
         width: 100%;
         background: ${({ theme }) => theme.colors.second};
+    }
+    
+    #map {
+        height: 300px;
     }
 `;
