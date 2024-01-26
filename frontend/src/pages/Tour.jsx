@@ -1,9 +1,16 @@
 import { useEffect } from "react";
-import customFetch from "../utils/customFetch.js";
 import { useLoaderData } from "react-router-dom";
+import customFetch from "../utils/customFetch.js";
 import DetailBox from "../components/DetailBox/index.jsx";
-import ReviewCard from "../components/ReviewCard/index.jsx";
+import Icon from "../components/Icon/Icon.jsx";
+import Img from "../components/Img/index.jsx";
+import { MainHeading, SecondaryHeading } from "../components/Title/index.js";
+import { Wrapper } from "../components/Wrapper/index.js";
+import { Main } from "../components/Main/index.js";
+import { Paragraph } from "../components/Paragraph/index.js";
+import { Section } from "../components/Section/index.js";
 import Map from "../components/Map/index.jsx";
+
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/tours/${params.slug}`);
@@ -30,138 +37,119 @@ const Tour = () => {
 
     return (
       <>
-        <section className="section-header">
-          <div className="header__hero">
-            <div className="header__hero-overlay">&nbsp;</div>
-            <img
-              className="header__hero-img"
-              src={`/img/tours/${tour.imageCover}`}
-              alt={tour.name}
-            />
-          </div>
-
-          <div className="heading-box">
-            <h1 className="heading-primary">
-              <span>{tour.name}</span>
-            </h1>
-            <div className="heading-box__group">
-              <div className="heading-box__detail">
-                <svg className="heading-box__icon">
-                  <use href="/img/icons.svg#icon-clock" />
-                </svg>
-                <span className="heading-box__text">{`${tour.duration} days`}</span>
-              </div>
-              <div className="heading-box__detail">
-                <svg className="heading-box__icon">
-                  <use href="/img/icons.svg#icon-map-pin" />
-                </svg>
-                <span className="heading-box__text">
-                  {tour.startLocation.description}
-                </span>
-              </div>
+        <Wrapper backdrop>
+          <Img
+            backdrop
+            shadow
+            src={`/img/tours/${tour.imageCover}`}
+            alt={tour.name}
+          >
+            <div className="heading">
+              <MainHeading>{tour.name}</MainHeading>
+              <Wrapper>
+                <Icon name="clock" text={`${tour.duration} days`} />
+                <Icon name="map-pin" text={tour.startLocation.description} />
+              </Wrapper>
             </div>
-          </div>
-        </section>
+          </Img>
+        </Wrapper>
 
-        <section className="section-description">
-          <div className="overview-box">
+        <Main column>
+          <Section>
             <div>
-              <div className="overview-box__group">
-                <h2 className="heading-secondary ma-bt-lg">Quick facts</h2>
+              <Wrapper column>
+                <SecondaryHeading>Quick facts</SecondaryHeading>
 
-                <DetailBox icon="calendar" label="Next date" text={date} />
+                <DetailBox icon="calendar" text="Next date" info={date} />
                 <DetailBox
                   icon="trending-up"
-                  label="Difficulty"
-                  text={tour.difficulty}
+                  text="Difficulty"
+                  info={tour.difficulty}
                 />
                 <DetailBox
                   icon="user"
-                  label="Participants"
-                  text={`${tour.maxGroupSize} people`}
+                  text="Participants"
+                  info={`${tour.maxGroupSize} people`}
                 />
                 <DetailBox
                   icon="star"
-                  label="Rating"
-                  text={`${tour.ratingsAverage} / 5`}
+                  text="Rating"
+                  info={`${tour.ratingsAverage} / 5`}
                 />
-              </div>
+              </Wrapper>
 
-              <div className="overview-box__group">
-                <h2 className="heading-secondary ma-bt-lg">Your tour guides</h2>
-
+              <Wrapper column>
+                <SecondaryHeading>Your tour guides</SecondaryHeading>
                 {tour.guides &&
                   tour.guides.map((guide, index) => (
                     <DetailBox
                       key={index}
                       src={`/img/users/${guide.photo}`}
                       alt={guide.name}
-                      label={guide.role.replaceAll("-", " ")}
-                      text={guide.name}
+                      text={guide.role.replaceAll("-", " ")}
+                      info={guide.name}
                     />
                   ))}
-              </div>
+              </Wrapper>
             </div>
-          </div>
-          <div className="description-box">
-            <h2 className="heading-secondary ma-bt-lg">{`About ${tour.name}`}</h2>
+            <Wrapper column>
+              <SecondaryHeading>{`About ${tour.name}`}</SecondaryHeading>
+              {tour.description.split("\n").map((p, index) => (
+                <Paragraph italic key={index}>
+                  {p}
+                </Paragraph>
+              ))}
+            </Wrapper>
+          </Section>
 
-            {tour.description.split("\n").map((p, index) => (
-              <p className="description__text" key={index}>
-                {p}
-              </p>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-pictures">
-          {tour.images.map((img, index) => (
-            <div key={index} className="picture-box">
-              <img
-                className={`picture-box__img picture-box__img--${index + 1}`}
+          <Section images>
+            {tour.images.map((img, index) => (
+              <Img
+                gallery
+                key={index}
                 src={`/img/tours/${img}`}
                 alt={`${tour.name} tour ${index + 1}`}
               />
-            </div>
-          ))}
-        </section>
-
-        <section className="section-map">
-          <Map locations={tour.locations} />
-        </section>
-
-        <section className="section-reviews">
-          <div className="reviews">
-            {tour.reviews.map((review, index) => (
-              <ReviewCard key={index} review={review} />
             ))}
-          </div>
-        </section>
+          </Section>
 
-        <section className="section-cta">
-          <div className="cta">
-            <div className="cta__img cta__img--logo">
-              <img src="/img/logo-white.png" alt="Natours Logo" />
-            </div>
-            <img
-              className="cta__img cta__img--1"
-              src={`/img/tours/${tour.images[1]}`}
-              alt="Tour picture"
-            />
-            <img
-              className="cta__img cta__img--2"
-              src={`/img/tours/${tour.images[2]}`}
-              alt="Tour picture"
-            />
-            <div className="cta__content">
-              <h2 className="heading-secondary">What are you waiting for?</h2>
-              <p className="cta__text">{`${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`}</p>
-              <button className="btn btn--green span-all-rows">
-                Book tour now!
-              </button>
-            </div>
-          </div>
-        </section>
+          <Section>
+            <Map locations={tour.locations} />
+          </Section>
+
+          {/*<section className="section-reviews">*/}
+          {/*  <div className="reviews">*/}
+          {/*    {tour.reviews.map((review, index) => (*/}
+          {/*      <ReviewCard key={index} review={review} />*/}
+          {/*    ))}*/}
+          {/*  </div>*/}
+          {/*</section>*/}
+
+          {/*<section className="section-cta">*/}
+          {/*  <div className="cta">*/}
+          {/*    <div className="cta__img cta__img--logo">*/}
+          {/*      <img src="/img/logo-white.png" alt="Natours Logo" />*/}
+          {/*    </div>*/}
+          {/*    <img*/}
+          {/*      className="cta__img cta__img--1"*/}
+          {/*      src={`/img/tours/${tour.images[1]}`}*/}
+          {/*      alt="Tour picture"*/}
+          {/*    />*/}
+          {/*    <img*/}
+          {/*      className="cta__img cta__img--2"*/}
+          {/*      src={`/img/tours/${tour.images[2]}`}*/}
+          {/*      alt="Tour picture"*/}
+          {/*    />*/}
+          {/*    <div className="cta__content">*/}
+          {/*      <h2 className="heading-secondary">What are you waiting for?</h2>*/}
+          {/*      <p className="cta__text">{`${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`}</p>*/}
+          {/*      <button className="btn btn--green span-all-rows">*/}
+          {/*        Book tour now!*/}
+          {/*      </button>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</section>*/}
+        </Main>
       </>
     );
   }
