@@ -1,5 +1,3 @@
-import mapboxgl from "mapbox-gl";
-
 const useGetCenterFromBounds = (locations) => {
   if (!locations || locations.length === 0) {
     return;
@@ -32,9 +30,7 @@ const useGetCenterFromBounds = (locations) => {
   const minLngLat = [minLng, minLat];
   const maxLngLat = [maxLng, maxLat];
 
-  const center = new mapboxgl.LngLatBounds(minLngLat, maxLngLat).getCenter();
-
-  return { center };
+  return { maxLngLat, minLngLat };
 };
 
 export default useGetCenterFromBounds;
