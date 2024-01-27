@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Map, Marker, Popup } from "react-map-gl";
+import {
+  FullscreenControl,
+  Map,
+  Marker,
+  NavigationControl,
+  Popup,
+} from "react-map-gl";
 import { fitBounds } from "@math.gl/web-mercator";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Img from "../Img/index.jsx";
@@ -24,6 +30,7 @@ const CustomMap = ({ locations }) => {
       width: mapRef.current.offsetWidth,
       height: 300,
       bounds: [minLngLat, maxLngLat],
+      padding: 85,
     });
 
     setViewport(newViewport);
@@ -33,6 +40,9 @@ const CustomMap = ({ locations }) => {
     () =>
       locations.map((loc, index) => (
         <Marker
+          style={{
+            cursor: "pointer",
+          }}
           key={`marker-${index}`}
           longitude={loc.coordinates[0]}
           latitude={loc.coordinates[1]}
@@ -52,15 +62,14 @@ const CustomMap = ({ locations }) => {
     <div id="map" ref={mapRef}>
       <Map
         {...viewport}
-        padding={{
-          top: 200,
-          bottom: 100,
-        }}
         onMove={(evt) => setViewport(evt.viewState)}
         mapStyle="mapbox://styles/kraviecdev/clqqn5l9400w201pjc4measvn"
         mapboxAccessToken={TOKEN}
+        attributionControl={false}
         scrollZoom={false}
       >
+        <FullscreenControl />
+        <NavigationControl showZoom={true} showCompass={false} />
         {pins}
 
         {popupInfo && (
