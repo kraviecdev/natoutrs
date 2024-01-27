@@ -28,4 +28,25 @@ export const Section = styled.section`
       overflow: auto hidden;
       max-height: 230px;
     `}
+    
+    ${({ cta }) =>
+    cta &&
+    css`
+      background: ${({ theme }) => theme.colors.second};
+      color: ${({ theme }) => theme.colors.second_font};
+      align-items: center;
+      padding: 24px 10px 8px;
+      border-radius: 24px;
+      box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.xs}px) {
+        padding: 32px 16px 16px;
+      }
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.md}px) {
+        padding: 16px;
+      }
+    `}
 `;

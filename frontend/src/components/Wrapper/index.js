@@ -47,4 +47,16 @@ export const Wrapper = styled.div`
       justify-content: space-between;
       padding: 16px;
     `}
+    
+    ${({ cta }) =>
+    cta &&
+    css`
+      position: relative;
+      height: 126px;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.md}px) {
+        height: 162px;
+      }
+    `}
 `;
