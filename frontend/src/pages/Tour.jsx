@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
-import DetailBox from "../components/DetailBox/index.jsx";
-import Icon from "../components/Icon/Icon.jsx";
-import Img from "../components/Img/index.jsx";
 import { MainHeading, SecondaryHeading } from "../components/Title/index.js";
 import { Wrapper } from "../components/Wrapper/index.js";
 import { Main } from "../components/Main/index.js";
 import { Paragraph } from "../components/Paragraph/index.js";
 import { Section } from "../components/Section/index.js";
-import Map from "../components/Map/index.jsx";
+import { StyledLink } from "../components/Link/index.js";
+import ReviewCard from "../components/ReviewCard/index.jsx";
+import CustomMap from "../components/Map/index.jsx";
+import DetailBox from "../components/DetailBox/index.jsx";
+import Icon from "../components/Icon/Icon.jsx";
+import Img from "../components/Img/index.jsx";
 
 export const loader = async ({ params }) => {
   try {
@@ -37,10 +39,10 @@ const Tour = () => {
 
     return (
       <>
-        <Wrapper backdrop>
+        <Wrapper backdrop="true">
           <Img
-            backdrop
-            shadow
+            backdrop="true"
+            shadow="true"
             src={`/img/tours/${tour.imageCover}`}
             alt={tour.name}
           >
@@ -54,10 +56,10 @@ const Tour = () => {
           </Img>
         </Wrapper>
 
-        <Main column>
+        <Main column="true">
           <Section>
             <div>
-              <Wrapper column>
+              <Wrapper column="true">
                 <SecondaryHeading>Quick facts</SecondaryHeading>
 
                 <DetailBox icon="calendar" text="Next date" info={date} />
@@ -78,7 +80,7 @@ const Tour = () => {
                 />
               </Wrapper>
 
-              <Wrapper column>
+              <Wrapper column="true">
                 <SecondaryHeading>Your tour guides</SecondaryHeading>
                 {tour.guides &&
                   tour.guides.map((guide, index) => (
@@ -92,20 +94,20 @@ const Tour = () => {
                   ))}
               </Wrapper>
             </div>
-            <Wrapper column>
+            <Wrapper column="true">
               <SecondaryHeading>{`About ${tour.name}`}</SecondaryHeading>
               {tour.description.split("\n").map((p, index) => (
-                <Paragraph italic key={index}>
+                <Paragraph italic="true" key={index}>
                   {p}
                 </Paragraph>
               ))}
             </Wrapper>
           </Section>
 
-          <Section images>
+          <Section images="true">
             {tour.images.map((img, index) => (
               <Img
-                gallery
+                gallery="true"
                 key={index}
                 src={`/img/tours/${img}`}
                 alt={`${tour.name} tour ${index + 1}`}
@@ -114,41 +116,37 @@ const Tour = () => {
           </Section>
 
           <Section>
-            <Map locations={tour.locations} />
+            <CustomMap locations={tour.locations} />
           </Section>
 
-          {/*<section className="section-reviews">*/}
-          {/*  <div className="reviews">*/}
-          {/*    {tour.reviews.map((review, index) => (*/}
-          {/*      <ReviewCard key={index} review={review} />*/}
-          {/*    ))}*/}
-          {/*  </div>*/}
-          {/*</section>*/}
+          <Section reviews="true">
+            {tour.reviews.map((review, index) => (
+              <ReviewCard key={index} review={review} />
+            ))}
+          </Section>
 
-          {/*<section className="section-cta">*/}
-          {/*  <div className="cta">*/}
-          {/*    <div className="cta__img cta__img--logo">*/}
-          {/*      <img src="/img/logo-white.png" alt="Natours Logo" />*/}
-          {/*    </div>*/}
-          {/*    <img*/}
-          {/*      className="cta__img cta__img--1"*/}
-          {/*      src={`/img/tours/${tour.images[1]}`}*/}
-          {/*      alt="Tour picture"*/}
-          {/*    />*/}
-          {/*    <img*/}
-          {/*      className="cta__img cta__img--2"*/}
-          {/*      src={`/img/tours/${tour.images[2]}`}*/}
-          {/*      alt="Tour picture"*/}
-          {/*    />*/}
-          {/*    <div className="cta__content">*/}
-          {/*      <h2 className="heading-secondary">What are you waiting for?</h2>*/}
-          {/*      <p className="cta__text">{`${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`}</p>*/}
-          {/*      <button className="btn btn--green span-all-rows">*/}
-          {/*        Book tour now!*/}
-          {/*      </button>*/}
-          {/*    </div>*/}
-          {/*  </div>*/}
-          {/*</section>*/}
+          <Section cta="true">
+            <Wrapper cta="true">
+              <Img cta="true" src="/img/logo-white.png" alt="Natours Logo" />
+              <Img
+                cta="true"
+                src={`/img/tours/${tour.images[1]}`}
+                alt="Tour picture"
+              />
+              <Img
+                cta="true"
+                src={`/img/tours/${tour.images[2]}`}
+                alt="Tour picture"
+              />
+            </Wrapper>
+            <Wrapper column="true">
+              <SecondaryHeading>What are you waiting for?</SecondaryHeading>
+              <Paragraph italic="true">{`${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`}</Paragraph>
+              <StyledLink to="/" cta="true">
+                Book tour now!
+              </StyledLink>
+            </Wrapper>
+          </Section>
         </Main>
       </>
     );
