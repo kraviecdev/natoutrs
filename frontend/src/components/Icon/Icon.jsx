@@ -4,7 +4,7 @@ import { Paragraph } from "../Paragraph/index.js";
 
 const Icon = ({ rating, name, contrast, text }) => {
   return (
-    <Wrapper icon>
+    <Wrapper icon="true">
       <StyledIcon rating={rating}>
         <use href={`/img/icons.svg#icon-${name}`} />
       </StyledIcon>

@@ -3,7 +3,7 @@ import customFetch from "../utils/customFetch.js";
 import useValidator from "../utils/useValidator.js";
 import { Main } from "../components/Main/index.js";
 import { SecondaryHeading } from "../components/Title/index.js";
-import { FormButton, StyledForm } from "../components/Form/styled.js";
+import { FormButton, StyledForm } from "../components/Form/index.js";
 import FormRow from "../components/FormRow/index.jsx";
 import { toast } from "react-toastify";
 
@@ -69,7 +69,7 @@ const Signup = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main column>
+    <Main column="true">
       <StyledForm method="post">
         <SecondaryHeading>Sign up to Natours</SecondaryHeading>
 

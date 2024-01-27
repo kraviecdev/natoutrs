@@ -20,8 +20,8 @@ const Header = ({ user, logout }) => {
               </StyledLink>
               <StyledLink to="/me">
                 <Img
-                  user
-                  round
+                  user="true"
+                  round="true"
                   src={`/img/users/${user.photo}`}
                   alt={`Photo of ${user.name}`}
                 />
@@ -31,7 +31,7 @@ const Header = ({ user, logout }) => {
           ) : (
             <>
               <StyledLink to="/login">Log in</StyledLink>
-              <StyledLink cta to="/signup">
+              <StyledLink cta="true" to="/signup">
                 Sign up
               </StyledLink>
             </>

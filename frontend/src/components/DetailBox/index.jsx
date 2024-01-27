@@ -7,14 +7,14 @@ const DetailBox = ({ text, icon, src, alt, info }) => {
   return (
     <Wrapper>
       {icon ? (
-        <Icon contrast name={icon} text={text} />
+        <Icon contrast="true" name={icon} text={text} />
       ) : (
         <>
-          <Img user src={src} alt={alt} />
-          <Paragraph contrast>{text}</Paragraph>
+          <Img user="true" src={src} alt={alt} />
+          <Paragraph contrast="true">{text}</Paragraph>
         </>
       )}
-      {info && <Paragraph info>{info}</Paragraph>}
+      {info && <Paragraph info="true">{info}</Paragraph>}
     </Wrapper>
   );
 };

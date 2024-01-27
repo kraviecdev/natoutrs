@@ -3,7 +3,7 @@ import customFetch from "../utils/customFetch.js";
 import useValidator from "../utils/useValidator.js";
 import { Main } from "../components/Main/index.js";
 import { SecondaryHeading } from "../components/Title/index.js";
-import { FormButton, StyledForm } from "../components/Form/styled.js";
+import { FormButton, StyledForm } from "../components/Form/index.js";
 import FormRow from "../components/FormRow/index.jsx";
 import { toast } from "react-toastify";
 import { Paragraph } from "../components/Paragraph/index.js";
@@ -50,7 +50,7 @@ const Login = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main column>
+    <Main column="true">
       <StyledForm method="post">
         <SecondaryHeading>Log into your account</SecondaryHeading>
 
@@ -68,7 +68,7 @@ const Login = () => {
               invalid={!field.validation}
             />
           ))}
-        <StyledLink contrast to="/forgot-pass">
+        <StyledLink contrast="true" to="/forgot-pass">
           Forgot Password?
         </StyledLink>
 
@@ -81,9 +81,9 @@ const Login = () => {
           Login
         </FormButton>
 
-        <Wrapper center>
+        <Wrapper center="true">
           <Paragraph>Not a member yet?</Paragraph>
-          <StyledLink contrast to="/signup">
+          <StyledLink contrast="true" to="/signup">
             Sign up
           </StyledLink>
         </Wrapper>

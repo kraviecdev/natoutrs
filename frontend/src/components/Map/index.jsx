@@ -80,9 +80,7 @@ const CustomMap = ({ locations }) => {
             latitude={Number(popupInfo.coordinates[1])}
             onClose={() => setPopupInfo(null)}
           >
-            <Paragraph
-              info
-            >{`Day ${popupInfo.day}: ${popupInfo.description}`}</Paragraph>
+            <Paragraph info="true">{`Day ${popupInfo.day}: ${popupInfo.description}`}</Paragraph>
           </Popup>
         )}
       </Map>
