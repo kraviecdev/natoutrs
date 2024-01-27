@@ -109,4 +109,50 @@ export const ImgWrapper = styled.div`
       height: auto;
       max-height: 40vw;
     `}
+    
+    ${({ cta }) =>
+    cta &&
+    css`
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
+      position: absolute;
+
+      img {
+        border-radius: inherit;
+      }
+
+      &:first-of-type {
+        background: ${({ theme }) => theme.colors.contrast};
+        z-index: 9;
+
+        img {
+          object-fit: contain;
+        }
+      }
+
+      &:nth-of-type(2) {
+        left: 25%;
+        z-index: 99;
+      }
+
+      &:nth-of-type(3) {
+        left: 50%;
+        z-index: 999;
+      }
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        &:nth-of-type(2) {
+          left: 15%;
+          z-index: 99;
+        }
+
+        &:nth-of-type(3) {
+          left: 30%;
+          z-index: 999;
+        }
+      }
+    `}
 `;
