@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledIcon = styled.svg`
   width: 24px;
@@ -9,4 +9,10 @@ export const StyledIcon = styled.svg`
     width: 32px;
     height: 32px;
   }
+
+  ${({ rating }) =>
+    rating &&
+    css`
+      fill: ${({ theme }) => theme.colors.second};
+    `}
 `;
