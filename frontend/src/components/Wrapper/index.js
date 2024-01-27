@@ -39,4 +39,12 @@ export const Wrapper = styled.div`
       justify-content: center;
       background: ${({ theme }) => theme.colors.second};
     `}
+    
+    ${({ review }) =>
+    review &&
+    css`
+      box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
+      justify-content: space-between;
+      padding: 16px;
+    `}
 `;
