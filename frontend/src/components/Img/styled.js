@@ -1,5 +1,11 @@
 import styled, { css } from "styled-components";
 
+export const StyledImg = styled.img`
+  height: 100%;
+  width: 100%;
+  border-radius: ${({ round }) => (round ? 50 : 0)}%;
+  object-fit: cover;
+`;
 export const ImgWrapper = styled.div`
   height: 35px;
 
@@ -44,6 +50,11 @@ export const ImgWrapper = styled.div`
       width: 100%;
       height: auto;
       max-width: ${({ theme }) => theme.breakpoints.xl}px;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.md}px) {
+        height: 580px;
+      }
 
       .heading {
         position: absolute;
@@ -91,17 +102,11 @@ export const ImgWrapper = styled.div`
           );
       }
     `}
-    
+
     ${({ gallery }) =>
     gallery &&
     css`
       height: auto;
       max-height: 40vw;
     `}
-`;
-export const StyledImg = styled.img`
-  height: 100%;
-  width: 100%;
-  border-radius: ${({ round }) => (round ? 50 : 0)}%;
-  object-fit: cover;
 `;
