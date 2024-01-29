@@ -59,4 +59,30 @@ export const Wrapper = styled.div`
         height: 162px;
       }
     `}
+    
+    ${({ error }) =>
+    error &&
+    css`
+      width: 100%;
+      justify-content: center;
+
+      a {
+        position: absolute;
+        bottom: -10px;
+        max-width: max-content;
+        border-radius: 24px;
+        border: 1px solid ${({ theme }) => theme.colors.contrast};
+        padding: 12px 24px;
+        transition: 0.4s ease-in-out;
+
+        &:hover {
+          color: ${({ theme }) => theme.colors.second_font};
+          background: ${({ theme }) => theme.colors.contrast};
+        }
+      }
+
+      div {
+        height: max-content;
+      }
+    `}
 `;
