@@ -7,8 +7,8 @@ export const Section = styled.section`
   gap: 16px;
   width: 100%;
 
-  ${({ images }) =>
-    images &&
+  ${(props) =>
+    props.$images &&
     css`
       gap: 0;
       grid-template-columns: 1fr;
@@ -19,23 +19,26 @@ export const Section = styled.section`
       }
     `}
 
-  ${({ reviews }) =>
-    reviews &&
+  ${(props) =>
+    props.$reviews &&
     css`
       padding: 12px 6px;
+      grid-template-columns: none;
       grid-auto-flow: column;
       grid-auto-rows: max-content;
-      overflow: auto hidden;
-      max-height: 230px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-height: 256px;
     `}
     
-    ${({ cta }) =>
-    cta &&
+    ${(props) =>
+    props.$cta &&
     css`
       background: ${({ theme }) => theme.colors.second};
       color: ${({ theme }) => theme.colors.second_font};
       align-items: center;
       padding: 24px 10px 8px;
+      grid-template-columns: 1fr;
       border-radius: 24px;
       box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
 
@@ -46,6 +49,7 @@ export const Section = styled.section`
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.md}px) {
+        grid-template-columns: repeat(2, 1fr);
         padding: 16px;
       }
     `}
