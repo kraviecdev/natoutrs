@@ -14,20 +14,15 @@ const Card = ({ tour }) => {
 
   return (
     <CardWrapper>
-      <CardSection heading="true">
-        <Img
-          card="true"
-          shadow="true"
-          src={`img/tours/${tour.imageCover}`}
-          alt={tour.name}
-        >
+      <CardSection $heading>
+        <Img $card $shadow src={`img/tours/${tour.imageCover}`} alt={tour.name}>
           <SecondaryHeading>{tour.name}</SecondaryHeading>
         </Img>
       </CardSection>
 
-      <CardSection details="true">
+      <CardSection $details>
         <ContextHeading>{`${tour.difficulty} difficulty ${tour.duration}-day tour`}</ContextHeading>
-        <Paragraph italic="true">{tour.summary}</Paragraph>
+        <Paragraph $italic>{tour.summary}</Paragraph>
         <ul>
           <li>
             <Icon name="map-pin" text={tour.startLocation.description} />
@@ -44,7 +39,7 @@ const Card = ({ tour }) => {
         </ul>
       </CardSection>
 
-      <CardSection footer="true">
+      <CardSection $footer>
         <ul>
           <li>
             <span>{`$${tour.price}`}</span>
@@ -55,7 +50,7 @@ const Card = ({ tour }) => {
             {` rating (${tour.ratingsQuantity})`}
           </li>
         </ul>
-        <StyledLink cta="true" to={`/tours/${tour.slug}`}>
+        <StyledLink $cta to={`/tours/${tour.slug}`}>
           Details
         </StyledLink>
       </CardSection>

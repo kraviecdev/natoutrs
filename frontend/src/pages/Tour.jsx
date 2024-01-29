@@ -39,10 +39,10 @@ const Tour = () => {
 
     return (
       <>
-        <Wrapper backdrop="true">
+        <Wrapper $backdrop>
           <Img
-            backdrop="true"
-            shadow="true"
+            $backdrop
+            $shadow
             src={`/img/tours/${tour.imageCover}`}
             alt={tour.name}
           >
@@ -56,10 +56,10 @@ const Tour = () => {
           </Img>
         </Wrapper>
 
-        <Main column="true">
+        <Main $column>
           <Section>
             <div>
-              <Wrapper column="true">
+              <Wrapper $column>
                 <SecondaryHeading>Quick facts</SecondaryHeading>
 
                 <DetailBox icon="calendar" text="Next date" info={date} />
@@ -80,7 +80,7 @@ const Tour = () => {
                 />
               </Wrapper>
 
-              <Wrapper column="true">
+              <Wrapper $column>
                 <SecondaryHeading>Your tour guides</SecondaryHeading>
                 {tour.guides &&
                   tour.guides.map((guide, index) => (
@@ -94,20 +94,20 @@ const Tour = () => {
                   ))}
               </Wrapper>
             </div>
-            <Wrapper column="true">
+            <Wrapper $column>
               <SecondaryHeading>{`About ${tour.name}`}</SecondaryHeading>
               {tour.description.split("\n").map((p, index) => (
-                <Paragraph italic="true" key={index}>
+                <Paragraph $italic key={index}>
                   {p}
                 </Paragraph>
               ))}
             </Wrapper>
           </Section>
 
-          <Section images="true">
+          <Section $images>
             {tour.images.map((img, index) => (
               <Img
-                gallery="true"
+                $gallery
                 key={index}
                 src={`/img/tours/${img}`}
                 alt={`${tour.name} tour ${index + 1}`}
@@ -119,30 +119,32 @@ const Tour = () => {
             <CustomMap locations={tour.locations} />
           </Section>
 
-          <Section reviews="true">
+          <Section $reviews>
             {tour.reviews.map((review, index) => (
               <ReviewCard key={index} review={review} />
             ))}
           </Section>
 
-          <Section cta="true">
-            <Wrapper cta="true">
-              <Img cta="true" src="/img/logo-white.png" alt="Natours Logo" />
+          <Section $cta>
+            <Wrapper $cta>
+              <Img $cta src="/img/logo-white.png" alt="Natours Logo" />
               <Img
-                cta="true"
+                $cta
                 src={`/img/tours/${tour.images[1]}`}
                 alt="Tour picture"
               />
               <Img
-                cta="true"
+                $cta
                 src={`/img/tours/${tour.images[2]}`}
                 alt="Tour picture"
               />
             </Wrapper>
-            <Wrapper column="true">
+            <Wrapper $column>
               <SecondaryHeading>What are you waiting for?</SecondaryHeading>
-              <Paragraph italic="true">{`${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`}</Paragraph>
-              <StyledLink to="/" cta="true">
+              <Paragraph
+                $italic
+              >{`${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`}</Paragraph>
+              <StyledLink to="/" $cta>
                 Book tour now!
               </StyledLink>
             </Wrapper>

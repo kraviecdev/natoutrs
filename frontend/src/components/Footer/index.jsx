@@ -16,7 +16,7 @@ const Footer = () => {
     <StyledFooter>
       <Img src="/img/logo-green.png" alt="Natour logo" />
 
-      <Wrapper wrap="true">
+      <Wrapper $wrap>
         {links &&
           links.map((li, index) => (
             <StyledLink key={index} to={li.link}>
