@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme.jsx";
 import { GlobalStyle } from "./theme/GlobalStyle.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Login, Overview, Signup, Tour } from "./pages/index.js";
+import { Error, Home, Login, Overview, Signup, Tour } from "./pages/index.js";
 
 import { loader as allToursLoader } from "./pages/Overview.jsx";
 import { loader as tourLoader } from "./pages/Tour.jsx";
@@ -15,6 +15,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
     loader: user,
+    errorElement: <Error />,
     children: [
       {
         index: true,
