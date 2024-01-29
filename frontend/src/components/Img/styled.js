@@ -20,8 +20,8 @@ export const ImgWrapper = styled.div`
     );
   }
 
-  ${({ user }) =>
-    user &&
+  ${(props) =>
+    props.$user &&
     css`
       border-radius: 50%;
 
@@ -30,8 +30,8 @@ export const ImgWrapper = styled.div`
       }
     `}
 
-  ${({ card }) =>
-    card &&
+  ${(props) =>
+    props.$card &&
     css`
       position: relative;
       min-height: 240px;
@@ -42,8 +42,8 @@ export const ImgWrapper = styled.div`
       }
     `}
 
-    ${({ backdrop }) =>
-    backdrop &&
+    ${(props) =>
+    props.$backdrop &&
     css`
       position: relative;
       margin: 12px;
@@ -103,15 +103,15 @@ export const ImgWrapper = styled.div`
       }
     `}
 
-    ${({ gallery }) =>
-    gallery &&
+    ${(props) =>
+    props.$gallery &&
     css`
       height: auto;
       max-height: 40vw;
     `}
     
-    ${({ cta }) =>
-    cta &&
+    ${(props) =>
+    props.$cta &&
     css`
       height: 100%;
       aspect-ratio: 1 / 1;

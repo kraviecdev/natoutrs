@@ -8,29 +8,29 @@ export const Paragraph = styled.p`
     font-size: ${({ theme }) => theme.font.size.regular}px;
   }
 
-  ${({ invalid }) =>
-    invalid &&
+  ${(props) =>
+    props.$invalid &&
     css`
       color: ${({ theme }) => theme.colors.error};
       font-weight: ${({ theme }) => theme.font.weight.regular};
     `}
 
-  ${({ contrast }) =>
-    contrast &&
+  ${(props) =>
+    props.$contrast &&
     css`
       color: ${({ theme }) => theme.colors.contrast};
       font-weight: ${({ theme }) => theme.font.weight.medium};
       text-transform: uppercase;
     `}
     
-    ${({ info }) =>
-    info &&
+    ${(props) =>
+    props.$info &&
     css`
       text-transform: capitalize;
     `}
     
-    ${({ italic }) =>
-    italic &&
+    ${(props) =>
+    props.$italic &&
     css`
       font-style: italic;
     `}

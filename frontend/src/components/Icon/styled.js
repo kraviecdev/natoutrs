@@ -10,8 +10,8 @@ export const StyledIcon = styled.svg`
     height: 32px;
   }
 
-  ${({ rating }) =>
-    rating &&
+  ${(props) =>
+    props.$rating &&
     css`
       fill: ${({ theme }) => theme.colors.second};
     `}

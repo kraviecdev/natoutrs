@@ -17,8 +17,8 @@ export const Main = styled.main`
     padding: 32px 0;
   }
 
-  ${({ column }) =>
-    column &&
+  ${(props) =>
+    props.$column &&
     css`
       flex-grow: 1;
       grid-template-columns: 1fr;

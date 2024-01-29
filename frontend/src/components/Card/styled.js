@@ -42,8 +42,8 @@ export const CardSection = styled.div`
     }
   }
 
-  ${({ heading }) =>
-    heading &&
+  ${(props) =>
+    props.$heading &&
     css`
       padding: 0;
 
@@ -56,8 +56,8 @@ export const CardSection = styled.div`
       }
     `}
 
-  ${({ details }) =>
-    details &&
+  ${(props) =>
+    props.$details &&
     css`
       align-items: flex-start;
       gap: 10px;
@@ -68,8 +68,8 @@ export const CardSection = styled.div`
       }
     `}
 
-  ${({ footer }) =>
-    footer &&
+  ${(props) =>
+    props.$footer &&
     css`
       flex-direction: row;
       justify-content: space-between;

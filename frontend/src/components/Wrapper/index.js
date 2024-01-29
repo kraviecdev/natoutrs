@@ -5,51 +5,51 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 16px;
 
-  ${({ icon }) =>
-    icon &&
+  ${(props) =>
+    props.$icon &&
     css`
       filter: drop-shadow(2px 2px 8px ${({ theme }) => theme.colors.shadow});
     `}
 
-  ${({ wrap }) =>
-    wrap &&
+  ${(props) =>
+    props.$wrap &&
     css`
       flex-wrap: wrap;
     `}
 
-  ${({ center }) =>
-    center &&
+  ${(props) =>
+    props.$center &&
     css`
       width: 100%;
       justify-content: center;
     `}
   
-  ${({ column }) =>
-    column &&
+  ${(props) =>
+    props.$column &&
     css`
       flex-direction: column;
       align-items: flex-start;
       padding: 0 0 16px 0;
     `}
     
-    ${({ backdrop }) =>
-    backdrop &&
+    ${(props) =>
+    props.$backdrop &&
     css`
       width: 100%;
       justify-content: center;
       background: ${({ theme }) => theme.colors.second};
     `}
     
-    ${({ review }) =>
-    review &&
+    ${(props) =>
+    props.$review &&
     css`
       box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
       justify-content: space-between;
       padding: 16px;
     `}
     
-    ${({ cta }) =>
-    cta &&
+    ${(props) =>
+    props.$cta &&
     css`
       position: relative;
       height: 126px;
@@ -60,8 +60,8 @@ export const Wrapper = styled.div`
       }
     `}
     
-    ${({ error }) =>
-    error &&
+    ${(props) =>
+    props.$error &&
     css`
       width: 100%;
       justify-content: center;

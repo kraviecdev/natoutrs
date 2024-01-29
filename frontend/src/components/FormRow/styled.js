@@ -18,8 +18,8 @@ export const RowWrapper = styled.div`
     color: ${({ theme }) => theme.colors.main_font};
   }
 
-  ${({ invalid }) =>
-    invalid &&
+  ${(props) =>
+    props.$invalid &&
     css`
       color: ${({ theme }) => theme.colors.error};
 
@@ -32,8 +32,8 @@ export const RowWrapper = styled.div`
       }
     `}
 
-  ${({ valid }) =>
-    valid &&
+  ${(props) =>
+    props.$valid &&
     css`
       color: ${({ theme }) => theme.colors.main_font};
 
@@ -42,8 +42,8 @@ export const RowWrapper = styled.div`
       }
     `}
 
-  ${({ checkbox }) =>
-    checkbox &&
+  ${(props) =>
+    props.$checkbox &&
     css`
       flex-direction: row-reverse;
       width: 100%;
