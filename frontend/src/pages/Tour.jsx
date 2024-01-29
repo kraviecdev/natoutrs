@@ -12,12 +12,14 @@ import CustomMap from "../components/Map/index.jsx";
 import DetailBox from "../components/DetailBox/index.jsx";
 import Icon from "../components/Icon/Icon.jsx";
 import Img from "../components/Img/index.jsx";
+import { toast } from "react-toastify";
 
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/tours/${params.slug}`);
     return data;
   } catch (error) {
+    toast.error(error?.response?.data?.message);
     return error;
   }
 };

@@ -5,10 +5,10 @@ import { Main } from "../components/Main/index.js";
 
 const Error = () => {
   return (
-    <Main column="true">
-      <Wrapper error="true" column="true">
-        <Img card="true" src="/img/error.png" alt="404 Image">
-          <StyledLink contrast="true" to="/">
+    <Main $column>
+      <Wrapper $error column$>
+        <Img $card src="/img/error.png" alt="404 Image">
+          <StyledLink $contrast to="/">
             back home
           </StyledLink>
         </Img>

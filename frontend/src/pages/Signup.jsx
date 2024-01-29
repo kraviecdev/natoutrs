@@ -69,7 +69,7 @@ const Signup = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main column="true">
+    <Main $column>
       <StyledForm method="post">
         <SecondaryHeading>Sign up to Natours</SecondaryHeading>
 
@@ -84,7 +84,7 @@ const Signup = () => {
               name={field.name}
               value={field.value || ""}
               onChange={(event) => handleChange(field.name, event)}
-              invalid={!field.validation}
+              $invalid={!field.validation}
               message={field.message}
             />
           ))}

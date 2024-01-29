@@ -50,7 +50,7 @@ const Login = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main column="true">
+    <Main $column>
       <StyledForm method="post">
         <SecondaryHeading>Log into your account</SecondaryHeading>
 
@@ -65,10 +65,10 @@ const Login = () => {
               name={field.name}
               value={field.value || ""}
               onChange={(event) => handleChange(field.name, event)}
-              invalid={!field.validation}
+              $invalid={!field.validation}
             />
           ))}
-        <StyledLink contrast="true" to="/forgot-pass">
+        <StyledLink $contrast to="/forgot-pass">
           Forgot Password?
         </StyledLink>
 
@@ -81,9 +81,9 @@ const Login = () => {
           Login
         </FormButton>
 
-        <Wrapper center="true">
+        <Wrapper $center>
           <Paragraph>Not a member yet?</Paragraph>
-          <StyledLink contrast="true" to="/signup">
+          <StyledLink $contrast to="/signup">
             Sign up
           </StyledLink>
         </Wrapper>
