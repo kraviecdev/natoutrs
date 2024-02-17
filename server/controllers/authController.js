@@ -132,7 +132,9 @@ exports.forgotPass = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
-    return next(new AppError("There is no user with this email address", 404));
+    return next(
+      new AppError("Sorry something went wrong, try again or contact us", 404),
+    );
   }
   //generate random token
   const resetToken = user.createPasswordResetToken();
@@ -141,7 +143,7 @@ exports.forgotPass = catchAsync(async (req, res, next) => {
   //send token to user's email
   const resetURL = `${req.protocol}://${req.get(
     "host",
-  )}/api/v1/users/resetPass/${resetToken}`;
+  )}/reset-pass/${resetToken}`;
 
   const message = `Forgot your password, submit a PATCH request with your new password and passwordConfirm to: ${resetURL}\nIf you didn't forget your password, please ignore this email!`;
 
