@@ -48,7 +48,7 @@ export const CardSection = styled.div`
       padding: 0;
 
       h3 {
-        max-width: 50%;
+        max-width: 60%;
         text-align: right;
         position: absolute;
         right: 10px;
