@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Nav = styled.nav`
   display: flex;
@@ -12,4 +12,13 @@ export const Nav = styled.nav`
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.xl}px) {
     padding: 24px 0;
   }
+
+  ${(props) =>
+    props.$settings &&
+    css`
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      border-bottom: 1px solid ${({ theme }) => theme.colors.contrast};
+    `}
 `;
