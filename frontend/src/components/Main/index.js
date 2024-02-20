@@ -25,4 +25,10 @@ export const Main = styled.main`
       justify-content: center;
       align-items: center;
     `}
+
+  ${(props) =>
+    props.$settings &&
+    css`
+      grid-template-columns: max-content 1fr;
+    `}
 `;
