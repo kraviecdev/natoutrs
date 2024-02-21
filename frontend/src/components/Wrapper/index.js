@@ -85,4 +85,44 @@ export const Wrapper = styled.div`
         height: max-content;
       }
     `}
+    
+    ${(props) =>
+    props.$settings &&
+    css`
+      position: absolute;
+      left: 10px;
+      top: 16px;
+      border-radius: 24px;
+      padding: 10px;
+      background-color: ${({ theme }) => theme.colors.contrast};
+      box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
+      max-width: 44px;
+      transition: 0.4s ease-in-out;
+
+      h3 {
+        display: none;
+      }
+
+      nav {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        max-width: 100%;
+        padding: 16px;
+        position: initial;
+
+        h3 {
+          display: initial;
+        }
+      }
+
+      ${(props) =>
+        props.$active &&
+        css`
+          max-width: 200px;
+        `}
+    `}
 `;
