@@ -1,32 +1,25 @@
+import { Outlet } from "react-router-dom";
+import { useUserContext } from "./Home.jsx";
 import { Main } from "../components/Main/index.js";
+import { Wrapper } from "../components/Wrapper/index.js";
 import { Nav } from "../components/Navigation/index.js";
+import { SecondaryHeading } from "../components/Title/index.js";
 import { StyledLink } from "../components/Link/index.js";
 import Icon from "../components/Icon/Icon.jsx";
-import { Outlet, useLoaderData } from "react-router-dom";
-import { SecondaryHeading } from "../components/Title/index.js";
-import { Wrapper } from "../components/Wrapper/index.js";
-import customFetch from "../utils/customFetch.js";
-
-export const loader = async () => {
-  try {
-    const { data } = await customFetch.get("/users/me");
-    return data;
-  } catch (error) {
-    return error;
-  }
-};
+import Burger from "../components/Burger/index.jsx";
+import { useState } from "react";
 
 const Account = () => {
-  const { data } = useLoaderData();
-
+  const data = useUserContext();
+  const [active, setActive] = useState(false);
   const user = [
     {
       icon: "settings",
       info: "settings",
-      to: "settings",
+      to: "",
     },
     {
-      icon: "check",
+      icon: "lock",
       info: "Password",
       to: "pass-change",
     },
@@ -69,11 +62,10 @@ const Account = () => {
     },
   ];
 
-  console.log(data);
-
   return (
-    <Main $column>
-      <Wrapper $column>
+    <Main $settings>
+      <Wrapper $column $settings $active={active}>
+        <Burger $active={active} onClick={() => setActive(!active)} />
         <Nav $settings>
           <SecondaryHeading>General</SecondaryHeading>
           {user &&
