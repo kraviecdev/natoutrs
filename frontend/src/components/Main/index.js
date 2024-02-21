@@ -29,6 +29,13 @@ export const Main = styled.main`
   ${(props) =>
     props.$settings &&
     css`
-      grid-template-columns: max-content 1fr;
+      flex-grow: 1;
+      grid-template-columns: 1fr;
+      position: relative;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        grid-template-columns: auto 1fr;
+      }
     `}
 `;
