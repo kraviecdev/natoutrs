@@ -19,6 +19,26 @@ export const Nav = styled.nav`
       flex-direction: column;
       align-items: flex-start;
       gap: 16px;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.contrast};
+      color: ${({ theme }) => theme.colors.second_font};
+      padding: 0;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.xl}px) {
+        padding: 0;
+      }
+
+      &:first-of-type {
+        padding: 0 0 24px 0;
+        border-bottom: 1px solid;
+      }
+
+      h3,
+      p {
+        color: ${({ theme }) => theme.colors.second_font};
+      }
+
+      svg {
+        fill: ${({ theme }) => theme.colors.second_font};
+      }
     `}
 `;
