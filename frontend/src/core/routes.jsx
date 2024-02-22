@@ -1,4 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
+import customFetch from "../utils/customFetch.js";
+import { toast } from "react-toastify";
 import {
   Error,
   ForgotPass,
@@ -45,6 +47,14 @@ export const routes = createBrowserRouter([
         path: "login",
         element: <Login />,
         action: loginAction,
+      },
+      {
+        path: "logout",
+        loader: () => {
+          customFetch.get("/users/logout");
+          toast.success("Logged out.");
+          return redirect("/");
+        },
       },
       {
         path: "signup",
