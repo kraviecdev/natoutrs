@@ -3,7 +3,7 @@ import { StyledLink } from "../Link/index.js";
 import { Wrapper } from "../Wrapper/index.js";
 import Img from "../Img/index.jsx";
 
-const Header = ({ user, logout }) => {
+const Header = ({ data }) => {
   return (
     <header>
       <Nav>
@@ -13,18 +13,16 @@ const Header = ({ user, logout }) => {
         </StyledLink>
 
         <Wrapper>
-          {user ? (
+          {data ? (
             <>
-              <StyledLink to="/" onClick={() => logout()}>
-                Log out
-              </StyledLink>
+              <StyledLink to="/logout">Log out</StyledLink>
               <StyledLink to="/me">
                 <Img
                   $user
-                  src={`/img/users/${user.photo}`}
-                  alt={`Photo of ${user.name}`}
+                  src={`/img/users/${data.photo}`}
+                  alt={`Photo of ${data.name}`}
                 />
-                <span>{user.name.split(" ")[0]}</span>
+                <span>{data.name.split(" ")[0]}</span>
               </StyledLink>
             </>
           ) : (
