@@ -3,7 +3,22 @@ import { useUserContext } from "./Home.jsx";
 import FormRow from "../components/FormRow/index.jsx";
 import useValidator from "../utils/useValidator.js";
 import { SecondaryHeading } from "../components/Title/index.js";
+import customFetch from "../utils/customFetch.js";
+import { toast } from "react-toastify";
+import { redirect } from "react-router-dom";
 
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    await customFetch.patch("/users/update-my-data", data);
+    toast.success("Your data has been updated");
+    return redirect("/me");
+  } catch (error) {
+    toast.error(error?.response?.data?.message);
+    return error;
+  }
+};
 const Settings = () => {
   const user = useUserContext();
   const initialState = [
@@ -34,7 +49,7 @@ const Settings = () => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <StyledForm $settings>
+    <StyledForm $settings method="patch">
       <SecondaryHeading>Edit your account</SecondaryHeading>
       {data &&
         data.map((field, index) => (
