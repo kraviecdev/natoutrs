@@ -8,3 +8,4 @@ export { default as ForgotPass } from "./ForgotPass.jsx";
 export { default as ResetPass } from "./ResetPass.jsx";
 export { default as Account } from "./Account.jsx";
 export { default as Settings } from "./Settings.jsx";
+export { default as ChangePass } from "./ChangePass.jsx";
