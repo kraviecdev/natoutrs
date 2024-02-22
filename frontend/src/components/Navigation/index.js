@@ -32,6 +32,12 @@ export const Nav = styled.nav`
         border-bottom: 1px solid;
       }
 
+      a {
+        &:hover {
+          transform: none;
+        }
+      }
+
       h3,
       p {
         color: ${({ theme }) => theme.colors.second_font};
