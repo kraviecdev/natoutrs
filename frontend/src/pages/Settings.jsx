@@ -1,11 +1,10 @@
 import { FormButton, StyledForm } from "../components/Form/index.js";
-import { useUserContext } from "./Home.jsx";
 import FormRow from "../components/FormRow/index.jsx";
 import useValidator from "../utils/useValidator.js";
 import { SecondaryHeading } from "../components/Title/index.js";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
-import { redirect } from "react-router-dom";
+import { redirect, useOutletContext } from "react-router-dom";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -20,7 +19,7 @@ export const action = async ({ request }) => {
   }
 };
 const Settings = () => {
-  const user = useUserContext();
+  const user = useOutletContext();
   const initialState = [
     {
       name: "name",

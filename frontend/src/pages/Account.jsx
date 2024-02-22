@@ -1,5 +1,4 @@
-import { Outlet } from "react-router-dom";
-import { useUserContext } from "./Home.jsx";
+import { Outlet, useOutletContext } from "react-router-dom";
 import { Main } from "../components/Main/index.js";
 import { Wrapper } from "../components/Wrapper/index.js";
 import { Nav } from "../components/Navigation/index.js";
@@ -10,7 +9,7 @@ import Burger from "../components/Burger/index.jsx";
 import { useState } from "react";
 
 const Account = () => {
-  const data = useUserContext();
+  const data = useOutletContext();
   const [active, setActive] = useState(false);
   const user = [
     {
@@ -26,7 +25,7 @@ const Account = () => {
     {
       icon: "briefcase",
       info: "My bookings",
-      to: "bookings",
+      to: "",
     },
     {
       icon: "star",
@@ -36,7 +35,7 @@ const Account = () => {
     {
       icon: "credit-card",
       info: "Billing",
-      to: "billing",
+      to: "",
     },
   ];
   const admin = [
@@ -70,24 +69,32 @@ const Account = () => {
           <SecondaryHeading>General</SecondaryHeading>
           {user &&
             user.map((anchor, index) => (
-              <StyledLink key={index} to={anchor.to}>
+              <StyledLink
+                key={index}
+                to={anchor.to}
+                onClick={() => setActive(false)}
+              >
                 <Icon name={anchor.icon} text={anchor.info} $contrast />
               </StyledLink>
             ))}
         </Nav>
-        {data.role === "admin" && (
+        {data?.role === "admin" && (
           <Nav $settings>
             <SecondaryHeading>Admin</SecondaryHeading>
             {admin &&
               admin.map((anchor, index) => (
-                <StyledLink key={index} to={anchor.to}>
+                <StyledLink
+                  key={index}
+                  to={anchor.to}
+                  onClick={() => setActive(false)}
+                >
                   <Icon name={anchor.icon} text={anchor.info} $contrast />
                 </StyledLink>
               ))}
           </Nav>
         )}
       </Wrapper>
-      <Outlet />
+      <Outlet context={data} />
     </Main>
   );
 };
