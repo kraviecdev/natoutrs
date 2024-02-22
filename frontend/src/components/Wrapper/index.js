@@ -91,7 +91,8 @@ export const Wrapper = styled.div`
     css`
       position: absolute;
       left: 10px;
-      top: 16px;
+      top: 50%;
+      transform: translateY(-50%);
       border-radius: 24px;
       padding: 10px;
       background-color: ${({ theme }) => theme.colors.contrast};
@@ -110,6 +111,7 @@ export const Wrapper = styled.div`
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.sm}px) {
+        transform: none;
         max-width: 100%;
         padding: 16px;
         position: initial;
