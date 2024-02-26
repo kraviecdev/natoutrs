@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
+
 export const GlobalStyle = createGlobalStyle`
     ${normalize}
     html {
@@ -37,8 +38,9 @@ export const GlobalStyle = createGlobalStyle`
     /* Firefox */
     * {
         scrollbar-width: thin;
-        scrollbar-color: ${({ theme }) => theme.colors.contrast}
-        ${({ theme }) => theme.colors.main};
+        scrollbar-color: ${({ theme }) => theme.colors.contrast} ${({
+          theme,
+        }) => theme.colors.main};
     }
 
     /* Chrome, Edge, and Safari */
@@ -61,8 +63,31 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         background: ${({ theme }) => theme.colors.second};
     }
-    
+
     #map {
         height: 300px;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        max-width: ${({ theme }) => theme.breakpoints.xl}px;
+        margin: 0 auto;
+        padding: 14px 10px;
+
+        @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.md}px) {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.xl}px) {
+            padding: 24px 0;
+        }
     }
 `;
