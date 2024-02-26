@@ -3,15 +3,18 @@ import styled, { css } from "styled-components";
 export const Section = styled.section`
   display: grid;
   margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
   width: 100%;
+
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   ${(props) =>
     props.$images &&
     css`
       gap: 0;
-      grid-template-columns: 1fr;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.md}px) {
@@ -29,14 +32,11 @@ export const Section = styled.section`
       overflow-x: auto;
       overflow-y: hidden;
       max-height: 256px;
-    `}
-    
-    ${(props) =>
+    `} 
+  
+  ${(props) =>
     props.$cta &&
     css`
-      background: ${({ theme }) => theme.colors.second};
-      color: ${({ theme }) => theme.colors.second_font};
-      align-items: center;
       padding: 24px 10px 8px;
       grid-template-columns: 1fr;
       border-radius: 24px;
@@ -52,5 +52,5 @@ export const Section = styled.section`
         grid-template-columns: repeat(2, 1fr);
         padding: 16px;
       }
-    `}
+    `};
 `;
