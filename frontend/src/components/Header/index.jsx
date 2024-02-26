@@ -1,21 +1,23 @@
-import { Nav } from "../Navigation/index.js";
-import { StyledLink } from "../Link/index.js";
-import { Wrapper } from "../Wrapper/index.js";
-import Img from "../Img/index.jsx";
+import { Nav } from "../common/Nav/index.js";
+import { StyledLink } from "../common/Link/index.js";
+import { Wrapper } from "../common/Wrapper/index.js";
+import Img from "../common/Img/index.jsx";
 
-const Header = ({ data }) => {
+const Header = ({ data, logout }) => {
   return (
     <header>
-      <Nav>
+      <Nav $header>
         <StyledLink to="/">
           <Img src="/img/logo-white.png" alt="Natours logo" />
           <span>Natours</span>
         </StyledLink>
 
-        <Wrapper>
+        <Wrapper $center>
           {data ? (
             <>
-              <StyledLink to="/logout">Log out</StyledLink>
+              <StyledLink to="/" onClick={() => logout()}>
+                Log out
+              </StyledLink>
               <StyledLink to="/me">
                 <Img
                   $user
