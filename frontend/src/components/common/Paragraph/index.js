@@ -12,7 +12,6 @@ export const Paragraph = styled.p`
     props.$invalid &&
     css`
       color: ${({ theme }) => theme.colors.error};
-      font-weight: ${({ theme }) => theme.font.weight.regular};
     `}
 
   ${(props) =>
