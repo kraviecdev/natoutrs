@@ -1,7 +1,6 @@
-import { StyledFooter } from "./styled.js";
-import { Wrapper } from "../Wrapper/index.js";
-import { StyledLink } from "../Link/index.js";
-import Img from "../Img/index.jsx";
+import Img from "../common/Img/index.jsx";
+import { Nav } from "../common/Nav/index.js";
+import { StyledLink } from "../common/Link/index.js";
 
 const Footer = () => {
   const links = [
@@ -13,18 +12,18 @@ const Footer = () => {
   ];
 
   return (
-    <StyledFooter>
+    <footer>
       <Img src="/img/logo-green.png" alt="Natour logo" />
 
-      <Wrapper $wrap>
+      <Nav>
         {links &&
           links.map((li, index) => (
-            <StyledLink key={index} to={li.link}>
+            <StyledLink $dark key={index} to={li.link}>
               {li.name}
             </StyledLink>
           ))}
-      </Wrapper>
-    </StyledFooter>
+      </Nav>
+    </footer>
   );
 };
 
