@@ -1,4 +1,4 @@
-import { StyledBurger } from "./styled";
+import { StyledBurger } from "./styled.js";
 
 const Burger = ({ $active, onClick }) => {
   return (
