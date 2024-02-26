@@ -7,10 +7,10 @@ export const StyledLink = styled(NavLink)`
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
+  font-size: ${({ theme }) => theme.font.size.small}px;
   color: ${({ theme }) => theme.colors.second_font};
   text-transform: uppercase;
   transition: all 0.4s ease-in-out;
-  font-size: ${({ theme }) => theme.font.size.small}px;
 
   span {
     display: none;
@@ -28,6 +28,12 @@ export const StyledLink = styled(NavLink)`
       display: inherit;
     }
   }
+
+  ${(props) =>
+    props.$dark &&
+    css`
+      color: ${({ theme }) => theme.colors.main_font};
+    `}
 
   ${(props) =>
     props.$contrast &&
