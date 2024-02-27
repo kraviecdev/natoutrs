@@ -3,32 +3,18 @@ import styled, { css } from "styled-components";
 export const StyledImg = styled.img`
   height: 100%;
   width: 100%;
-  border-radius: ${({ round }) => (round ? 50 : 0)}%;
   object-fit: cover;
+  border-radius: inherit;
 `;
 export const ImgWrapper = styled.div`
-  height: 35px;
+  height: ${(props) => (props.$gallery ? "auto" : "35px")};
+  border-radius: ${(props) => props.$round && "50%"};
 
-  .shadow {
+  div {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: linear-gradient(
-      to top,
-      ${({ theme }) => theme.colors.second},
-      transparent
-    );
   }
-
-  ${(props) =>
-    props.$user &&
-    css`
-      border-radius: 50%;
-
-      img {
-        border-radius: inherit;
-      }
-    `}
 
   ${(props) =>
     props.$card &&
@@ -36,56 +22,36 @@ export const ImgWrapper = styled.div`
       position: relative;
       min-height: 240px;
 
+      div {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background: linear-gradient(
+          to top,
+          ${({ theme }) => theme.colors.second},
+          transparent
+        );
+      }
+
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.xs}px) {
         min-height: 300px;
       }
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$backdrop &&
     css`
       position: relative;
-      margin: 12px;
-      width: 100%;
-      height: auto;
-      max-width: ${({ theme }) => theme.breakpoints.xl}px;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.md}px) {
         height: 580px;
       }
 
-      .heading {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          ${({ theme }) => theme.colors.second},
-          transparent
-        );
-        justify-content: center;
-        align-items: center;
-        width: max-content;
-        gap: 6px;
-        padding: 6px 0;
-
-        p {
-          color: ${({ theme }) => theme.colors.second_font};
-          font-weight: ${({ theme }) => theme.font.weight.medium};
-        }
-
-        svg {
-          fill: ${({ theme }) => theme.colors.second_font};
-        }
-      }
-
-      .shadow {
+      div {
+        display: initial;
         background: linear-gradient(
             90deg,
             ${({ theme }) => theme.colors.second} 0%,
@@ -109,19 +75,13 @@ export const ImgWrapper = styled.div`
       height: auto;
       max-height: 40vw;
     `}
-    
+
     ${(props) =>
     props.$cta &&
     css`
       height: 100%;
       aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px ${({ theme }) => theme.colors.shadow};
       position: absolute;
-
-      img {
-        border-radius: inherit;
-      }
 
       &:first-of-type {
         background: ${({ theme }) => theme.colors.contrast};

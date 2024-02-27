@@ -1,25 +1,23 @@
 import { ImgWrapper, StyledImg } from "./styled.js";
 
 const Img = ({
-  $cta,
-  $user,
+  $round,
   $card,
   $backdrop,
   $gallery,
-  $shadow,
+  $cta,
   alt,
   src,
   children,
 }) => {
   return (
     <ImgWrapper
-      $cta={$cta}
-      $user={$user}
+      $round={$round}
       $card={$card}
       $backdrop={$backdrop}
       $gallery={$gallery}
+      $cta={$cta}
     >
-      {$shadow && <div className="shadow" />}
       <StyledImg alt={alt} src={src} />
       {children}
     </ImgWrapper>
