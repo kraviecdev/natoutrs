@@ -9,21 +9,11 @@ router.use("/:tourId/reviews", reviewRouter);
 
 router.route("/tour-stats").get(tourController.getTourStats);
 router
-  .route("/monthly-plan/:year")
-  .get(
-    authController.protect,
-    authController.restrictTo("admin", "lead-guide", "guide"),
-    tourController.getMonthlyPlan,
-  );
-
-router
   .route("/top-5-cheap")
   .get(tourController.aliasTopTours, tourController.getAllTours);
-
 router
   .route("/tours-within/:searchRadius/center/:latlon")
   .get(tourController.getToursWithin);
-
 router.route("/distances/:latlon").get(tourController.getDistances);
 router.route("/:slug").get(tourController.getTourSlug);
 
@@ -48,6 +38,14 @@ router
     authController.protect,
     authController.restrictTo("admin", "lead-guide"),
     tourController.deleteTour,
+  );
+
+router
+  .route("/monthly-plan/:year")
+  .get(
+    authController.protect,
+    authController.restrictTo("admin", "lead-guide", "guide"),
+    tourController.getMonthlyPlan,
   );
 
 module.exports = router;
