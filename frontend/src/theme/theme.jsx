@@ -11,7 +11,7 @@ export const theme = {
     second_font: "#f1f1f1",
     third_font: "#c9c9c9",
     main: "#F2F7F2",
-    second: "#545454",
+    second: "#646464",
     contrast: "#3EB666",
     shadow: "#00000040",
     error: "#ab4949",
