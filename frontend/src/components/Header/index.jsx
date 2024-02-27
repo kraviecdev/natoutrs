@@ -12,7 +12,7 @@ const Header = ({ data, logout }) => {
           <span>Natours</span>
         </StyledLink>
 
-        <Wrapper $center>
+        <Wrapper>
           {data ? (
             <>
               <StyledLink to="/" onClick={() => logout()}>
@@ -20,7 +20,7 @@ const Header = ({ data, logout }) => {
               </StyledLink>
               <StyledLink to="/me">
                 <Img
-                  $user
+                  $round
                   src={`/img/users/${data.photo}`}
                   alt={`Photo of ${data.name}`}
                 />
