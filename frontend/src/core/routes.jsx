@@ -1,6 +1,4 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
-import customFetch from "../utils/customFetch.js";
-import { toast } from "react-toastify";
+import { createBrowserRouter } from "react-router-dom";
 import {
   Error,
   ForgotPass,
@@ -13,11 +11,13 @@ import {
   Account,
   Settings,
   ChangePass,
+  MyReviews,
 } from "../pages/index.js";
 
 import { loader as allToursLoader } from "../pages/Overview.jsx";
 import { loader as tourLoader } from "../pages/Tour.jsx";
 import { loader as userLoader } from "../pages/Home.jsx";
+import { loader as reviewLoader } from "../pages/MyReviews.jsx";
 
 import { action as loginAction } from "../pages/Login.jsx";
 import { action as signupAction } from "../pages/Signup.jsx";
@@ -49,14 +49,6 @@ export const routes = createBrowserRouter([
         action: loginAction,
       },
       {
-        path: "logout",
-        loader: () => {
-          customFetch.get("/users/logout");
-          toast.success("Logged out.");
-          return redirect("/");
-        },
-      },
-      {
         path: "signup",
         element: <Signup />,
         action: signupAction,
@@ -76,7 +68,7 @@ export const routes = createBrowserRouter([
         element: <Account />,
         children: [
           {
-            index: true,
+            path: "settings",
             element: <Settings />,
             action: updateUserData,
           },
@@ -84,6 +76,11 @@ export const routes = createBrowserRouter([
             path: "pass-change",
             element: <ChangePass />,
             action: updateUserPass,
+          },
+          {
+            path: "reviews",
+            element: <MyReviews />,
+            loader: reviewLoader,
           },
         ],
       },
