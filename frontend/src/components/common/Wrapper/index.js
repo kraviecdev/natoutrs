@@ -44,4 +44,23 @@ export const Wrapper = styled.div`
     css`
       align-items: flex-start;
     `}
+
+  ${(props) =>
+    props.$cta &&
+    css`
+      position: relative;
+      height: 126px;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.md}px) {
+        height: 162px;
+      }
+    `}
+    
+    ${(props) =>
+    props.$end &&
+    css`
+      justify-content: space-between;
+      align-items: flex-end;
+    `}
 `;
