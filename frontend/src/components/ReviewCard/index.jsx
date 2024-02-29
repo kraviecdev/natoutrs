@@ -1,17 +1,18 @@
-import Img from "../Img/index.jsx";
-import { Wrapper } from "../Wrapper/index.js";
-import { ContextHeading } from "../Title/index.js";
-import { Paragraph } from "../Paragraph/index.js";
-import Icon from "../Icon/Icon.jsx";
+import { Article } from "../common/Article/index.js";
+import { Wrapper } from "../common/Wrapper/index.js";
+import { ContextHeading } from "../common/Title/index.js";
+import { Paragraph } from "../common/Paragraph/index.js";
+import Icon from "../common/Icon/index.jsx";
+import Img from "../common/Img/index.jsx";
 
 const ReviewCard = ({ review }) => {
   const rating = [1, 2, 3, 4, 5];
 
   return (
-    <Wrapper $column $review>
+    <Article $secondary>
       <Wrapper>
         <Img
-          $user
+          $round
           src={`/img/users/${review.user.photo}`}
           alt={review.user.name}
         />
@@ -23,7 +24,7 @@ const ReviewCard = ({ review }) => {
           <Icon $rating={review.rating < rate} key={index} name="star" />
         ))}
       </Wrapper>
-    </Wrapper>
+    </Article>
   );
 };
 
