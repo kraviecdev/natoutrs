@@ -66,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
 
     #map {
         height: 300px;
+        width: 100%;
     }
 
     footer {
