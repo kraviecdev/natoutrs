@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch.js";
 import Header from "../components/Header/index.jsx";
 import Footer from "../components/Footer/index.jsx";
-import { Main } from "../components/common/Main/index.js";
 
 export const loader = async () => {
   try {
@@ -27,9 +26,7 @@ const Home = () => {
   return (
     <>
       <Header data={data} logout={logout} />
-      <Main>
-        <Outlet context={data} />
-      </Main>
+      <Outlet context={data} />
       <Footer />
     </>
   );
