@@ -10,12 +10,6 @@ export const ImgWrapper = styled.div`
   height: ${(props) => (props.$gallery ? "auto" : "35px")};
   border-radius: ${(props) => props.$round && "50%"};
 
-  div {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-  }
-
   ${(props) =>
     props.$card &&
     css`
@@ -44,6 +38,10 @@ export const ImgWrapper = styled.div`
     props.$backdrop &&
     css`
       position: relative;
+      width: 100%;
+      margin: 12px;
+      height: auto;
+      max-width: ${({ theme }) => theme.breakpoints.xl}px;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.md}px) {
@@ -51,7 +49,10 @@ export const ImgWrapper = styled.div`
       }
 
       div {
-        display: initial;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
         background: linear-gradient(
             90deg,
             ${({ theme }) => theme.colors.second} 0%,
