@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Article = styled.article`
   display: flex;
@@ -14,4 +14,25 @@ export const Article = styled.article`
   &:hover {
     box-shadow: 0 4px 10px 6px ${({ theme }) => theme.colors.shadow};
   }
+
+  ${(props) =>
+    props.$secondary &&
+    css`
+      gap: 16px;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-radius: 0;
+      padding: 16px;
+      overflow: initial;
+    `}
+
+  ${(props) =>
+    props.$noshadow &&
+    css`
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
+    `}
 `;
