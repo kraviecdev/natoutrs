@@ -11,15 +11,10 @@ const FormRow = ({
   onChange,
   name,
   $invalid,
-  $checkbox,
   message,
 }) => {
   return (
-    <RowWrapper
-      $valid={value !== "" && !$invalid}
-      $invalid={$invalid}
-      $checkbox={$checkbox}
-    >
+    <RowWrapper $valid={value !== "" && !$invalid} $invalid={$invalid}>
       <label>{label}</label>
       <Input
         as={as}

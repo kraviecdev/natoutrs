@@ -41,24 +41,6 @@ export const RowWrapper = styled.div`
         border-bottom: 1px solid ${({ theme }) => theme.colors.main_font};
       }
     `}
-
-  ${(props) =>
-    props.$checkbox &&
-    css`
-      flex-direction: row-reverse;
-      width: 100%;
-      gap: 8px;
-      font-weight: ${({ theme }) => theme.font.weight.regular};
-
-      input {
-        accent-color: ${({ theme }) => theme.colors.green};
-      }
-
-      @media only screen and (min-width: ${({ theme }) =>
-          theme.breakpoints.lg}px) {
-        width: 100%;
-      }
-    `}
 `;
 
 export const Input = styled.input`
