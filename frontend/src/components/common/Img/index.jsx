@@ -6,6 +6,7 @@ const Img = ({
   $backdrop,
   $gallery,
   $cta,
+  $error,
   alt,
   src,
   children,
@@ -17,6 +18,7 @@ const Img = ({
       $backdrop={$backdrop}
       $gallery={$gallery}
       $cta={$cta}
+      $error={$error}
     >
       <StyledImg alt={alt} src={src} />
       {children}
