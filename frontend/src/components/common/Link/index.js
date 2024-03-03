@@ -53,4 +53,16 @@ export const StyledLink = styled(NavLink)`
         background: ${({ theme }) => theme.colors.contrast};
       }
     `}
+    
+    ${(props) =>
+    props.$error &&
+    css`
+      max-width: max-content;
+      color: ${({ theme }) => theme.colors.contrast};
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.second_font};
+        background: ${({ theme }) => theme.colors.contrast};
+      }
+    `}
 `;
