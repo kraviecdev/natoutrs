@@ -116,4 +116,12 @@ export const ImgWrapper = styled.div`
         }
       }
     `}
+    
+    ${(prop) =>
+    prop.$error &&
+    css`
+      width: 100%;
+      height: max-content;
+      align-self: center;
+    `}
 `;
