@@ -1,14 +1,9 @@
 import { redirect } from "react-router-dom";
-import customFetch from "../utils/customFetch.js";
-import useValidator from "../utils/useValidator.js";
-import { Main } from "../components/Main/index.js";
-import { SecondaryHeading } from "../components/Title/index.js";
-import { FormButton, StyledForm } from "../components/Form/index.js";
-import FormRow from "../components/FormRow/index.jsx";
 import { toast } from "react-toastify";
-import { Paragraph } from "../components/Paragraph/index.js";
-import { Wrapper } from "../components/Wrapper/index.js";
-import { StyledLink } from "../components/Link/index.js";
+import customFetch from "../utils/customFetch.js";
+import { Wrapper } from "../components/common/Wrapper/index.js";
+import { StyledLink } from "../components/common/Link/index.js";
+import PageForm from "../components/PageForm/index.jsx";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -47,48 +42,23 @@ const Login = () => {
       regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     },
   ];
-  const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main $column>
-      <StyledForm method="post">
-        <SecondaryHeading>Log into your account</SecondaryHeading>
-
-        {data &&
-          data.map((field, index) => (
-            <FormRow
-              key={index}
-              as={field.as}
-              placeholder={field.placeholder}
-              type={field.type}
-              label={field.label}
-              name={field.name}
-              value={field.value || ""}
-              onChange={(event) => handleChange(field.name, event)}
-              $invalid={!field.validation}
-            />
-          ))}
-        <StyledLink $contrast to="/forgot-pass">
-          Forgot Password?
+    <PageForm
+      method="post"
+      initialState={initialState}
+      heading="Log into your account"
+      button="login"
+    >
+      <Wrapper $card $end>
+        <StyledLink $contrast to="/signup">
+          Create new account
         </StyledLink>
-
-        <FormButton
-          disabled={data.some(
-            (field) => field.validation === false || field.value === "",
-          )}
-          type="submit"
-        >
-          Login
-        </FormButton>
-
-        <Wrapper $center>
-          <Paragraph>Not a member yet?</Paragraph>
-          <StyledLink $contrast to="/signup">
-            Sign up
-          </StyledLink>
-        </Wrapper>
-      </StyledForm>
-    </Main>
+        <StyledLink $contrast to="/forgot-pass">
+          reset password
+        </StyledLink>
+      </Wrapper>
+    </PageForm>
   );
 };
 
