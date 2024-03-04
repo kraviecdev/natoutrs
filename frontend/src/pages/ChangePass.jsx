@@ -1,10 +1,7 @@
-import { FormButton, StyledForm } from "../components/Form/index.js";
-import FormRow from "../components/FormRow/index.jsx";
-import useValidator from "../utils/useValidator.js";
-import { SecondaryHeading } from "../components/Title/index.js";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import { redirect } from "react-router-dom";
+import PageForm from "../components/PageForm/index.jsx";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -54,28 +51,13 @@ const ChangePass = () => {
     },
   ];
 
-  const { data, handleChange } = useValidator(initialState);
-
   return (
-    <StyledForm $settings method="patch">
-      <SecondaryHeading>Update your password</SecondaryHeading>
-      {data &&
-        data.map((field, index) => (
-          <FormRow
-            key={index}
-            as={field.as}
-            placeholder={field.placeholder}
-            type={field.type}
-            label={field.label}
-            name={field.name}
-            value={field.value || ""}
-            onChange={(event) => handleChange(field.name, event)}
-            $invalid={!field.validation}
-            message={field.message}
-          />
-        ))}
-      <FormButton type="submit">Update</FormButton>
-    </StyledForm>
+    <PageForm
+      method="patch"
+      initialState={initialState}
+      heading="Update your password"
+      button="Update password"
+    />
   );
 };
 

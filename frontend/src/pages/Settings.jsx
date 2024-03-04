@@ -1,10 +1,7 @@
-import { FormButton, StyledForm } from "../components/Form/index.js";
-import FormRow from "../components/FormRow/index.jsx";
-import useValidator from "../utils/useValidator.js";
-import { SecondaryHeading } from "../components/Title/index.js";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import { redirect, useOutletContext } from "react-router-dom";
+import PageForm from "../components/PageForm/index.jsx";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -12,7 +9,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.patch("/users/update-my-data", data);
     toast.success("Your data has been updated");
-    return redirect("/me");
+    return redirect("/me/settings");
   } catch (error) {
     toast.error(error?.response?.data?.message);
     return error;
@@ -45,28 +42,13 @@ const Settings = () => {
     },
   ];
 
-  const { data, handleChange } = useValidator(initialState);
-
   return (
-    <StyledForm $settings method="patch">
-      <SecondaryHeading>Edit your account</SecondaryHeading>
-      {data &&
-        data.map((field, index) => (
-          <FormRow
-            key={index}
-            as={field.as}
-            placeholder={field.placeholder}
-            type={field.type}
-            label={field.label}
-            name={field.name}
-            value={field.value || ""}
-            onChange={(event) => handleChange(field.name, event)}
-            $invalid={!field.validation}
-            message={field.message}
-          />
-        ))}
-      <FormButton type="submit">Update settings</FormButton>
-    </StyledForm>
+    <PageForm
+      method="patch"
+      initialState={initialState}
+      heading="Edit your account"
+      button="Save changes"
+    />
   );
 };
 
