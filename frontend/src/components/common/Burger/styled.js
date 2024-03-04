@@ -7,7 +7,6 @@ export const StyledBurger = styled.div`
   height: 24px;
   cursor: pointer;
   z-index: 2;
-  align-self: flex-end;
 
   &:focus {
     outline: none;
@@ -16,7 +15,7 @@ export const StyledBurger = styled.div`
   div {
     width: 24px;
     height: 4px;
-    background: ${({ theme }) => theme.colors.second_font};
+    background: ${({ theme }) => theme.colors.contrast};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
