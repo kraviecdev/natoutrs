@@ -69,7 +69,7 @@ const Signup = () => {
       heading="Sign up to Natours"
       button="Sign Up"
       initialState={initialState}
-    ></PageForm>
+    />
   );
 };
 
