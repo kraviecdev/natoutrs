@@ -1,11 +1,7 @@
 import { redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
-import useValidator from "../utils/useValidator.js";
-import { Main } from "../components/Main/index.js";
-import { SecondaryHeading } from "../components/Title/index.js";
-import { FormButton, StyledForm } from "../components/Form/index.js";
-import FormRow from "../components/FormRow/index.jsx";
 import { toast } from "react-toastify";
+import PageForm from "../components/PageForm/index.jsx";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -66,39 +62,14 @@ const Signup = () => {
       message: "Passwords must be the same",
     },
   ];
-  const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main $column>
-      <StyledForm method="post">
-        <SecondaryHeading>Sign up to Natours</SecondaryHeading>
-
-        {data &&
-          data.map((field, index) => (
-            <FormRow
-              key={index}
-              as={field.as}
-              placeholder={field.placeholder}
-              type={field.type}
-              label={field.label}
-              name={field.name}
-              value={field.value || ""}
-              onChange={(event) => handleChange(field.name, event)}
-              $invalid={!field.validation}
-              message={field.message}
-            />
-          ))}
-
-        <FormButton
-          disabled={data.some(
-            (field) => field.validation === false || field.value === "",
-          )}
-          type="submit"
-        >
-          Sign Up
-        </FormButton>
-      </StyledForm>
-    </Main>
+    <PageForm
+      method="post"
+      heading="Sign up to Natours"
+      button="Sign Up"
+      initialState={initialState}
+    ></PageForm>
   );
 };
 
