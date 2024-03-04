@@ -14,6 +14,7 @@ export const ImgWrapper = styled.div`
     props.$card &&
     css`
       position: relative;
+      height: auto;
       min-height: 240px;
 
       div {
