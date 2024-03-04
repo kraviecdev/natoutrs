@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   display: grid;
-  margin: 0 auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
   grid-gap: 20px;
   width: 100%;
 
@@ -50,6 +50,7 @@ export const Section = styled.section`
   ${(props) =>
     props.$cta &&
     css`
+      justify-items: normal;
       padding: 24px 10px 8px;
       grid-template-columns: 1fr;
       border-radius: 12px;
