@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Main = styled.main`
   max-width: ${({ theme }) => theme.breakpoints.xl}px;
@@ -6,6 +6,7 @@ export const Main = styled.main`
   display: grid;
   grid-gap: 24px;
   justify-items: center;
+  align-items: center;
   flex-grow: 1;
   padding: 16px 10px;
 
@@ -16,4 +17,12 @@ export const Main = styled.main`
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.xl}px) {
     padding: 32px 0;
   }
+
+  ${(props) =>
+    props.$settings &&
+    css`
+      position: relative;
+      grid-template-columns: max-content 1fr;
+      justify-content: center;
+    `}
 `;
