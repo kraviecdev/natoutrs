@@ -6,7 +6,6 @@ const FormRow = ({
   label,
   type,
   placeholder,
-  checked,
   value,
   onChange,
   name,
@@ -21,7 +20,6 @@ const FormRow = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        checked={checked}
         name={name}
         type={type}
         required
