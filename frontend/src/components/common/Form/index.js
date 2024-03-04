@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Form } from "react-router-dom";
 
 export const StyledForm = styled(Form)`
@@ -7,37 +7,16 @@ export const StyledForm = styled(Form)`
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  height: max-content;
   padding: 32px 12px;
   gap: 24px;
   border-radius: 6px;
   box-shadow: 0 2px 6px ${({ theme }) => theme.colors.shadow};
 
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.xs}px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
     padding: 48px;
     max-width: max-content;
   }
-
-  ${(props) =>
-    props.$settings &&
-    css`
-      justify-content: flex-start;
-      justify-self: end;
-      box-shadow: none;
-      max-width: calc(100% - 44px);
-
-      @media only screen and (min-width: ${({ theme }) =>
-          theme.breakpoints.xs}px) {
-        padding: 32px 12px;
-        max-width: calc(100% - 44px);
-      }
-
-      @media only screen and (min-width: ${({ theme }) =>
-          theme.breakpoints.sm}px) {
-        padding: 32px 12px;
-        justify-self: center;
-        max-width: max-content;
-      }
-    `}
 `;
 
 export const FormButton = styled.button`
