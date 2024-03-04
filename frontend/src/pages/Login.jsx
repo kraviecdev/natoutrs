@@ -4,6 +4,7 @@ import customFetch from "../utils/customFetch.js";
 import { Wrapper } from "../components/common/Wrapper/index.js";
 import { StyledLink } from "../components/common/Link/index.js";
 import PageForm from "../components/PageForm/index.jsx";
+import { Main } from "../components/common/Main/index.js";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -44,21 +45,23 @@ const Login = () => {
   ];
 
   return (
-    <PageForm
-      method="post"
-      initialState={initialState}
-      heading="Log into your account"
-      button="login"
-    >
-      <Wrapper $card $end>
-        <StyledLink $contrast to="/signup">
-          Create new account
-        </StyledLink>
-        <StyledLink $contrast to="/forgot-pass">
-          reset password
-        </StyledLink>
-      </Wrapper>
-    </PageForm>
+    <Main>
+      <PageForm
+        method="post"
+        initialState={initialState}
+        heading="Log into your account"
+        button="login"
+      >
+        <Wrapper $card $end>
+          <StyledLink $contrast to="/signup">
+            Create new account
+          </StyledLink>
+          <StyledLink $contrast to="/forgot-pass">
+            reset password
+          </StyledLink>
+        </Wrapper>
+      </PageForm>
+    </Main>
   );
 };
 

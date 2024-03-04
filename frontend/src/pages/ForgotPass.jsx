@@ -1,10 +1,9 @@
 import { redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
-import { Paragraph } from "../components/common/Paragraph/index.js";
-import { Wrapper } from "../components/common/Wrapper/index.js";
 import { StyledLink } from "../components/common/Link/index.js";
 import PageForm from "../components/PageForm/index.jsx";
+import { Main } from "../components/common/Main/index.js";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -34,19 +33,18 @@ const ForgotPass = () => {
   ];
 
   return (
-    <PageForm
-      method="post"
-      initialState={initialState}
-      heading="Enter your email"
-      button="Send"
-    >
-      <Wrapper $center>
-        <Paragraph>Not a member yet?</Paragraph>
+    <Main>
+      <PageForm
+        method="post"
+        initialState={initialState}
+        heading="Enter your email"
+        button="Send"
+      >
         <StyledLink $contrast to="/signup">
-          Sign up
+          Create new account
         </StyledLink>
-      </Wrapper>
-    </PageForm>
+      </PageForm>
+    </Main>
   );
 };
 

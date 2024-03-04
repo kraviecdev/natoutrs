@@ -2,6 +2,7 @@ import { redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import PageForm from "../components/PageForm/index.jsx";
+import { Main } from "../components/common/Main/index.js";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -64,12 +65,14 @@ const Signup = () => {
   ];
 
   return (
-    <PageForm
-      method="post"
-      heading="Sign up to Natours"
-      button="Sign Up"
-      initialState={initialState}
-    />
+    <Main>
+      <PageForm
+        method="post"
+        heading="Sign up to Natours"
+        button="Sign Up"
+        initialState={initialState}
+      />
+    </Main>
   );
 };
 

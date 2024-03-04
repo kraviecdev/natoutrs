@@ -2,6 +2,7 @@ import { redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import PageForm from "../components/PageForm/index.jsx";
+import { Main } from "../components/common/Main/index.js";
 
 export const action = async ({ request, params }) => {
   const formData = await request.formData();
@@ -42,12 +43,14 @@ const ResetPass = () => {
   ];
 
   return (
-    <PageForm
-      method="patch"
-      initialState={initialState}
-      heading="Submit new password"
-      button="Submit"
-    />
+    <Main>
+      <PageForm
+        method="patch"
+        initialState={initialState}
+        heading="Submit new password"
+        button="Submit"
+      />
+    </Main>
   );
 };
 
