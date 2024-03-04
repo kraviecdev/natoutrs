@@ -2,13 +2,13 @@ import { FormButton, StyledForm } from "../common/Form/index.js";
 import { SecondaryHeading } from "../common/Title/index.js";
 import FormRow from "../common/FormRow/index.jsx";
 import useValidator from "../../utils/useValidator.js";
-import { Main } from "../common/Main/index.js";
+import { Wrapper } from "../common/Wrapper/index.js";
 
 const PageForm = ({ method, initialState, heading, button, children }) => {
   const { data, handleChange } = useValidator(initialState);
 
   return (
-    <Main>
+    <Wrapper $center>
       <StyledForm method={method}>
         <SecondaryHeading>{heading}</SecondaryHeading>
         {data &&
@@ -35,7 +35,7 @@ const PageForm = ({ method, initialState, heading, button, children }) => {
         </FormButton>
         {children}
       </StyledForm>
-    </Main>
+    </Wrapper>
   );
 };
 
