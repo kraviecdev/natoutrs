@@ -44,7 +44,7 @@ export const Section = styled.section`
       grid-auto-rows: max-content;
       overflow-x: auto;
       overflow-y: hidden;
-      max-height: 256px;
+      max-height: 282px;
     `} 
   
   ${(props) =>
@@ -67,5 +67,12 @@ export const Section = styled.section`
         grid-template-columns: repeat(2, 1fr);
         padding: 16px;
       }
+    `};
+
+  ${(props) =>
+    props.$settings &&
+    css`
+      grid-template-columns: 1fr;
+      align-self: baseline;
     `};
 `;
