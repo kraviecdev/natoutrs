@@ -25,7 +25,7 @@ const AccountNav = ({ data }) => {
     {
       icon: "star",
       info: "My reviews",
-      to: "reviews",
+      to: "my-reviews",
     },
     {
       icon: "credit-card",
@@ -37,22 +37,22 @@ const AccountNav = ({ data }) => {
     {
       icon: "map",
       info: "Manage tours",
-      to: "menage-tours",
+      to: "manage-tours",
     },
     {
       icon: "users",
-      info: "menage users",
-      to: "menage-users",
+      info: "Manage users",
+      to: "manage-users",
     },
     {
       icon: "star",
-      info: "menage reviews",
-      to: "menage-reviews",
+      info: "Manage reviews",
+      to: "manage-reviews",
     },
     {
       icon: "briefcase",
-      info: "menage bookings",
-      to: "menage-bookings",
+      info: "Manage bookings",
+      to: "",
     },
   ];
 
