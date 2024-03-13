@@ -19,7 +19,7 @@ const ReviewCard = ({ review }) => {
         <ContextHeading>{review.user.name}</ContextHeading>
       </Wrapper>
       <Paragraph $italic>{review.review}</Paragraph>
-      <Wrapper>
+      <Wrapper $icon>
         {rating.map((rate, index) => (
           <Icon $rating={review.rating < rate} key={index} name="star" />
         ))}
