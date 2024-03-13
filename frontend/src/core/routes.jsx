@@ -12,12 +12,14 @@ import {
   Settings,
   ChangePass,
   MyReviews,
+  AllReviews,
 } from "../pages/index.js";
 
 import { loader as allToursLoader } from "../pages/Overview.jsx";
 import { loader as tourLoader } from "../pages/Tour.jsx";
 import { loader as userLoader } from "../pages/Home.jsx";
-import { loader as reviewLoader } from "../pages/MyReviews.jsx";
+import { loader as myReviewsLoader } from "../pages/MyReviews.jsx";
+import { loader as allReviewsLoader } from "../pages/AllReviews.jsx";
 
 import { action as loginAction } from "../pages/Login.jsx";
 import { action as signupAction } from "../pages/Signup.jsx";
@@ -78,9 +80,14 @@ export const routes = createBrowserRouter([
             action: updateUserPass,
           },
           {
-            path: "reviews",
+            path: "my-reviews",
             element: <MyReviews />,
-            loader: reviewLoader,
+            loader: myReviewsLoader,
+          },
+          {
+            path: "manage-reviews",
+            element: <AllReviews />,
+            loader: allReviewsLoader,
           },
         ],
       },
