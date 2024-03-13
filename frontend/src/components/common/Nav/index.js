@@ -24,13 +24,15 @@ export const Nav = styled.nav`
   ${(props) =>
     props.$settings &&
     css`
+      position: sticky;
+      top: 24px;
       max-width: 24px;
-      padding: 24px 0;
       overflow: hidden;
       white-space: nowrap;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: center;
+      align-self: baseline;
+      transition: 0.4s ease-in-out;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.sm}px) {
@@ -41,14 +43,6 @@ export const Nav = styled.nav`
     ${(props) =>
       props.$active &&
       css`
-        width: 100%;
-        background: ${({ theme }) => theme.colors.main};
-        position: absolute;
-        z-index: 99;
-        top: 50%;
-        left: 0;
-        padding: 24px 10px;
-        transform: translateY(-50%);
         max-width: 600px;
       `}}
 `;
