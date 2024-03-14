@@ -125,4 +125,10 @@ export const ImgWrapper = styled.div`
       height: max-content;
       align-self: center;
     `}
+    
+    ${(prop) =>
+    prop.$settings &&
+    css`
+      aspect-ratio: 1 / 1;
+    `}
 `;
