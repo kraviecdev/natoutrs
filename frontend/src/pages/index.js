@@ -11,3 +11,5 @@ export { default as Settings } from "./Settings.jsx";
 export { default as ChangePass } from "./ChangePass.jsx";
 export { default as MyReviews } from "./MyReviews.jsx";
 export { default as AllReviews } from "./AllReviews.jsx";
+export { default as AllTours } from "./AllTours.jsx";
+export { default as AllUsers } from "./AllUsers.jsx";
