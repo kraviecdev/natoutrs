@@ -24,25 +24,34 @@ export const Nav = styled.nav`
   ${(props) =>
     props.$settings &&
     css`
-      position: sticky;
-      top: 24px;
-      max-width: 24px;
+      position: fixed;
+      padding: 16px 10px;
+      top: 86px;
+      left: 0;
+      z-index: 99;
+      max-width: 42px;
       overflow: hidden;
       white-space: nowrap;
       flex-direction: column;
       align-items: flex-start;
       align-self: baseline;
-      transition: 0.4s ease-in-out;
+      background: ${({ theme }) => theme.colors.main};
+      transition: max-width 0.4s ease-in-out;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.sm}px) {
         max-width: max-content;
+        position: sticky;
+        top: 24px;
+        padding: 16px 0;
       }
     `}
     
     ${(props) =>
       props.$active &&
       css`
+        top: 0;
+
         max-width: 600px;
       `}}
 `;
