@@ -61,13 +61,21 @@ const AccountNav = ({ data }) => {
       <Burger $active={active} onClick={() => setActive(!active)} />
       {user &&
         user.map((anchor, index) => (
-          <StyledLink key={index} to={anchor.to}>
+          <StyledLink
+            key={index}
+            to={anchor.to}
+            onClick={() => setActive(false)}
+          >
             <IconInfo name={anchor.icon} info={anchor.info} $contrast />
           </StyledLink>
         ))}
       {data?.role === "admin" &&
         admin.map((anchor, index) => (
-          <StyledLink key={index} to={anchor.to}>
+          <StyledLink
+            key={index}
+            to={anchor.to}
+            onClick={() => setActive(false)}
+          >
             <IconInfo name={anchor.icon} info={anchor.info} $contast />
           </StyledLink>
         ))}
