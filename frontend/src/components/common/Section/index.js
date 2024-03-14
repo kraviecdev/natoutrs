@@ -73,6 +73,11 @@ export const Section = styled.section`
     props.$settings &&
     css`
       grid-template-columns: 1fr;
-      align-self: baseline;
+      padding: 0 0 0 44px;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        padding: 0;
+      }
     `};
 `;
