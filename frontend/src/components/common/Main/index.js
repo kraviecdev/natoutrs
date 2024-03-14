@@ -22,7 +22,13 @@ export const Main = styled.main`
     props.$settings &&
     css`
       position: relative;
-      grid-template-columns: max-content 1fr;
+      grid-template-columns: 1fr;
       justify-content: center;
+      align-items: start;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        grid-template-columns: max-content 1fr;
+      }
     `}
 `;
