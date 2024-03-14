@@ -13,13 +13,17 @@ import {
   ChangePass,
   MyReviews,
   AllReviews,
+  AllTours,
+  AllUsers,
 } from "../pages/index.js";
 
-import { loader as allToursLoader } from "../pages/Overview.jsx";
+import { loader as toursLoader } from "../pages/Overview.jsx";
 import { loader as tourLoader } from "../pages/Tour.jsx";
 import { loader as userLoader } from "../pages/Home.jsx";
 import { loader as myReviewsLoader } from "../pages/MyReviews.jsx";
 import { loader as allReviewsLoader } from "../pages/AllReviews.jsx";
+import { loader as allToursLoader } from "../pages/AllTours.jsx";
+import { loader as allUsersLoader } from "../pages/AllUsers.jsx";
 
 import { action as loginAction } from "../pages/Login.jsx";
 import { action as signupAction } from "../pages/Signup.jsx";
@@ -38,7 +42,7 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <Overview />,
-        loader: allToursLoader,
+        loader: toursLoader,
       },
       {
         path: "tours/:slug",
@@ -88,6 +92,16 @@ export const routes = createBrowserRouter([
             path: "manage-reviews",
             element: <AllReviews />,
             loader: allReviewsLoader,
+          },
+          {
+            path: "manage-tours",
+            element: <AllTours />,
+            loader: allToursLoader,
+          },
+          {
+            path: "manage-users",
+            element: <AllUsers />,
+            loader: allUsersLoader,
           },
         ],
       },
