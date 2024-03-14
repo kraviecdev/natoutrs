@@ -50,8 +50,6 @@ export const Nav = styled.nav`
     ${(props) =>
       props.$active &&
       css`
-        top: 0;
-
         max-width: 600px;
       `}}
 `;
