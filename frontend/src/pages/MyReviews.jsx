@@ -13,7 +13,15 @@ export const loader = async () => {
 const MyReviews = () => {
   const { data } = useLoaderData();
 
-  return <ManageList title="Manage my rewiews" data={data} />;
+  const input = data.map((item) => ({
+    id: item.id,
+    src: `/img/users/${item.user.photo}`,
+    alt: item.user.name,
+    info: `rating ${item.rating}/5`,
+    additional: item.review,
+  }));
+
+  return <ManageList title="Manage my rewiews" input={input} />;
 };
 
 export default MyReviews;
