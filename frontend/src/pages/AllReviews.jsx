@@ -19,7 +19,7 @@ const MyReviews = () => {
     alt: item.user.name,
     info: `rating ${item.rating}/5`,
     additional: item.review,
-    tour: `Tour: ${item.tour.name}`,
+    context: `Tour: ${item.tour.name}`,
   }));
 
   return <ManageList title="Manage rewiews" input={input} />;

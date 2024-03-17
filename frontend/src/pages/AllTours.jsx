@@ -16,9 +16,9 @@ const AllTours = () => {
   const input = data.map((item) => ({
     id: item.id,
     src: `/img/tours/${item.imageCover}`,
-    alt: item.name,
-    info: `price ${item.price}$`,
+    info: item.name,
     additional: item.summary,
+    context: `Price ${item.price}$`,
   }));
 
   return <ManageList title="Manage tours" input={input} />;

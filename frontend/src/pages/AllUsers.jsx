@@ -16,8 +16,8 @@ const AllUsers = () => {
   const input = data.map((item) => ({
     id: item.id,
     src: `/img/users/${item.photo}`,
-    alt: item.name,
-    info: `role: ${item.role}`,
+    info: item.name,
+    context: `Role: ${item.role.toUpperCase()}`,
     additional: item.email,
   }));
 
