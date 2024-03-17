@@ -1,8 +1,9 @@
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch.js";
 import Header from "../components/Header/index.jsx";
 import Footer from "../components/Footer/index.jsx";
+import { useEffect } from "react";
 
 export const loader = async () => {
   try {
@@ -14,6 +15,8 @@ export const loader = async () => {
 };
 
 const Home = () => {
+  const { pathname } = useLocation();
+
   const { data } = useLoaderData();
   const logout = async () => {
     const { status } = await customFetch.get("/users/logout");
@@ -22,6 +25,10 @@ const Home = () => {
       toast.success("Logged out");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
