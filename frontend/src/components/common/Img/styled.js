@@ -141,6 +141,7 @@ export const ImgWrapper = styled.div`
     ${(prop) =>
     prop.$settings &&
     css`
-      aspect-ratio: 1 / 1;
+      height: auto;
+      max-width: 35px;
     `}
 `;
