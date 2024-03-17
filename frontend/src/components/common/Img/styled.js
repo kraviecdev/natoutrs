@@ -55,6 +55,10 @@ export const ImgWrapper = styled.div`
         height: 580px;
       }
 
+      img {
+        width: 100%;
+      }
+
       div {
         width: 100%;
         height: 100%;
