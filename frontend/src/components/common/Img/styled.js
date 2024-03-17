@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 export const StyledImg = styled.img`
   max-height: 100%;
   max-width: 100%;
-  height: auto;
   object-fit: cover;
   border-radius: inherit;
 `;
@@ -84,8 +83,7 @@ export const ImgWrapper = styled.div`
     ${(props) =>
     props.$gallery &&
     css`
-      height: auto;
-      max-height: 40vw;
+      width: 100%;
     `}
 
     ${(props) =>
