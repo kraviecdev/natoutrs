@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const StyledImg = styled.img`
-  height: 100%;
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: inherit;
 `;
@@ -16,6 +17,11 @@ export const ImgWrapper = styled.div`
       position: relative;
       height: auto;
       min-height: 240px;
+
+      img {
+        height: 100%;
+        max-height: 362px;
+      }
 
       div {
         width: 100%;
@@ -84,6 +90,10 @@ export const ImgWrapper = styled.div`
       height: 100%;
       aspect-ratio: 1 / 1;
       position: absolute;
+
+      img {
+        height: 100%;
+      }
 
       &:first-of-type {
         background: ${({ theme }) => theme.colors.contrast};
