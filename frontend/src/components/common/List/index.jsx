@@ -19,9 +19,9 @@ const List = ({ data }) => {
                 <Paragraph $contrast>{item.info}</Paragraph>
               </Wrapper>
               <Paragraph $italic>{item.additional}</Paragraph>
-              {item.tour && (
+              {item.context && (
                 <Paragraph>
-                  <span>{item.tour}</span>
+                  <span>{item.context}</span>
                 </Paragraph>
               )}
             </Wrapper>
