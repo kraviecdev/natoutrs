@@ -6,7 +6,6 @@ export const Main = styled.main`
   display: grid;
   grid-gap: 24px;
   justify-items: center;
-  align-items: center;
   flex-grow: 1;
   padding: 16px 10px;
 
