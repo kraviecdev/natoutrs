@@ -1,10 +1,11 @@
 const express = require("express");
-const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
-const helmet = require("helmet");
+const path = require("path");
 const mongoSanitize = require("express-mongo-sanitize");
 const hpp = require("hpp");
+const cookieParser = require("cookie-parser");
 
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
@@ -28,6 +29,9 @@ app.use(
     },
   }),
 );
+
+// Dirname & static files
+app.use(express.static(path.resolve(__dirname, "./public")));
 
 //Development logging
 if (process.env.NODE_ENV === "development") {
