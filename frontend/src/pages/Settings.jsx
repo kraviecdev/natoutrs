@@ -5,9 +5,9 @@ import PageForm from "../components/PageForm/index.jsx";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
-  const data = Object.fromEntries(formData);
+
   try {
-    await customFetch.patch("/users/update-my-data", data);
+    await customFetch.patch("/users/update-my-data", formData);
     toast.success("Your data has been updated");
     return redirect("/me/settings");
   } catch (error) {
@@ -18,6 +18,17 @@ export const action = async ({ request }) => {
 const Settings = () => {
   const user = useOutletContext();
   const initialState = [
+    {
+      src: `/img/users/${user.photo}`,
+      alt: user.name,
+      name: "photo",
+      type: "file",
+      label: "Input you image",
+      accept: "image/*",
+      multiple: false,
+      file: true,
+      validation: true,
+    },
     {
       name: "name",
       type: "text",
@@ -45,6 +56,7 @@ const Settings = () => {
   return (
     <PageForm
       method="patch"
+      encType="multipart/form-data"
       initialState={initialState}
       heading="Edit your account"
       button="Save changes"
