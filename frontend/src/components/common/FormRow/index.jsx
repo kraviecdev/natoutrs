@@ -24,7 +24,7 @@ const FormRow = ({
         type={type}
         required
       />
-      {message && <Paragraph invalid="true">{message}</Paragraph>}
+      {message && <Paragraph $invalid>{message}</Paragraph>}
     </RowWrapper>
   );
 };
