@@ -9,6 +9,7 @@ export const StyledImg = styled.img`
 export const ImgWrapper = styled.div`
   height: ${(props) => (props.$gallery ? "auto" : "35px")};
   border-radius: ${(props) => props.$round && "50%"};
+  aspect-ratio: ${(props) => props.$round && "1/1"};
 
   ${(props) =>
     props.$card &&
@@ -142,6 +143,20 @@ export const ImgWrapper = styled.div`
     prop.$settings &&
     css`
       height: auto;
-      max-width: 35px;
+      max-width: 50px;
+      max-height: 50px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: unset;
+      }
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        max-width: 80px;
+        max-height: 80px;
+      }
     `}
 `;
