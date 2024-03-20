@@ -9,9 +9,11 @@ const useValidator = (initialState) => {
     const field = newData.find((field) => field.name === name);
 
     if (field) {
-      if (field.name === "checkbox") {
-        field.checked = !field.checked;
-        field.validation = field.checked;
+      if (field.name === "photo") {
+        const files = event?.target?.files[0];
+
+        field.alt = "Your new photo";
+        field.src = URL.createObjectURL(files);
       } else {
         field.value = val;
 
