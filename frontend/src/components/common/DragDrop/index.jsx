@@ -1,18 +1,9 @@
 import { DragDropWrapper } from "./styled.js";
 import Img from "../Img/index.jsx";
 
-const DragDrop = ({
-  src,
-  alt,
-  name,
-  type,
-  accept,
-  multiple,
-  onChange,
-  handleDrop,
-}) => {
+const DragDrop = ({ src, alt, name, type, accept, multiple, onChange }) => {
   return (
-    <DragDropWrapper onDragOver={(e) => e.preventDefault()} onDrop={handleDrop}>
+    <DragDropWrapper>
       {src && <Img src={src} alt={alt} $round $settings />}
       <input
         name={name}
