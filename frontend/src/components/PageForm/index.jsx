@@ -12,7 +12,7 @@ const PageForm = ({
   button,
   children,
 }) => {
-  const { data, handleDrop, handleChange } = useValidator(initialState);
+  const { data, handleChange } = useValidator(initialState);
 
   return (
     <StyledForm method={method} encType={encType}>
@@ -24,7 +24,6 @@ const PageForm = ({
               key={index}
               src={row.src}
               alt={row.alt}
-              handleDrop={(event) => handleDrop(event)}
               onChange={(event) => handleChange(row.name, event)}
               name={row.name}
               type={row.type}
