@@ -6,11 +6,10 @@ export const DragDropWrapper = styled.label`
   gap: 8px;
   justify-content: space-between;
   align-items: center;
-
-  cursor: pointer;
+  position: relative;
 
   span {
-    padding: 8px;
+    padding: 16px 8px;
     border: 2px dashed ${({ theme }) => theme.colors.contrast};
     color: ${({ theme }) => theme.colors.main_font};
     text-align: center;
@@ -19,6 +18,13 @@ export const DragDropWrapper = styled.label`
   }
 
   input {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
   }
 `;
