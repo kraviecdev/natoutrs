@@ -26,7 +26,7 @@ const List = ({ data }) => {
               )}
             </Wrapper>
             <Wrapper $icon>
-              <StyledLink to={item.id}>
+              <StyledLink to={`/settings/${item.route}`}>
                 <Icon name="edit-2" />
               </StyledLink>
               <Icon name="trash-2" />
