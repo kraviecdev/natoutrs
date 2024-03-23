@@ -28,6 +28,7 @@ const Signup = () => {
       value: "",
       validation: true,
       regex: /[a-zA-Z0-9]{3,}/,
+      required: true,
     },
     {
       name: "email",
@@ -40,6 +41,7 @@ const Signup = () => {
       regex:
         /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
       message: "Enter correct email address",
+      required: true,
     },
     {
       name: "password",
@@ -51,6 +53,7 @@ const Signup = () => {
       validation: true,
       regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
       message: "Min password length is 8 characters and digits",
+      required: true,
     },
     {
       name: "passwordConfirm",
@@ -61,6 +64,7 @@ const Signup = () => {
       value: "",
       validation: true,
       message: "Passwords must be the same",
+      required: true,
     },
   ];
 

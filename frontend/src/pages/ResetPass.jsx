@@ -29,6 +29,7 @@ const ResetPass = () => {
       validation: true,
       regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
       message: "Min password length is 8 characters and digits",
+      required: true,
     },
     {
       name: "passwordConfirm",
@@ -39,6 +40,7 @@ const ResetPass = () => {
       value: "",
       validation: true,
       message: "Passwords must be the same",
+      required: true,
     },
   ];
 

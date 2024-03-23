@@ -9,7 +9,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.patch("/users/update-my-pass", data);
     toast.success("Password has been updated");
-    return redirect("/me");
+    return redirect("/settings");
   } catch (error) {
     toast.error(error?.response?.data?.message);
     return error;
@@ -27,6 +27,7 @@ const ChangePass = () => {
       value: "",
       validation: true,
       regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+      required: true,
     },
     {
       name: "password",
@@ -38,6 +39,7 @@ const ChangePass = () => {
       validation: true,
       regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
       message: "Min password length is 8 characters and digits",
+      required: true,
     },
     {
       name: "passwordConfirm",
@@ -48,6 +50,7 @@ const ChangePass = () => {
       value: "",
       validation: true,
       message: "Passwords must be the same",
+      required: true,
     },
   ];
 
