@@ -14,6 +14,11 @@ export const RowWrapper = styled.div`
     display: none;
   }
 
+  select {
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
   &:focus-within {
     color: ${({ theme }) => theme.colors.main_font};
   }
