@@ -10,7 +10,10 @@ const FormRow = ({
   onChange,
   name,
   $invalid,
+  select,
+  opt,
   message,
+  required,
 }) => {
   return (
     <RowWrapper $valid={value !== "" && !$invalid} $invalid={$invalid}>
@@ -22,8 +25,15 @@ const FormRow = ({
         placeholder={placeholder}
         name={name}
         type={type}
-        required
-      />
+        required={required}
+      >
+        {select &&
+          opt.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+      </Input>
       {message && <Paragraph $invalid>{message}</Paragraph>}
     </RowWrapper>
   );
