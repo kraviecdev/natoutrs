@@ -3,6 +3,7 @@ import { SecondaryHeading } from "../common/Title/index.js";
 import FormRow from "../common/FormRow/index.jsx";
 import useValidator from "../../utils/useValidator.js";
 import DragDrop from "../common/DragDrop/index.jsx";
+import { useEffect, useState } from "react";
 
 const PageForm = ({
   method,
@@ -13,6 +14,17 @@ const PageForm = ({
   children,
 }) => {
   const { data, handleChange } = useValidator(initialState);
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    if (data.some((obj) => obj.required === true)) {
+      if (data.some((obj) => obj.value === "" || obj.validation === false)) {
+        setDisabled(true);
+      } else {
+        setDisabled(false);
+      }
+    }
+  }, [data]);
 
   return (
     <StyledForm method={method} encType={encType}>
@@ -41,15 +53,14 @@ const PageForm = ({
               name={row.name}
               type={row.type}
               $invalid={!row.validation}
+              required={row.required}
+              message={!row.validation && row.message}
+              select={row.select}
+              opt={row.options}
             />
           ),
         )}
-      <FormButton
-        disabled={data.some(
-          (field) => field.validation === false || field.value === "",
-        )}
-        type="submit"
-      >
+      <FormButton disabled={disabled} type="submit">
         {button}
       </FormButton>
       {children}
