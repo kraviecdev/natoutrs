@@ -18,7 +18,7 @@ const Header = ({ data, logout }) => {
               <StyledLink to="/" onClick={() => logout()}>
                 Log out
               </StyledLink>
-              <StyledLink to="/me">
+              <StyledLink to="/settings">
                 <Img
                   $round
                   src={`/img/users/${data.photo}`}
