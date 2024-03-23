@@ -9,7 +9,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.patch("/users/update-my-data", formData);
     toast.success("Your data has been updated");
-    return redirect("/me/settings");
+    return redirect("/settings");
   } catch (error) {
     toast.error(error?.response?.data?.message);
     return error;
@@ -27,7 +27,6 @@ const Settings = () => {
       accept: "image/*",
       multiple: false,
       file: true,
-      validation: true,
     },
     {
       name: "name",

@@ -10,7 +10,7 @@ const AccountNav = ({ data }) => {
     {
       icon: "settings",
       info: "settings",
-      to: "settings",
+      to: "",
     },
     {
       icon: "lock",
