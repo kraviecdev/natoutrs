@@ -24,7 +24,7 @@ const useValidator = (initialState) => {
             ? (field.validation = true)
             : (field.validation = false);
         } else {
-          field.validation = field.regex.test(val);
+          field.validation = field.regex ? field.regex.test(val) : true;
         }
       }
     }
