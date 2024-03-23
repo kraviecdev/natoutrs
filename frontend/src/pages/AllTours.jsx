@@ -14,7 +14,7 @@ const AllTours = () => {
   const { data } = useLoaderData();
 
   const input = data.map((item) => ({
-    id: item.id,
+    id: item._id,
     src: `/img/tours/${item.imageCover}`,
     info: item.name,
     additional: item.summary,
