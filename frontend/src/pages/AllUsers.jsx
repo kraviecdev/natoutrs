@@ -14,7 +14,7 @@ const AllUsers = () => {
   const { data } = useLoaderData();
 
   const input = data.map((item) => ({
-    id: item._id,
+    route: `manage-user/${item._id}`,
     src: `/img/users/${item.photo}`,
     info: item.name,
     context: `Role: ${item.role.toUpperCase()}`,

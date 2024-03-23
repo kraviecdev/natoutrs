@@ -14,7 +14,7 @@ const MyReviews = () => {
   const { data } = useLoaderData();
 
   const input = data.map((item) => ({
-    id: item._id,
+    route: `manage-review/${item._id}`,
     src: `/img/users/${item.user.photo}`,
     alt: item.user.name,
     info: `rating ${item.rating}/5`,
