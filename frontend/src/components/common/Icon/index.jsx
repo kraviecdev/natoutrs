@@ -1,8 +1,8 @@
 import { StyledIcon } from "./styled.js";
 
-const Icon = ({ $rating, name }) => {
+const Icon = ({ $rating, $del, name }) => {
   return (
-    <StyledIcon $rating={$rating}>
+    <StyledIcon $rating={$rating} $del={$del}>
       <use href={`/img/icons.svg#icon-${name}`} />
     </StyledIcon>
   );
