@@ -5,8 +5,12 @@ import { Wrapper } from "../Wrapper/index.js";
 import { Paragraph } from "../Paragraph/index.js";
 import Img from "../Img/index.jsx";
 import Icon from "../Icon/index.jsx";
+import { Form, useLocation } from "react-router-dom";
+import { FormButton } from "../Form/index.js";
 
 const List = ({ data }) => {
+  const { pathname } = useLocation();
+
   return (
     <StyledList>
       {data &&
@@ -26,10 +30,14 @@ const List = ({ data }) => {
               )}
             </Wrapper>
             <Wrapper $icon>
-              <StyledLink to={`/settings/${item.route}`}>
+              <StyledLink to={`/settings/${item.route}/${item.id}`}>
                 <Icon name="edit-2" />
               </StyledLink>
-              <Icon name="trash-2" />
+              <Form method="post" action={`${pathname}/delete/${item.id}`}>
+                <FormButton $delete>
+                  <Icon name="trash-2" $del />
+                </FormButton>
+              </Form>
             </Wrapper>
           </ListItem>
         ))}
