@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Form } from "react-router-dom";
 
 export const StyledForm = styled(Form)`
@@ -40,4 +40,19 @@ export const FormButton = styled.button`
     cursor: not-allowed;
     background: ${({ theme }) => theme.colors.second};
   }
+
+  ${(props) =>
+    props.$delete &&
+    css`
+      display: flex;
+      align-items: center;
+      background: transparent;
+      padding: 0;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: none;
+        filter: drop-shadow(0 10px 3px ${({ theme }) => theme.colors.shadow});
+      }
+    `}
 `;
