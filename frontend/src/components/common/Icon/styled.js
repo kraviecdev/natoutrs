@@ -15,4 +15,11 @@ export const StyledIcon = styled.svg`
     css`
       fill: ${({ theme }) => theme.colors.second};
     `}
+
+  ${(props) =>
+    props.$del &&
+    css`
+      fill: ${({ theme }) => theme.colors.error};
+      cursor: pointer;
+    `}
 `;
