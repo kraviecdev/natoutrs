@@ -6,7 +6,7 @@ import TourDetails from "../components/TourDetails/index.jsx";
 
 export const loader = async ({ params }) => {
   try {
-    const { data } = await customFetch.get(`/tours/${params.slug}`);
+    const { data } = await customFetch.get(`/tours/tour/${params.slug}`);
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.message);
