@@ -15,7 +15,7 @@ router
   .route("/tours-within/:searchRadius/center/:latlon")
   .get(tourController.getToursWithin);
 router.route("/distances/:latlon").get(tourController.getDistances);
-router.route("/:slug").get(tourController.getTourSlug);
+router.route("/tour/:slug").get(tourController.getTourSlug);
 
 router
   .route("/")
@@ -27,25 +27,22 @@ router
   );
 
 router
-  .route(`/:id`)
-  .get(tourController.getTour)
-  .patch(
-    authController.protect,
-    authController.restrictTo("admin", "lead-guide"),
-    tourController.updateTour,
-  )
-  .delete(
-    authController.protect,
-    authController.restrictTo("admin", "lead-guide"),
-    tourController.deleteTour,
-  );
-
-router
   .route("/monthly-plan/:year")
   .get(
     authController.protect,
     authController.restrictTo("admin", "lead-guide", "guide"),
     tourController.getMonthlyPlan,
   );
+
+router.use(
+  authController.protect,
+  authController.restrictTo("admin", "lead-guide"),
+);
+
+router
+  .route(`/:id`)
+  .get(tourController.getTour)
+  .patch(tourController.updateTour)
+  .delete(tourController.deleteTour);
 
 module.exports = router;
