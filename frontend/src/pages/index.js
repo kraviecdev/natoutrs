@@ -13,3 +13,6 @@ export { default as MyReviews } from "./MyReviews.jsx";
 export { default as AllReviews } from "./AllReviews.jsx";
 export { default as AllTours } from "./AllTours.jsx";
 export { default as AllUsers } from "./AllUsers.jsx";
+export { default as ManageReview } from "./ManageReview.jsx";
+export { default as ManageTour } from "./ManageTour.jsx";
+export { default as ManageUser } from "./ManageUser.jsx";
