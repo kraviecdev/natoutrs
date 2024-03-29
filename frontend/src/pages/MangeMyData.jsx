@@ -1,6 +1,7 @@
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import { redirect, useOutletContext } from "react-router-dom";
+import { SecondaryHeading } from "../components/common/Title/index.js";
 import PageForm from "../components/PageForm/index.jsx";
 
 export const action = async ({ request }) => {
@@ -19,46 +20,61 @@ const MangeMyData = () => {
   const user = useOutletContext();
   const initialState = [
     {
+      label: "Your new account photo",
+      props: {
+        accept: "image/*",
+        multiple: false,
+        as: "file",
+        value: undefined,
+        name: "photo",
+        type: "file",
+      },
       src: `/img/users/${user.photo}`,
       alt: user.name,
-      name: "photo",
-      type: "file",
-      accept: "image/*",
-      multiple: false,
-      file: true,
     },
     {
-      name: "name",
-      type: "text",
       label: "Name",
-      placeholder: user.name,
-      as: "input",
-      value: user.name,
-      validation: true,
-      regex: /[a-zA-Z0-9]{3,}/,
+      message: "Name must have at least 3 characters",
+      props: {
+        as: "input",
+        value: user.name,
+        maxLength: 20,
+        minLength: 3,
+        autoComplete: "on",
+        name: "name",
+        placeholder: user.name,
+        required: true,
+        type: "text",
+      },
     },
     {
-      name: "email",
-      type: "email",
       label: "Email address",
-      placeholder: user.email,
-      as: "input",
-      value: user.email,
-      validation: true,
-      regex:
-        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
       message: "Enter correct email address",
+      props: {
+        as: "input",
+        value: user.email,
+        autoComplete: "on",
+        name: "email",
+        placeholder: user.email,
+        required: true,
+        type: "email",
+        pattern:
+          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+      },
     },
   ];
 
   return (
-    <PageForm
-      method="patch"
-      encType="multipart/form-data"
-      initialState={initialState}
-      heading="Edit your account"
-      button="Save changes"
-    />
+    <>
+      <SecondaryHeading>Edit your account</SecondaryHeading>
+      <PageForm
+        method="patch"
+        encType="multipart/form-data"
+        initialState={initialState}
+        button="Save changes"
+        $second
+      />
+    </>
   );
 };
 
