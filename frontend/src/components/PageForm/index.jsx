@@ -1,11 +1,13 @@
 import { FormButton, StyledForm } from "../common/Form/index.js";
 import { SecondaryHeading } from "../common/Title/index.js";
 import FormRow from "../common/FormRow/index.jsx";
-import DragDrop from "../common/DragDrop/index.jsx";
-import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { DevTool } from "@hookform/devtools";
 
 const PageForm = ({
-  method,
+  schema,
+  onSubmit,
   encType,
   $second,
   initialState,
@@ -13,41 +15,40 @@ const PageForm = ({
   button,
   children,
 }) => {
-  const formRef = useRef();
-  const [disabled, setDisabled] = useState(false);
-
-  const onFormChange = () => {
-    const form = formRef.current;
-
-    const anyInvalid = Array.from(form.elements).some((element) => {
-      return element.nodeName === "INPUT" && !element.validity.valid;
-    });
-
-    anyInvalid ? setDisabled(true) : setDisabled(false);
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    control,
+    formState: { errors, isDirty },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
 
   return (
-    <StyledForm
-      ref={formRef}
-      onChange={onFormChange}
-      method={method}
-      encType={encType}
-      $second={$second}
-    >
-      {heading && <SecondaryHeading>{heading}</SecondaryHeading>}
-      {initialState &&
-        initialState.map((row, index) =>
-          row.props.type === "file" ? (
-            <DragDrop key={index} row={row} />
-          ) : (
-            <FormRow key={index} row={row} />
-          ),
-        )}
-      <FormButton disabled={disabled} type="submit">
-        {button}
-      </FormButton>
-      {children}
-    </StyledForm>
+    <>
+      <StyledForm
+        onSubmit={handleSubmit(onSubmit)}
+        encType={encType}
+        $second={$second}
+      >
+        {heading && <SecondaryHeading>{heading}</SecondaryHeading>}
+        {initialState &&
+          initialState.map((row, index) => (
+            <FormRow
+              label={row.label}
+              register={register(row.name)}
+              props={row.props}
+              key={index}
+              valid={watch(row.name)}
+              errorText={errors[row.name]?.message}
+            />
+          ))}
+        <FormButton type="submit">{button}</FormButton>
+        {children}
+      </StyledForm>
+      <DevTool control={control} />
+    </>
   );
 };
 
