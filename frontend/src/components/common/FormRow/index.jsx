@@ -1,28 +1,14 @@
 import { Input, RowWrapper } from "./styled.js";
 import { Paragraph } from "../Paragraph/index.js";
-import { useState } from "react";
 
-const FormRow = ({ row }) => {
-  const [value, setValue] = useState(row.props.value || "");
-
+const FormRow = ({ label, errorText, valid, props, register }) => {
   return (
-    <RowWrapper>
-      <label>{row.label}</label>
-      <Input
-        {...row.props}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      >
-        {row.option &&
-          row.option.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-      </Input>
-      {row.message && (
+    <RowWrapper $invalid={errorText} $valid={valid}>
+      <label>{label}</label>
+      <Input {...register} {...props} />
+      {errorText && (
         <Paragraph $italic $invalid>
-          {row.message}
+          {errorText}
         </Paragraph>
       )}
     </RowWrapper>
