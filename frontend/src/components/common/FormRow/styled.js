@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const RowWrapper = styled.div`
   display: grid;
@@ -10,21 +10,31 @@ export const RowWrapper = styled.div`
   font-weight: ${({ theme }) => theme.font.weight.medium};
   font-size: ${({ theme }) => theme.font.weight.small};
 
-  p {
-    display: none;
-  }
-
   &:focus-within {
     color: ${({ theme }) => theme.colors.main_font};
   }
 
-  &:has(input:invalid) {
-    color: ${({ theme }) => theme.colors.error};
+  ${(props) =>
+    props.$invalid &&
+    css`
+      color: ${({ theme }) => theme.colors.error};
 
-    p {
-      display: inherit;
-    }
-  }
+      input {
+        color: inherit;
+        border: 1px solid;
+      }
+    `}
+
+  ${(props) =>
+    props.$valid &&
+    css`
+      color: ${({ theme }) => theme.colors.main_font};
+
+      input {
+        color: inherit;
+        border: 1px solid;
+      }
+    `}
 `;
 
 export const Input = styled.input`
@@ -41,14 +51,5 @@ export const Input = styled.input`
   &:focus {
     color: ${({ theme }) => theme.colors.main_font};
     border: 1px solid;
-  }
-
-  &:invalid {
-    color: ${({ theme }) => theme.colors.error};
-    border: 1px solid;
-  }
-
-  &:valid {
-    color: ${({ theme }) => theme.colors.main_font};
   }
 `;
