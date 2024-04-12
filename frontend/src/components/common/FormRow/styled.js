@@ -15,9 +15,9 @@ export const RowWrapper = styled.div`
   }
 
   ${(props) =>
-    props.$invalid &&
+    props.$valid &&
     css`
-      color: ${({ theme }) => theme.colors.error};
+      color: ${({ theme }) => theme.colors.main_font};
 
       input {
         color: inherit;
@@ -26,9 +26,9 @@ export const RowWrapper = styled.div`
     `}
 
   ${(props) =>
-    props.$valid &&
+    props.$invalid &&
     css`
-      color: ${({ theme }) => theme.colors.main_font};
+      color: ${({ theme }) => theme.colors.error};
 
       input {
         color: inherit;
