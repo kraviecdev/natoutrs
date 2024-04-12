@@ -8,7 +8,6 @@ import { DevTool } from "@hookform/devtools";
 const PageForm = ({
   schema,
   onSubmit,
-  encType,
   $second,
   initialState,
   heading,
@@ -20,18 +19,14 @@ const PageForm = ({
     handleSubmit,
     watch,
     control,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
   });
 
   return (
     <>
-      <StyledForm
-        onSubmit={handleSubmit(onSubmit)}
-        encType={encType}
-        $second={$second}
-      >
+      <StyledForm onSubmit={handleSubmit(onSubmit)} $second={$second}>
         {heading && <SecondaryHeading>{heading}</SecondaryHeading>}
         {initialState &&
           initialState.map((row, index) => (
