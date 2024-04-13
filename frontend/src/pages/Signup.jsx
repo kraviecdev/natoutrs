@@ -1,80 +1,91 @@
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import PageForm from "../components/PageForm/index.jsx";
 import { Main } from "../components/common/Main/index.js";
+import { z } from "zod";
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  try {
-    await customFetch.post("/users/signup", data);
-    toast.success("You are signed up");
-    return redirect("/");
-  } catch (error) {
-    toast.error(error?.response?.data?.message);
-    return error;
-  }
-};
 const Signup = () => {
-  const initialState = [
+  const navigate = useNavigate();
+  const signupState = [
     {
       name: "name",
-      type: "text",
       label: "Your Name",
-      placeholder: "Example Name",
-      as: "input",
-      value: "",
-      validation: true,
-      regex: /[a-zA-Z0-9]{3,}/,
-      required: true,
+      props: {
+        type: "text",
+        placeholder: "Example Name",
+        as: "input",
+      },
     },
     {
       name: "email",
-      type: "email",
       label: "Email address",
-      placeholder: "you@example.com",
-      as: "input",
-      value: "",
-      validation: true,
-      regex:
-        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-      message: "Enter correct email address",
-      required: true,
+      props: {
+        type: "email",
+        placeholder: "you@example.com",
+        as: "input",
+      },
     },
     {
       name: "password",
-      type: "password",
       label: "Password",
-      placeholder: "••••••••",
-      as: "input",
-      value: "",
-      validation: true,
-      regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      message: "Min password length is 8 characters and digits",
-      required: true,
+      props: {
+        type: "password",
+        placeholder: "••••••••",
+        as: "input",
+      },
     },
     {
       name: "passwordConfirm",
-      type: "password",
       label: "Confirm Password",
-      placeholder: "••••••••",
-      as: "input",
-      value: "",
-      validation: true,
-      message: "Passwords must be the same",
-      required: true,
+      props: {
+        type: "password",
+        placeholder: "••••••••",
+        as: "input",
+      },
     },
   ];
+
+  const signup = z
+    .object({
+      name: z.string().min(3).max(64),
+      email: z.string().email(),
+      password: z.string().min(8),
+      passwordConfirm: z.string().min(8),
+    })
+    .required()
+    .refine(
+      (values) => {
+        return values.password === values.passwordConfirm;
+      },
+      {
+        message: "Passwords must be the same!",
+        path: ["passwordConfirm"],
+      },
+    );
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await customFetch.post("/users/signup", data);
+
+      if (response.status === 200) {
+        toast.success("Signup successful");
+        return navigate("/");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      return error;
+    }
+  };
 
   return (
     <Main>
       <PageForm
-        method="post"
         heading="Sign up to Natours"
         button="Sign Up"
-        initialState={initialState}
+        initialState={signupState}
+        schema={signup}
+        onSubmit={onSubmit}
       />
     </Main>
   );
