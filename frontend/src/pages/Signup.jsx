@@ -68,7 +68,7 @@ const Signup = () => {
     try {
       const response = await customFetch.post("/users/signup", data);
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         toast.success("Signup successful");
         return navigate("/");
       }
