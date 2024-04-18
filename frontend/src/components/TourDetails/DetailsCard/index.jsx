@@ -1,6 +1,6 @@
-import { Article } from "../common/Article/index.js";
-import { SecondaryHeading } from "../common/Title/index.js";
-import DetailBox from "../common/DetailBox/index.jsx";
+import { Article } from "../../_assets/Article/index.js";
+import { SecondaryHeading } from "../../_assets/Title/index.js";
+import DetailBox from "./DetailBox/index.jsx";
 
 const DetailsCard = ({ title, data }) => {
   return (

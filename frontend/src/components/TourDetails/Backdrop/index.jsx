@@ -1,8 +1,8 @@
 import { BackdropBackground } from "./styled.js";
-import { Wrapper } from "../Wrapper/index.js";
-import { MainHeading } from "../Title/index.js";
-import Img from "../Img/index.jsx";
-import IconInfo from "../IconInfo/index.jsx";
+import { Wrapper } from "../../_assets/Wrapper/index.js";
+import { MainHeading } from "../../_assets/Title/index.js";
+import Img from "../../_assets/Img/index.jsx";
+import IconInfo from "../../_assets/IconInfo/index.jsx";
 
 const Backdrop = ({ tour }) => {
   return (

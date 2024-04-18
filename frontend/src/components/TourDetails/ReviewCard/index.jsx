@@ -1,9 +1,9 @@
-import { Article } from "../common/Article/index.js";
-import { Wrapper } from "../common/Wrapper/index.js";
-import { ContextHeading } from "../common/Title/index.js";
-import { Paragraph } from "../common/Paragraph/index.js";
-import Icon from "../common/Icon/index.jsx";
-import Img from "../common/Img/index.jsx";
+import { Article } from "../../_assets/Article/index.js";
+import { Wrapper } from "../../_assets/Wrapper/index.js";
+import { ContextHeading } from "../../_assets/Title/index.js";
+import { Paragraph } from "../../_assets/Paragraph/index.js";
+import Icon from "../../_assets/Icon/index.jsx";
+import Img from "../../_assets/Img/index.jsx";
 
 const ReviewCard = ({ review }) => {
   const rating = [1, 2, 3, 4, 5];

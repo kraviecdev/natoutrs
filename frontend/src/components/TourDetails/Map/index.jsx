@@ -8,9 +8,9 @@ import {
 } from "react-map-gl";
 import { fitBounds } from "@math.gl/web-mercator";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Img from "../common/Img/index.jsx";
-import useGetCenterFromBounds from "../../utils/useGetCenterFromBounds.js";
-import { Paragraph } from "../common/Paragraph/index.js";
+import Img from "../../_assets/Img/index.jsx";
+import useGetCenterFromBounds from "../../../utils/useGetCenterFromBounds.js";
+import { Paragraph } from "../../_assets/Paragraph/index.js";
 
 const TOKEN = import.meta.env.VITE_MAPBOX_GL_TOKEN;
 
