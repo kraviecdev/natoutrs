@@ -1,11 +1,11 @@
-import { ContextHeading, SecondaryHeading } from "../common/Title/index.js";
-import { StyledLink } from "../common/Link/index.js";
-import { Paragraph } from "../common/Paragraph/index.js";
-import { Article } from "../common/Article/index.js";
-import { Wrapper } from "../common/Wrapper/index.js";
-import { Section } from "../common/Section/index.js";
-import Img from "../common/Img/index.jsx";
-import IconInfo from "../common/IconInfo/index.jsx";
+import { ContextHeading, SecondaryHeading } from "../_assets/Title/index.js";
+import { StyledLink } from "../_assets/Link/index.js";
+import { Paragraph } from "../_assets/Paragraph/index.js";
+import { Article } from "../_assets/Article/index.js";
+import { Wrapper } from "../_assets/Wrapper/index.js";
+import { Section } from "../_assets/Section/index.js";
+import Img from "../_assets/Img/index.jsx";
+import IconInfo from "../_assets/IconInfo/index.jsx";
 
 const TourCard = ({ tour }) => {
   const date = new Date(tour.startDates[0]);

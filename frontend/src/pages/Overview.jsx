@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
-import { Main } from "../components/common/Main/index.js";
-import { Section } from "../components/common/Section/index.js";
+import { Main } from "../components/_assets/Main/index.js";
+import { Section } from "../components/_assets/Section/index.js";
 import TourCard from "../components/TourCard/index.jsx";
 import { useEffect } from "react";
 

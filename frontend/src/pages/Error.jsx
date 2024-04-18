@@ -1,6 +1,6 @@
-import { StyledLink } from "../components/common/Link/index.js";
-import { Main } from "../components/common/Main/index.js";
-import Img from "../components/common/Img/index.jsx";
+import { StyledLink } from "../components/_assets/Link/index.js";
+import { Main } from "../components/_assets/Main/index.js";
+import Img from "../components/_assets/Img/index.jsx";
 
 const Error = () => {
   return (

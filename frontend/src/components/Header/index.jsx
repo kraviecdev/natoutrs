@@ -1,7 +1,7 @@
-import { Nav } from "../common/Nav/index.js";
-import { StyledLink } from "../common/Link/index.js";
-import { Wrapper } from "../common/Wrapper/index.js";
-import Img from "../common/Img/index.jsx";
+import { Nav } from "../_assets/Nav/index.js";
+import { StyledLink } from "../_assets/Link/index.js";
+import { Wrapper } from "../_assets/Wrapper/index.js";
+import Img from "../_assets/Img/index.jsx";
 
 const Header = ({ data, logout }) => {
   return (

@@ -1,15 +1,15 @@
-import Backdrop from "../common/Backdrop/index.jsx";
-import Img from "../common/Img/index.jsx";
-import CustomMap from "../Map/index.jsx";
-import ReviewCard from "../ReviewCard/index.jsx";
-import DetailsCard from "../DetailsCard/index.jsx";
+import Backdrop from "./Backdrop/index.jsx";
+import Img from "../_assets/Img/index.jsx";
+import CustomMap from "./Map/index.jsx";
+import ReviewCard from "./ReviewCard/index.jsx";
+import DetailsCard from "./DetailsCard/index.jsx";
 
-import { Wrapper } from "../common/Wrapper/index.js";
-import { SecondaryHeading } from "../common/Title/index.js";
-import { Section } from "../common/Section/index.js";
-import { Paragraph } from "../common/Paragraph/index.js";
-import { Main } from "../common/Main/index.js";
-import { StyledLink } from "../common/Link/index.js";
+import { Wrapper } from "../_assets/Wrapper/index.js";
+import { SecondaryHeading } from "../_assets/Title/index.js";
+import { Section } from "../_assets/Section/index.js";
+import { Paragraph } from "../_assets/Paragraph/index.js";
+import { Main } from "../_assets/Main/index.js";
+import { StyledLink } from "../_assets/Link/index.js";
 
 const TourDetails = ({ tour }) => {
   if (tour) {
