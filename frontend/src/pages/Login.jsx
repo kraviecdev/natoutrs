@@ -1,56 +1,59 @@
-import { redirect } from "react-router-dom";
-import { toast } from "react-toastify";
-import customFetch from "../utils/customFetch.js";
+import { Main } from "../components/common/Main/index.js";
 import { Wrapper } from "../components/common/Wrapper/index.js";
 import { StyledLink } from "../components/common/Link/index.js";
+import { toast } from "react-toastify";
 import PageForm from "../components/PageForm/index.jsx";
-import { Main } from "../components/common/Main/index.js";
+import customFetch from "../utils/customFetch.js";
+import { z } from "zod";
+import { useNavigate } from "react-router-dom";
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  try {
-    await customFetch.post("/users/login", data);
-    toast.success("Login successful");
-    return redirect("/");
-  } catch (error) {
-    toast.error(error?.response?.data?.message);
-    return error;
-  }
-};
 const Login = () => {
-  const initialState = [
+  const navigate = useNavigate();
+  const loginState = [
     {
-      name: "email",
-      type: "email",
       label: "Email address",
-      placeholder: "you@example.com",
-      as: "input",
-      value: "",
-      validation: true,
-      regex:
-        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-      required: true,
+      name: "email",
+      props: {
+        type: "email",
+        placeholder: "you@example.com",
+        as: "input",
+      },
     },
     {
-      name: "password",
-      type: "password",
       label: "Password",
-      placeholder: "••••••••",
-      as: "input",
-      value: "",
-      validation: true,
-      regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      required: true,
+      name: "password",
+      props: {
+        type: "password",
+        placeholder: "••••••••",
+        as: "input",
+      },
     },
   ];
+
+  const loginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8),
+  });
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await customFetch.post("/users/login", data);
+      if (response.status === 200) {
+        toast.success("Login successful");
+        return navigate("/");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      return error;
+    }
+  };
 
   return (
     <Main>
       <PageForm
-        method="post"
-        initialState={initialState}
+        onSubmit={onSubmit}
+        schema={loginSchema}
+        initialState={loginState}
         heading="Log into your account"
         button="login"
       >

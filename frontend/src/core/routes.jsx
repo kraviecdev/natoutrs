@@ -8,8 +8,8 @@ import {
   Overview,
   Signup,
   Tour,
-  Account,
   Settings,
+  ManageMyData,
   ChangePass,
   MyReviews,
   AllReviews,
@@ -35,7 +35,7 @@ import { action as loginAction } from "../pages/Login.jsx";
 import { action as signupAction } from "../pages/Signup.jsx";
 import { action as forgotPass } from "../pages/ForgotPass.jsx";
 import { action as resetPass } from "../pages/ResetPass.jsx";
-import { action as updateUserData } from "../pages/Settings.jsx";
+import { action as updateUserData } from "../pages/MangeMyData.jsx";
 import { action as updateUserPass } from "../pages/ChangePass.jsx";
 import { action as updateReview } from "../pages/ManageReview.jsx";
 import { action as updateTour } from "../pages/ManageTour.jsx";
@@ -81,11 +81,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "settings",
-        element: <Account />,
+        element: <Settings />,
         children: [
           {
             index: true,
-            element: <Settings />,
+            element: <ManageMyData />,
             action: updateUserData,
           },
           {

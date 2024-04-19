@@ -136,6 +136,7 @@ exports.forgotPass = catchAsync(async (req, res, next) => {
       new AppError("Sorry something went wrong, try again or contact us", 404),
     );
   }
+
   //generate random token
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
@@ -145,7 +146,7 @@ exports.forgotPass = catchAsync(async (req, res, next) => {
     "host",
   )}/reset-pass/${resetToken}`;
 
-  const message = `Forgot your password, submit a PATCH request with your new password and passwordConfirm to: ${resetURL}\nIf you didn't forget your password, please ignore this email!`;
+  const message = `Here is link to reset your password: ${resetURL}\nIf you didn't forget your password, please ignore this email!`;
 
   try {
     await sendEmail({
@@ -156,7 +157,7 @@ exports.forgotPass = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      message: "Token sent to email!",
+      message: "An email has been sent to your email to reset your password.",
     });
   } catch (err) {
     user.passwordResetToken = undefined;

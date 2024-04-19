@@ -1,40 +1,16 @@
 import { Input, RowWrapper } from "./styled.js";
 import { Paragraph } from "../Paragraph/index.js";
 
-const FormRow = ({
-  as,
-  label,
-  type,
-  placeholder,
-  value,
-  onChange,
-  name,
-  $invalid,
-  select,
-  opt,
-  message,
-  required,
-}) => {
+const FormRow = ({ label, errorText, valid, props, register }) => {
   return (
-    <RowWrapper $valid={value !== "" && !$invalid} $invalid={$invalid}>
+    <RowWrapper $invalid={errorText} $valid={valid}>
       <label>{label}</label>
-      <Input
-        as={as}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        name={name}
-        type={type}
-        required={required}
-      >
-        {select &&
-          opt.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-      </Input>
-      {message && <Paragraph $invalid>{message}</Paragraph>}
+      <Input {...register} {...props} />
+      {errorText && (
+        <Paragraph $italic $invalid>
+          {errorText}
+        </Paragraph>
+      )}
     </RowWrapper>
   );
 };

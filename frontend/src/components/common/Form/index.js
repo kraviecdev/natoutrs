@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
-import { Form } from "react-router-dom";
 
-export const StyledForm = styled(Form)`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,7 +9,7 @@ export const StyledForm = styled(Form)`
   height: max-content;
   padding: 32px 12px;
   gap: 24px;
-  border-radius: 6px;
+  border-radius: 24px;
   box-shadow: 0 2px 6px ${({ theme }) => theme.colors.shadow};
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {

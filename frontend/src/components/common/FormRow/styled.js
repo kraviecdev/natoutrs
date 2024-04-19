@@ -10,32 +10,9 @@ export const RowWrapper = styled.div`
   font-weight: ${({ theme }) => theme.font.weight.medium};
   font-size: ${({ theme }) => theme.font.weight.small};
 
-  p {
-    display: none;
-  }
-
-  select {
-    text-transform: uppercase;
-    cursor: pointer;
-  }
-
   &:focus-within {
     color: ${({ theme }) => theme.colors.main_font};
   }
-
-  ${(props) =>
-    props.$invalid &&
-    css`
-      color: ${({ theme }) => theme.colors.error};
-
-      p {
-        display: inherit;
-      }
-
-      input {
-        border-bottom: 1px solid ${({ theme }) => theme.colors.error};
-      }
-    `}
 
   ${(props) =>
     props.$valid &&
@@ -43,23 +20,36 @@ export const RowWrapper = styled.div`
       color: ${({ theme }) => theme.colors.main_font};
 
       input {
-        border-bottom: 1px solid ${({ theme }) => theme.colors.main_font};
+        color: inherit;
+        border: 1px solid;
+      }
+    `}
+
+  ${(props) =>
+    props.$invalid &&
+    css`
+      color: ${({ theme }) => theme.colors.error};
+
+      input {
+        color: inherit;
+        border: 1px solid;
       }
     `}
 `;
 
 export const Input = styled.input`
-  border: none;
+  border-radius: 16px;
   outline: none;
-  padding: 16px 0;
+  padding: 16px 10px;
   color: inherit;
   width: 100%;
   background: none;
   font-size: ${({ theme }) => theme.font.size.regular}px;
-  border-bottom: 1px solid;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 6px ${({ theme }) => theme.colors.shadow};
 
   &:focus {
-    color: ${({ theme }) => theme.colors.indigo};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.indigo};
+    color: ${({ theme }) => theme.colors.main_font};
+    border: 1px solid;
   }
 `;

@@ -1,56 +1,68 @@
-import { redirect } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
 import { toast } from "react-toastify";
 import PageForm from "../components/PageForm/index.jsx";
 import { Main } from "../components/common/Main/index.js";
+import { z } from "zod";
 
-export const action = async ({ request, params }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  try {
-    await customFetch.patch(`/users/reset-pass/${params.token}`, data);
-    toast.success("Your password has been changed successfully");
-    return redirect("/");
-  } catch (error) {
-    toast.error(error?.response?.data?.message);
-    return error;
-  }
-};
 const ResetPass = () => {
-  const initialState = [
+  const params = useParams();
+  const resetPassState = [
     {
       name: "password",
-      type: "password",
       label: "Password",
-      placeholder: "••••••••",
-      as: "input",
-      value: "",
-      validation: true,
-      regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-      message: "Min password length is 8 characters and digits",
-      required: true,
+      props: {
+        type: "password",
+        placeholder: "••••••••",
+        as: "input",
+      },
     },
     {
       name: "passwordConfirm",
-      type: "password",
       label: "Confirm Password",
-      placeholder: "••••••••",
-      as: "input",
-      value: "",
-      validation: true,
-      message: "Passwords must be the same",
-      required: true,
+      props: {
+        type: "password",
+        placeholder: "••••••••",
+        as: "input",
+      },
     },
   ];
+
+  const restPass = z
+    .object({
+      password: z.string().min(8),
+      passwordConfirm: z.string().min(8),
+    })
+    .required()
+    .refine(
+      (values) => {
+        return values.password === values.passwordConfirm;
+      },
+      {
+        message: "Passwords must be the same!",
+        path: ["passwordConfirm"],
+      },
+    );
+
+  const onSubmit = async (data) => {
+    try {
+      await customFetch.patch(`/users/reset-pass/${params.token}`, data);
+      toast.success("Your password has been changed successfully");
+      return redirect("/");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      return error;
+    }
+  };
 
   return (
     <Main>
       <PageForm
-        method="patch"
-        initialState={initialState}
+        initialState={resetPassState}
+        schema={restPass}
+        onSubmit={onSubmit}
         heading="Submit new password"
-        button="Submit"
+        button="Confirm"
       />
     </Main>
   );
