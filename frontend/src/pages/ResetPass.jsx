@@ -1,34 +1,30 @@
-import { redirect, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
-import { toast } from "react-toastify";
-import PageForm from "../components/PageForm/index.jsx";
-import { Main } from "../components/common/Main/index.js";
+import Form from "../components/_assets/Form/index.jsx";
+import { Main } from "../components/_assets/Main/index.js";
 import { z } from "zod";
 
 const ResetPass = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const resetPassState = [
     {
       name: "password",
       label: "Password",
-      props: {
-        type: "password",
-        placeholder: "••••••••",
-        as: "input",
-      },
+      type: "password",
+      placeholder: "••••••••",
+      value: "",
     },
     {
       name: "passwordConfirm",
       label: "Confirm Password",
-      props: {
-        type: "password",
-        placeholder: "••••••••",
-        as: "input",
-      },
+      type: "password",
+      placeholder: "••••••••",
+      value: "",
     },
   ];
 
-  const restPass = z
+  const restPassSchema = z
     .object({
       password: z.string().min(8),
       passwordConfirm: z.string().min(8),
@@ -44,22 +40,28 @@ const ResetPass = () => {
       },
     );
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, setError) => {
     try {
-      await customFetch.patch(`/users/reset-pass/${params.token}`, data);
-      toast.success("Your password has been changed successfully");
-      return redirect("/");
+      const response = await customFetch.patch(
+        `/users/reset-pass/${params.token}`,
+        data,
+      );
+      if (response.status === 201) {
+        return navigate("/");
+      }
     } catch (error) {
-      toast.error(error?.response?.data?.message);
-      return error;
+      return setError("root", {
+        type: error?.response?.statusText,
+        message: error?.response?.data?.message,
+      });
     }
   };
 
   return (
     <Main>
-      <PageForm
+      <Form
         initialState={resetPassState}
-        schema={restPass}
+        schema={restPassSchema}
         onSubmit={onSubmit}
         heading="Submit new password"
         button="Confirm"

@@ -1,11 +1,10 @@
-import { Main } from "../components/common/Main/index.js";
-import { Wrapper } from "../components/common/Wrapper/index.js";
-import { StyledLink } from "../components/common/Link/index.js";
-import { toast } from "react-toastify";
-import PageForm from "../components/PageForm/index.jsx";
+import { Main } from "../components/_assets/Main/index.js";
+import { Wrapper } from "../components/_assets/Wrapper/index.js";
+import { StyledLink } from "../components/_assets/Link/index.js";
 import customFetch from "../utils/customFetch.js";
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
+import Form from "../components/_assets/Form/index.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,20 +12,16 @@ const Login = () => {
     {
       label: "Email address",
       name: "email",
-      props: {
-        type: "email",
-        placeholder: "you@example.com",
-        as: "input",
-      },
+      type: "email",
+      placeholder: "you@example.com",
+      value: "",
     },
     {
       label: "Password",
       name: "password",
-      props: {
-        type: "password",
-        placeholder: "••••••••",
-        as: "input",
-      },
+      type: "password",
+      placeholder: "••••••••",
+      value: "",
     },
   ];
 
@@ -35,25 +30,26 @@ const Login = () => {
     password: z.string().min(8),
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, setError) => {
     try {
       const response = await customFetch.post("/users/login", data);
       if (response.status === 200) {
-        toast.success("Login successful");
         return navigate("/");
       }
     } catch (error) {
-      toast.error(error?.response?.data?.message);
-      return error;
+      return setError("root", {
+        type: error?.response?.statusText,
+        message: error?.response?.data?.message,
+      });
     }
   };
 
   return (
     <Main>
-      <PageForm
-        onSubmit={onSubmit}
-        schema={loginSchema}
+      <Form
         initialState={loginState}
+        schema={loginSchema}
+        onSubmit={onSubmit}
         heading="Log into your account"
         button="login"
       >
@@ -62,10 +58,10 @@ const Login = () => {
             Create new account
           </StyledLink>
           <StyledLink $contrast to="/forgot-pass">
-            reset password
+            forgot password
           </StyledLink>
         </Wrapper>
-      </PageForm>
+      </Form>
     </Main>
   );
 };

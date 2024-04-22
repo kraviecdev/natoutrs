@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import customFetch from "../utils/customFetch.js";
-import { toast } from "react-toastify";
-import PageForm from "../components/PageForm/index.jsx";
-import { Main } from "../components/common/Main/index.js";
+import { Main } from "../components/_assets/Main/index.js";
+import Form from "../components/_assets/Form/index.jsx";
 import { z } from "zod";
 
 const Signup = () => {
@@ -11,49 +10,40 @@ const Signup = () => {
     {
       name: "name",
       label: "Your Name",
-      props: {
-        type: "text",
-        placeholder: "Example Name",
-        as: "input",
-      },
+      type: "text",
+      placeholder: "Example Name",
+      value: "",
     },
     {
       name: "email",
       label: "Email address",
-      props: {
-        type: "email",
-        placeholder: "you@example.com",
-        as: "input",
-      },
+      type: "email",
+      placeholder: "you@example.com",
+      value: "",
     },
     {
       name: "password",
       label: "Password",
-      props: {
-        type: "password",
-        placeholder: "••••••••",
-        as: "input",
-      },
+      type: "password",
+      placeholder: "••••••••",
+      value: "",
     },
     {
       name: "passwordConfirm",
       label: "Confirm Password",
-      props: {
-        type: "password",
-        placeholder: "••••••••",
-        as: "input",
-      },
+      type: "password",
+      placeholder: "••••••••",
+      value: "",
     },
   ];
 
-  const signup = z
+  const signupSchema = z
     .object({
       name: z.string().min(3).max(64),
       email: z.string().email(),
       password: z.string().min(8),
       passwordConfirm: z.string().min(8),
     })
-    .required()
     .refine(
       (values) => {
         return values.password === values.passwordConfirm;
@@ -64,28 +54,29 @@ const Signup = () => {
       },
     );
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, setError) => {
     try {
       const response = await customFetch.post("/users/signup", data);
 
       if (response.status === 201) {
-        toast.success("Signup successful");
         return navigate("/");
       }
     } catch (error) {
-      toast.error(error?.response?.data?.message);
-      return error;
+      return setError("root", {
+        type: error?.response?.statusText,
+        message: error?.response?.data?.message,
+      });
     }
   };
 
   return (
     <Main>
-      <PageForm
+      <Form
+        initialState={signupState}
+        schema={signupSchema}
+        onSubmit={onSubmit}
         heading="Sign up to Natours"
         button="Sign Up"
-        initialState={signupState}
-        schema={signup}
-        onSubmit={onSubmit}
       />
     </Main>
   );

@@ -1,52 +1,56 @@
 import customFetch from "../utils/customFetch.js";
-import { toast } from "react-toastify";
-import { StyledLink } from "../components/common/Link/index.js";
-import PageForm from "../components/PageForm/index.jsx";
-import { Main } from "../components/common/Main/index.js";
+import { Main } from "../components/_assets/Main/index.js";
+import { StyledLink } from "../components/_assets/Link/index.js";
+import Form from "../components/_assets/Form/index.jsx";
 import { z } from "zod";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPass = () => {
+  const navigate = useNavigate();
   const forgotPassState = [
     {
       name: "email",
       label: "Email address",
-      props: {
-        type: "email",
-        placeholder: "you@example.com",
-        as: "input",
-      },
+      type: "email",
+      placeholder: "you@example.com",
+      value: "",
     },
   ];
 
-  const forgotPass = z
+  const forgotPassSchema = z
     .object({
       email: z.string().email(),
     })
     .required();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, setError) => {
     try {
       const response = await customFetch.post("/users/forgot-pass", data);
-      return toast.success(response?.data?.message);
+
+      if (response.status === 201) {
+        return navigate("/");
+      }
     } catch (error) {
-      toast.error(error?.response?.data?.message);
-      return error;
+      return setError("root", {
+        type: error?.response?.statusText,
+        message: error?.response?.data?.message,
+      });
     }
   };
 
   return (
     <Main>
-      <PageForm
+      <Form
         initialState={forgotPassState}
-        schema={forgotPass}
+        schema={forgotPassSchema}
         onSubmit={onSubmit}
         heading="Enter your email"
-        button="Send"
+        button="Send request"
       >
         <StyledLink $contrast to="/signup">
           Create new account
         </StyledLink>
-      </PageForm>
+      </Form>
     </Main>
   );
 };
