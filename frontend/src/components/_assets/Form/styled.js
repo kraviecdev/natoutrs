@@ -7,6 +7,7 @@ export const StyledForm = styled.form`
   justify-content: center;
   width: 100%;
   height: max-content;
+  min-width: unset;
   padding: 32px 12px;
   gap: 24px;
   border-radius: 24px;
@@ -14,6 +15,7 @@ export const StyledForm = styled.form`
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
     padding: 48px;
+    min-width: 500px;
     max-width: max-content;
   }
 `;
@@ -56,6 +58,14 @@ export const InputWrapper = styled.div`
   }
 
   ${(props) =>
+    props.$file &&
+    css`
+      grid-template-columns: max-content 1fr;
+      grid-column-gap: 12px;
+      align-items: center;
+    `}
+
+  ${(props) =>
     props.$valid &&
     css`
       color: ${({ theme }) => theme.colors.main_font};
@@ -89,10 +99,19 @@ export const StyledInput = styled.input`
   font-size: ${({ theme }) => theme.font.size.regular}px;
   box-shadow: 0 2px 6px ${({ theme }) => theme.colors.shadow};
 
+  &[type="file"] {
+    display: none;
+  }
+
   &:focus {
     color: ${({ theme }) => theme.colors.main_font};
     border: 1px solid;
   }
 `;
 
-export const StyledLabel = styled.label``;
+export const StyledLabel = styled.label`
+  color: ${({ theme }) => theme.colors.contrast};
+  text-transform: uppercase;
+  font-style: italic;
+  cursor: pointer;
+`;
