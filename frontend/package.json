@@ -18,6 +18,7 @@
     "react-hook-form": "^7.51.2",
     "react-map-gl": "^7.1.7",
     "react-router-dom": "^6.21.1",
+    "@tanstack/react-query": "^5.32.0",
     "styled-components": "^6.1.6",
     "styled-normalize": "^8.1.0",
     "zod": "^3.22.4",
@@ -27,11 +28,12 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^9.0.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-react-refresh": "^0.4.6",
     "vite": "^5.1.7",
-    "@hookform/devtools": "^4.3.1"
+    "@hookform/devtools": "^4.3.1",
+    "@tanstack/react-query-devtools": "^5.32.0"
   }
 }
