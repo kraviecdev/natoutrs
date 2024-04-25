@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import {
+  AllTours,
   Error,
   ForgotPass,
   Home,
   Login,
-  Overview,
   ResetPass,
   Signup,
-  Tour,
+  TourDetailsPage,
 } from "../pages/index.js";
 
 export const routes = createBrowserRouter([
@@ -18,11 +18,11 @@ export const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Overview />,
+        element: <AllTours />,
       },
       {
-        path: "tours/:slug",
-        element: <Tour />,
+        path: "tour/:slug",
+        element: <TourDetailsPage />,
       },
       {
         path: "login",
