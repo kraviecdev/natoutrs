@@ -44,7 +44,7 @@ const TourCard = ({ tour }) => {
             <span>{tour.ratingsAverage} </span>rating ({tour.ratingsQuantity})
           </Paragraph>
         </Section>
-        <StyledLink $cta to={`/tours/${tour.slug}`}>
+        <StyledLink $cta to={`/tour/${tour.slug}`}>
           Details
         </StyledLink>
       </Wrapper>
