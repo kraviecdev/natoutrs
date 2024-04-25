@@ -1,7 +1,7 @@
-import customFetch from "../utils/customFetch.js";
-import { Main } from "../components/_assets/Main/index.js";
-import { StyledLink } from "../components/_assets/Link/index.js";
-import Form from "../components/_assets/Form/index.jsx";
+import customFetch from "../../utils/customFetch.js";
+import { Main } from "../../components/_assets/Main/index.js";
+import { StyledLink } from "../../components/_assets/Link/index.js";
+import Form from "../../components/_assets/Form/index.jsx";
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 

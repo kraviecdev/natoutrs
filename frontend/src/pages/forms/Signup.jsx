@@ -1,13 +1,26 @@
-import { useNavigate, useParams } from "react-router-dom";
-import customFetch from "../utils/customFetch.js";
-import Form from "../components/_assets/Form/index.jsx";
-import { Main } from "../components/_assets/Main/index.js";
+import { useNavigate } from "react-router-dom";
+import customFetch from "../../utils/customFetch.js";
+import { Main } from "../../components/_assets/Main/index.js";
+import Form from "../../components/_assets/Form/index.jsx";
 import { z } from "zod";
 
-const ResetPass = () => {
-  const params = useParams();
+const Signup = () => {
   const navigate = useNavigate();
-  const resetPassState = [
+  const signupState = [
+    {
+      name: "name",
+      label: "Your Name",
+      type: "text",
+      placeholder: "Example Name",
+      value: "",
+    },
+    {
+      name: "email",
+      label: "Email address",
+      type: "email",
+      placeholder: "you@example.com",
+      value: "",
+    },
     {
       name: "password",
       label: "Password",
@@ -24,12 +37,13 @@ const ResetPass = () => {
     },
   ];
 
-  const restPassSchema = z
+  const signupSchema = z
     .object({
+      name: z.string().min(3).max(64),
+      email: z.string().email(),
       password: z.string().min(8),
       passwordConfirm: z.string().min(8),
     })
-    .required()
     .refine(
       (values) => {
         return values.password === values.passwordConfirm;
@@ -42,10 +56,8 @@ const ResetPass = () => {
 
   const onSubmit = async (data, setError) => {
     try {
-      const response = await customFetch.patch(
-        `/users/reset-pass/${params.token}`,
-        data,
-      );
+      const response = await customFetch.post("/users/signup", data);
+
       if (response.status === 201) {
         return navigate("/");
       }
@@ -60,14 +72,14 @@ const ResetPass = () => {
   return (
     <Main>
       <Form
-        initialState={resetPassState}
-        schema={restPassSchema}
+        initialState={signupState}
+        schema={signupSchema}
         onSubmit={onSubmit}
-        heading="Submit new password"
-        button="Confirm"
+        heading="Sign up to Natours"
+        button="Sign Up"
       />
     </Main>
   );
 };
 
-export default ResetPass;
+export default Signup;

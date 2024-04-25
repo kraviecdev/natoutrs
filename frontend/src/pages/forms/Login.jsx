@@ -1,13 +1,16 @@
-import { Main } from "../components/_assets/Main/index.js";
-import { Wrapper } from "../components/_assets/Wrapper/index.js";
-import { StyledLink } from "../components/_assets/Link/index.js";
-import customFetch from "../utils/customFetch.js";
+import { Main } from "../../components/_assets/Main/index.js";
+import { Wrapper } from "../../components/_assets/Wrapper/index.js";
+import { StyledLink } from "../../components/_assets/Link/index.js";
+import customFetch from "../../utils/customFetch.js";
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
-import Form from "../components/_assets/Form/index.jsx";
+import Form from "../../components/_assets/Form/index.jsx";
+import { useDispatch } from "react-redux";
+import { setUser } from "../dashboard/usersSlice.js";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const loginState = [
     {
       label: "Email address",
@@ -34,6 +37,10 @@ const Login = () => {
     try {
       const response = await customFetch.post("/users/login", data);
       if (response.status === 200) {
+        const {
+          data: { user },
+        } = response.data;
+        dispatch(setUser(user));
         return navigate("/");
       }
     } catch (error) {
