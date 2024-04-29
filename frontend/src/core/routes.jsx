@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import {
   AllTours,
+  Dashboard,
   Error,
   ForgotPass,
   Home,
@@ -8,6 +9,7 @@ import {
   ResetPass,
   Signup,
   TourDetailsPage,
+  UpdateMyData,
 } from "../pages/index.js";
 
 export const routes = createBrowserRouter([
@@ -39,6 +41,16 @@ export const routes = createBrowserRouter([
       {
         path: "reset-pass/:token",
         element: <ResetPass />,
+      },
+      {
+        path: "settings",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "update-my-data",
+            element: <UpdateMyData />,
+          },
+        ],
       },
     ],
   },
