@@ -6,3 +6,5 @@ export { default as Login } from "./forms/Login.jsx";
 export { default as Signup } from "./forms/Signup.jsx";
 export { default as ForgotPass } from "./forms/ForgotPass.jsx";
 export { default as ResetPass } from "./forms/ResetPass.jsx";
+export { default as Dashboard } from "./dashboard/Dashboard.jsx";
+export { default as UpdateMyData } from "./forms/UpdateMyData.jsx";
