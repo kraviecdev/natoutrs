@@ -16,9 +16,11 @@ const Form = ({
   button,
   children,
 }) => {
-  const defaultValues = Object.fromEntries(
-    initialState.map((item) => [item.name, item.value]),
-  );
+  const defaultValues = async () =>
+    Object.fromEntries(
+      await initialState.map((item) => [item.name, item.value]),
+    );
+
   const {
     register,
     handleSubmit,
@@ -47,9 +49,9 @@ const Form = ({
                 type={input.type}
                 {...register(input.name)}
                 errorText={errors[input.name]?.message}
-                id={input.id}
                 multiple={input.multiple}
                 accept={input.accept}
+                avatarPath={input.avatarPath}
               />
             ) : (
               <Input
