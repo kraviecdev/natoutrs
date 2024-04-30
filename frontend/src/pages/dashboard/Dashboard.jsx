@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import Icon from "../../components/_assets/Icon/index.jsx";
 import Burger from "../../components/_assets/Burger/index.jsx";
 import { useState } from "react";
+import { Section } from "../../components/_assets/Section/index.js";
 
 const Dashboard = () => {
   const [active, setActive] = useState(false);
@@ -13,7 +14,7 @@ const Dashboard = () => {
     <Main $settings>
       <Nav $settings $active={active}>
         <Burger onClick={() => setActive(!active)} $active={active} />
-        <StyledLink $contrast to="update-my-data">
+        <StyledLink $contrast to="/settings">
           <Icon name="user" />
           account
         </StyledLink>
@@ -30,7 +31,9 @@ const Dashboard = () => {
           reviews
         </StyledLink>
       </Nav>
-      <Outlet />
+      <Section $settings>
+        <Outlet />
+      </Section>
     </Main>
   );
 };
