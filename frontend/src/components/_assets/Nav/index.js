@@ -26,7 +26,7 @@ export const Nav = styled.nav`
     css`
       position: fixed;
       padding: 16px 10px;
-      top: 86px;
+      top: 83px;
       left: 0;
       z-index: 99;
       max-width: 42px;
@@ -34,16 +34,15 @@ export const Nav = styled.nav`
       white-space: nowrap;
       flex-direction: column;
       align-items: flex-start;
-      align-self: baseline;
       background: ${({ theme }) => theme.colors.main};
-      transition: max-width 0.4s ease-in-out;
+      transition: max-width 0.4s ease;
 
       @media only screen and (min-width: ${({ theme }) =>
           theme.breakpoints.sm}px) {
         max-width: max-content;
         position: sticky;
         top: 24px;
-        padding: 16px 0;
+        padding: 0 10px;
       }
     `}
     
