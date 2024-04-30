@@ -18,6 +18,19 @@ export const StyledForm = styled.form`
     min-width: 500px;
     max-width: max-content;
   }
+
+  ${(props) =>
+    props.$second &&
+    css`
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0 12px;
+
+      @media only screen and (min-width: ${({ theme }) =>
+          theme.breakpoints.sm}px) {
+        padding: 0;
+      }
+    `}
 `;
 
 export const FormButton = styled.button`
