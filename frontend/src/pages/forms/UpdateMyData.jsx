@@ -27,7 +27,7 @@ const UpdateMyData = () => {
     },
     {
       name: "photo",
-      label: "Your avatar",
+      label: "change profile image",
       type: "file",
       accept: "image/*",
       multiple: false,
@@ -75,7 +75,7 @@ const UpdateMyData = () => {
       initialState={updateMyDataState}
       schema={updateMyDataSchema}
       onSubmit={onSubmit}
-      heading="Your account"
+      heading="Update your account"
       button="Save changes"
     />
   );
