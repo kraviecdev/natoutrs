@@ -10,26 +10,44 @@ import { Section } from "../../components/_assets/Section/index.js";
 const Dashboard = () => {
   const [active, setActive] = useState(false);
 
+  const links = [
+    {
+      name: "account",
+      path: "/settings",
+      icon: "user",
+    },
+    {
+      name: "password",
+      path: "update-my-password",
+      icon: "lock",
+    },
+    {
+      name: "bookings",
+      path: "my-bookings",
+      icon: "briefcase",
+    },
+    {
+      name: "reviews",
+      path: "my-reviews",
+      icon: "star",
+    },
+  ];
+
   return (
     <Main $settings>
       <Nav $settings $active={active}>
         <Burger onClick={() => setActive(!active)} $active={active} />
-        <StyledLink $contrast to="/settings">
-          <Icon name="user" />
-          account
-        </StyledLink>
-        <StyledLink $contrast to="update-my-password">
-          <Icon name="lock" />
-          password
-        </StyledLink>
-        <StyledLink $contrast to="my-bookings">
-          <Icon name="briefcase" />
-          bookings
-        </StyledLink>
-        <StyledLink $contrast to="my-reviews">
-          <Icon name="star" />
-          reviews
-        </StyledLink>
+        {links.map((link, index) => (
+          <StyledLink
+            $contrast
+            to={link.path}
+            key={index}
+            onClick={() => setActive(false)}
+          >
+            <Icon name={link.icon} />
+            {link.name}
+          </StyledLink>
+        ))}
       </Nav>
       <Section $settings>
         <Outlet />
