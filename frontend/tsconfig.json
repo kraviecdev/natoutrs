@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "es2022",
-    "module": "commonjs",
+    "target": "ES6",
+    "module": "CommonJS",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "./src",
+    "rootDir": "./src_ts",
     "removeComments": true,
     "noImplicitAny": true
   },
-  "include": ["src"],
+  "include": ["src_ts"],
   "exclude": ["node_modules", "dist"]
 }
