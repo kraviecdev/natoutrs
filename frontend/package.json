@@ -4,11 +4,8 @@
   "version": "0.3.0",
   "type": "module",
   "scripts": {
-    "compile": "tsc",
-    "dev": "vite dist",
-    "build": "vite build dist",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "vite",
+    "build": "tsc -b && vite build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
@@ -33,6 +30,8 @@
     "@types/react-dom": "^18.2.17",
     "@types/react-redux": "^7.1.33",
     "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
     "@types/styled-components": "^5.1.34",
     "@vitejs/plugin-react": "^4.2.1",
     "@hookform/devtools": "^4.3.1",
