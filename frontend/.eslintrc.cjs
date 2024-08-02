@@ -1,13 +1,14 @@
-export default [
+module.exports =
   {
     extends: [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
-      "plugin:@prettier/recommended"
+      "plugin:@prettier/recommended",
+      "plugin:react-hooks/recommended"
     ],
     parser: "@typescript-eslint/parser",
     env: { browser: true, es2020: true },
-    settings: { react: { version: '18.2' } },
+    settings: { react: { version: "18.2" } },
     plugins: ["@typescript-eslint", "prettier", "react-refresh"],
     files: [
       "**/*.ts",
@@ -28,14 +29,13 @@ export default [
       "no-return-await": "off",
       "no-underscore-dangle": "off",
       "class-methods-use-this": "off",
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true }
       ],
       "prefer-destructuring": ["error", { "object": true, "array": false }],
       "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
     },
     ignores: [".dist/*"],
     root: true
-  }
-]
+  };
